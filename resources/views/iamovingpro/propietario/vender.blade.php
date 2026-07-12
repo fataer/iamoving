@@ -20,7 +20,7 @@
             <div class="pricing-box">
                 <div class="text-center mx-4 my-0" style="padding-top: 0px;padding-bottom: 0px;">
                     <h5 class="text-center mb-4">
-                        <b>Descubre los 10 pasos clave para vender tu casa por tu cuenta, de forma rápida, segura y totalmente gratuita. Saca el máximo partido a tu vivienda, atrae a compradores realmente interesados y consigue el mejor precio, cerrando la operación con total tranquilidad.</b>
+                        <b>Descubre los 10 pasos clave para vender tu casa por tu cuenta, de forma rápida, segura y totalmente gratuita.</b>
                     </h5>
                 </div>
             </div>
@@ -341,7 +341,7 @@
                             </li>
                             <li class="list-group-item">
                                 <span class="text-muted">
-                                    · Es la formalización oficial: La escritura recoge todos los acuerdos entre tú y el vendedor - el precio, cómo es la vivienda, si tiene cargas pendientes y todos los demás detalles importantes.
+                                    · Es la formalización oficial: La escritura recoge todos los acuerdos entre el comprador y el vendedor - el precio, cómo es la vivienda, si tiene cargas pendientes y todos los demás detalles importantes.
                                 </span>
                             </li>
                             <li class="list-group-item">
@@ -351,14 +351,15 @@
                             </li>
                             <li class="list-group-item">
                                 <span class="text-muted">
-                                    · El gran momento: Cuando firmáis la escritura, normalmente es cuando se paga el total del precio acordado y te entregan las llaves de tu nueva casa.
+                                    · El gran momento: Cuando se firma la escritura, normalmente es cuando se paga el total del precio acordado y se entregan las llaves de la casa a la parte compradora.
                                 </span>
                             </li>
-                            <li class="list-group-item">
+                           <!-- <li class="list-group-item">
                                 <span class="text-muted">
                                     · Inscripción en el Registro: Después de firmar, la escritura debe registrarse oficialmente. Esto es súper importante porque te protege como nuevo propietario frente a cualquier problema que pueda surgir.
                                 </span>
-                            </li>
+                            </li>-->
+							
                             <li class="list-group-item">
                                 <span class="text-muted">
                                     · Impuestos y gastos: Con la firma llegan algunas obligaciones fiscales, como el pago del impuesto de transmisiones o la famosa "plusvalía".
@@ -366,12 +367,12 @@
                             </li>
                             <li class="list-group-item">
                                 <span class="text-muted">
-                                    · Papeles necesarios: Para este día, tanto tú como el vendedor necesitaréis llevar documentos como DNI, escrituras anteriores, certificados de estar al día con los pagos, etc.
+                                    · Papeles necesarios: Para este día, tanto el comprador como el vendedor necesitarán llevar documentos como DNI, escrituras anteriores, certificados de estar al día con los pagos, etc.
                                 </span>
                             </li>
                             <li class="list-group-item">
                                 <span class="text-muted">
-                                    En definitiva, la escritura ante notario es el paso definitivo para comprar una casa. Te da toda la seguridad legal y confirma que la compraventa cumple con la ley.
+                                    En definitiva, la escritura ante notario es el paso definitivo para vender tu casa. Te da toda la seguridad legal y confirma que la compraventa cumple con la ley.
                                 </span>
                             </li>
                         </ul>
