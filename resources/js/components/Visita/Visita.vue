@@ -1,0 +1,115 @@
+<template>
+    <div class="row">
+    	<div v-for="v in visitas" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="box-part">
+    	    	<div class="title text-center">
+                    <img src="https://www.iamoving.com/img/icono.png" width="200px"/>
+                	<h5>Recordatorio</h5>
+    			</div>
+    	        <br>
+    			<!--<div class="text">
+    				<p><b>Fecha:</b> {{ v.fecha }}</b></p>
+    				<p><b>Hora:</b> {{ v.hora }}</b></p>
+                    <p><b>Dirección:</b> {{ v.inmueble.road }}</b></p>
+                    <p><b>Referencia Propiedad:</b> {{ v.inmueble.id }}</b></p>
+                    <br>
+                    <small>Recuerde ser puntual y si no puede asistir a tu cita, dele click a "cancelar cita" y no olvides volver a agendar</small>
+    			</div>-->
+				<div class="text">
+                    <!--<p><b>Referencia Inmueble:</b> {{ v.inmueble.id }}</b></p>-->
+					<p><b>Referencia Inmueble: </b><a :href="`/anuncio/${ v.inmueble.id }`">{{ v.inmueble.id }}</a></b></p>
+                    <br>
+                    <small>Solicitud enviada</small>
+    			</div>				
+                <div class="text-center">
+                    <button class="btn btn-dark" style="color:#EADD1B;" v-on:click="cancelar(v.id)">
+                        Cancelar
+                    </button>
+                </div>
+            
+    			
+    		 </div>
+    	</div>
+    </div>
+</template>
+
+<script>
+export default {
+	data() {
+        return {
+            visitas: null
+        }
+    },
+    created() {
+    	this.cargarVisitas();
+    },
+    methods: {
+        cargarVisitas(){
+
+        	axios.get('/lista_visitas', {
+                        headers: {
+                            Authorization: 'Bearer ' + localStorage.getItem('token')
+                        }
+				})
+                .then((response) => {
+                    if (response.status == 200) {
+                        //this.login(request);
+                        this.visitas = response.data.visitas
+                    }
+                })
+                .catch((exception) => {
+                    console.log(exception.response);
+                })
+        },
+        cancelar(id){
+            $('#modalResend').modal('show');
+                axios.post('/eliminar_visita', {reference:id},{
+                        headers: {
+                            Authorization: 'Bearer ' + localStorage.getItem('token')
+                        }
+                    })
+                    .then((response) => {
+                        $('#modalResend').modal('hide');
+                        if (response.status == 200) {
+                            Swal.fire(
+                                'Aviso',
+                                'Su visita ha sido cancelada',
+                                'success'
+                            );
+                            this.cargarVisitas();
+                        }
+                    })
+                    .catch((exception) => {
+                        $('#modalResend').modal('hide');
+                        console.log(exception.response);
+                        Swal.fire(
+                            'Disculpe',
+                            'No hemos podido procesar su solicitud , intente de nuevo',
+                            'error'
+                        );
+                    })
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+	.box{
+    	padding:60px 0px;
+	}
+
+	.box-part{
+	    background:#FFF;
+	    border-radius:0;
+	    padding:60px 10px;
+	    margin:30px 0px;
+	}
+	.text{
+        font-size:18px;
+	}
+    p {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+</style>

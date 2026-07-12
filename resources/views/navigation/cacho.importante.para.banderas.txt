@@ -1,0 +1,18 @@
+                        @if(Request::is('VisitaVirtual/*')) 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+								aria-haspopup="true" aria-expanded="false"><b>@if (strpos(url()->current(),"/en")) <img src="{{asset('img/flag/uk_flag.png')}}"  alt="Ingles" width="32px"> @else <img src="{{asset('img/flag/Spain_flag.png')}}"  alt="Spanish" width="32px"> @endif</b></a>
+							    <div class="dropdown-menu" style="top: -40px;">
+									@if (strpos(url()->current(),"/en"))
+								    <a class="dropdown-item" href="{{ str_replace("/en","",url()->current()) }}" style="color: #191717;">
+								         <img src="{{asset('img/flag/Spain_flag.png')}}"  alt="Spanish" width="32px"> Spanish
+								    </a>
+									@else
+								    <!--<div class="dropdown-divider"></div>								-->
+								    <a class="dropdown-item" href="{{ str_replace("/en","",url()->current()) }}/en" style="color: #191717;">
+								        <img src="{{asset('img/flag/uk_flag.png')}}"  alt="Ingles" width="32px">  Ingles
+								    </a>
+									@endif
+							</div>
+                        </li>
+                        @endif	

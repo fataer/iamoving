@@ -1,0 +1,1 @@
+function loadJsFile(e){var s=document.createElement("script");s.src=e,document.head.appendChild(s)}"undefined"==typeof ekomiWidgetMainJs&&(ekomiWidgetMainJs=!0,"fetch"in window?loadJsFile("https://iamoving.com/js/ef-widget.js"):loadJsFile("https://iamoving.com/js/ex-widget.js"));

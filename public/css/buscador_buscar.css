@@ -1,0 +1,460 @@
+#map {
+        height: calc(100vh - 80px);
+        width: 100%;
+        text-align: center;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+#pac-input {
+        background-color: #eadd03;
+        color: #2d2e35;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin: 15px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+        height: 30px;
+      }
+/* Centrar el buscador "Escribe donde quieres vivir" respecto al mapa */
+#buscador-estilos {
+    justify-content: center;   /* la .row es flex: centramos su contenido */
+    text-align: center;
+}
+#buscador-estilos .col-lg-4 {
+    flex: 0 0 100%;            /* la columna ocupa todo el ancho del mapa... */
+    max-width: 100%;
+}
+#pac-input {
+    display: block;
+    margin: 15px auto;        /* ...y el input se centra dentro con auto */
+    float: none;
+}
+      /* Color del texto del placeholder "¿Dónde quieres vivir?" */
+      #pac-input::placeholder { color: #2d2e35; opacity: 1; }
+      #pac-input::-webkit-input-placeholder { color: #2d2e35; }
+      #pac-input::-moz-placeholder { color: #2d2e35; opacity: 1; }
+      #pac-input:-ms-input-placeholder { color: #2d2e35; }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+
+      #bueno{
+        position: absolute;
+        right : 200px;
+        bottom: 100px;
+        
+      }
+
+/* Estilos para Advanced Markers */
+.gm-style img {
+    max-width: none !important;
+}
+
+.custom-pin {
+    transition: transform 0.2s;
+}
+
+.custom-pin:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para el nuevo PlaceAutocompleteElement */
+.gmp-places-autocomplete {
+    width: 100%;
+}
+
+.gmp-places-autocomplete input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.gmp-places-autocomplete input:focus {
+    border-color: #4d90fe;
+    outline: none;
+}
+
+/* Asegurar que el input se muestre correctamente en el mapa */
+.pac-input {
+    background-color: #fff !important;
+    font-family: Roboto !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    margin: 15px !important;
+    padding: 0 11px 0 13px !important;
+    text-overflow: ellipsis !important;
+    width: 300px !important;
+    height: 30px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+}
+
+.pac-input:focus {
+    border-color: #4d90fe !important;
+}
+
+/* Estilos mejorados para PlaceAutocompleteElement */
+/* Estilos para el nuevo PlaceAutocompleteElement (Web Component) */
+gmp-place-autocomplete {
+    display: block;
+    width: 100%;
+}
+
+gmp-place-autocomplete input {
+    background-color: #fff !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    padding: 0 11px 0 13px !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    min-width: 300px !important;
+    height: 30px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+}
+
+gmp-place-autocomplete input:focus {
+    border-color: #4d90fe !important;
+    outline: none !important;
+}
+
+/* Asegurar que el contenedor del componente se vea bien */
+.gmp-places-autocomplete-container {
+    width: 300px;
+}
+
+
+/* ============================================ */
+/* NUEVO: ESTILOS PARA MODAL DE FILTROS MÓVIL   */
+/* ============================================ */
+
+/* Estilos específicos para el modal de filtros en móvil */
+@media only screen and (max-width: 768px) {
+    #mobileFiltersModal .modal-dialog {
+        margin: 0;
+        height: 100%;
+    }
+    
+    #mobileFiltersModal .modal-content {
+        border-radius: 0;
+        height: 100%;
+        background: #fff;
+    }
+    
+    #mobileFiltersModal .modal-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    #mobileFiltersModal .modal-body {
+        padding: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #mobileFiltersModal .modal-footer {
+        padding: 15px 20px;
+        border-top: 1px solid #e5e7eb;
+        background: #fff;
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+    }
+    
+    #mobileFiltersModal .filter-group {
+        padding: 0 20px;
+        margin-bottom: 24px;
+    }
+    
+    #mobileFiltersModal .filter-group:last-child {
+        border-bottom: none;
+    }
+    
+    #mobileFiltersModal .filter-select {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 8px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    /* Estilos para los checkboxes */
+    #mobile-filters-content input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: #1a73e8;
+        flex-shrink: 0;
+    }
+    
+    #mobile-filters-content label {
+        cursor: pointer;
+        padding: 4px 0;
+        margin: 0;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: normal;
+        color: #1a1a1a;
+        font-size: 14px;
+    }
+    
+    #mobile-filters-content label:hover {
+        background: #f9fafb;
+        margin: 0 -10px;
+        padding: 4px 10px;
+        border-radius: 4px;
+    }
+    
+    /* Estilos para los inputs de precio y tamaño */
+    #mobile-filters-content .form-control {
+        height: 42px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        padding: 8px 12px;
+        background: #fff;
+        width: 100%;
+    }
+    
+    #mobile-filters-content .form-control:focus {
+        border-color: #1a73e8;
+        box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        outline: none;
+    }
+    
+    /* Botón de aplicar filtros */
+    #mobile-apply-filters {
+        background: #1a73e8;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 25px;
+        padding: 14px;
+        font-size: 16px;
+        transition: all 0.2s;
+        width: 100%;
+    }
+    
+    #mobile-apply-filters:hover {
+        background: #1557b0;
+        transform: scale(1.02);
+    }
+    
+    #mobile-apply-filters:active {
+        transform: scale(0.98);
+    }
+    
+    /* Botón de borrar filtros */
+    #mobile-clear-filters {
+        color: #6c757d;
+        font-size: 14px;
+        padding: 10px;
+        text-decoration: none;
+        border: none;
+        background: transparent;
+        width: 100%;
+    }
+    
+    #mobile-clear-filters:hover {
+        color: #495057;
+        text-decoration: underline;
+    }
+    
+    /* Estilos para el contenedor de filtros */
+    #mobile-filters-content {
+        padding: 20px;
+    }
+    
+    /* Estilos para los títulos de los grupos de filtros */
+    #mobile-filters-content h6 {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+        font-size: 15px;
+    }
+    
+    /* Estilos para los separadores entre grupos */
+    #mobile-filters-content .filter-group {
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 16px;
+    }
+    
+    #mobile-filters-content .filter-group:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Estilos adicionales para el contador de resultados en móvil */
+@media only screen and (max-width: 768px) {
+    #mobile-results .results-text {
+        font-weight: 500;
+        color: #1a1a1a;
+        font-size: 15px;
+    }
+    
+    #mobile-results #no-results-message {
+        color: #6c757d;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 15px;
+    }
+    
+    /* Estilos para los botones de acción móvil */
+    #mobile-actions .btn {
+        font-size: 14px;
+        border-color: #d1d5db;
+        color: #374151;
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+    
+    #mobile-actions .btn:hover {
+        background: #f8f9fa;
+        border-color: #b0b5ba;
+    }
+    
+    #mobile-actions .btn:active {
+        background: #e9ecef;
+    }
+}
+
+/* Estilos para el scroll suave en el modal */
+#mobileFiltersModal .modal-body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Asegurar que el modal esté por encima de todo */
+#mobileFiltersModal {
+    z-index: 9999 !important;
+}
+
+#mobileFiltersModal .modal-backdrop {
+    z-index: 9998 !important;
+}
+
+/* Estilos para los iconos en los botones móviles */
+#mobile-actions .btn i {
+    margin-right: 5px;
+}
+
+/* Ajustes para el modal en dispositivos muy pequeños */
+@media only screen and (max-width: 375px) {
+    #mobileFiltersModal .modal-header h5 {
+        font-size: 16px;
+    }
+    
+    #mobile-filters-content .form-control {
+        font-size: 13px;
+        height: 38px;
+    }
+    
+    #mobile-apply-filters {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+/* Estilos para selects en el modal móvil */
+#mobile-filters-content select.form-control {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    background-color: #fff !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%236b7280' d='M6 7L0 1l1.4-1.4L6 4.2 10.6-.4 12 1z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    padding-right: 32px !important;
+    cursor: pointer !important;
+}
+
+#mobile-filters-content select.form-control:focus {
+    border-color: #1a73e8 !important;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2) !important;
+    outline: none !important;
+}
+
+#mobile-filters-content select.form-control option {
+    padding: 8px !important;
+}

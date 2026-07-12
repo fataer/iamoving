@@ -1,0 +1,6 @@
+Mirar las tablas de la bbdd siguientes:
+menu_items
+
+mirar el route/web.php
+
+Mirar videos!!!

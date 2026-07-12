@@ -1,0 +1,110 @@
+        .subtitle_feature_yellow {
+            background-color: #EADD1B;
+            color: #333;
+            display: block;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid transparent;
+            padding: 15px;
+        }
+
+        .subtitle_feature {
+            background-color: #2d2e35;
+            color: #EADD1B;
+            display: block;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid transparent;
+            padding: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-divider {
+                position: relative;
+                padding: 0;
+            }
+
+            .grid-divider>[class*='col-'] {
+                position: static;
+            }
+
+            .grid-divider>[class*='col-']:nth-child(n+2):before {
+                content: "";
+                border-left: 3px solid #EADD1B;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+            }
+
+            .col-padding {
+                padding: 0 15px;
+            }
+        }
+
+        #circulo {
+            border-radius: 50%;
+            background: #EADD1B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #circulo > p {
+            font-family: sans-serif;
+            color: #2d2e35;
+            font-size: 1rem;
+        }
+
+        .test {
+            width: 530px;
+            height: 320px;
+            background-color: yellow;
+        }
+
+        #tooltip {
+            text-align: center;
+            color: #EADD1B;
+            background: #2d2e35;
+            position: absolute;
+            z-index: 100;
+            padding: 15px;
+        }
+
+        #tooltip:after {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #111;
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            margin-left: -10px;
+        }
+
+        #tooltip.top:after {
+            border-top-color: transparent;
+            border-bottom: 10px solid #111;
+            top: -20px;
+            bottom: auto;
+        }
+
+        #tooltip.left:after {
+            left: 10px;
+            margin: 0;
+        }
+
+        #tooltip.right:after {
+            right: 10px;
+            left: auto;
+            margin: 0;
+        }
+
+        #more {display: none;}
+        #more1 {display: none;}
+        #more2 {display: none;}
+        #more3 {display: none;}
+        #more4 {display: none;}
+        #more5 {display: none;}

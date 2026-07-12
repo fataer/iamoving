@@ -1,0 +1,6 @@
+template.push(`<img src="/storage/transporte/a pie.png" alt="Foto metro">`);
+
+
+							template.push(`<img src=/storage/transporte/`);
+							template.push(data.salon_tipo_suelo_puesto);
+							template.push(`.png alt=Foto metro>`);

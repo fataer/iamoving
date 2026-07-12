@@ -1,0 +1,177 @@
+/* ============================================
+   ESTILOS PARA TESTIMONIOS - COMPLETO
+   ============================================ */
+
+/* Título de sección */
+.subtitle_feature {
+    background-color: #EADD1B;
+    color: #333;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 15px;
+}
+
+.subtitle_feature_yellow {
+    background-color: #EADD1B;
+    color: #333;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 15px;
+}
+
+/* Testimonial Card */
+.testimonial {
+    background: #fff;
+    text-align: center;
+    margin: 0 15px 8px;
+    position: relative;
+    margin-top: 15px;
+}
+
+.testimonial .icon {
+    display: inline-block;
+    font-size: 20px;
+    color: #bd986b;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    opacity: 0.6;
+}
+
+.testimonial .description {
+    font-size: 14px;
+    color: #777;
+    text-align: justify;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    letter-spacing: -1px;
+}
+
+.testimonial .testimonial-content {
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.testimonial .pic {
+    display: inline-block;
+    border: 6px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 2px #daad86;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+}
+
+.testimonial .pic img {
+    width: 100%;
+    height: auto;
+}
+
+.testimonial .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    margin: 0 0 5px 0;
+}
+
+.testimonial .post {
+    display: block;
+    font-size: 14px;
+    color: #ffd9b8;
+}
+
+/* Swiper Carousel */
+.swiper-wrapper {
+    height: 52em;
+}
+
+/* Owl Carousel Navigation */
+.owl-prev {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    margin-left: -25px;
+    display: block !important;
+    border: 0px solid black;
+    font-size: 35px;
+}
+
+.owl-next {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    right: -5px;
+    display: block !important;
+    border: 0px solid black;
+    font-size: 35px;
+}
+
+/* Card styles */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+/* Responsive - Mobile */
+@media only screen and (max-width: 600px) {
+    .owl-prev {
+        display: none !important;
+    }
+    
+    .owl-next {
+        display: none !important;
+    }
+    
+    .swiper-wrapper {
+        height: auto;
+    }
+}
+
+/* Swiper buttons */
+.swiper-button-prev,
+.swiper-button-next {
+    color: #EADD1B;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 30px;
+}
+/* Contenedor más estrecho para testimonios */
+.swiper-container.images-carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Ajustar ancho de las slides */
+.swiper-container.images-carousel .swiper-slide {
+    width: 380px !important;
+    margin-right: 20px;
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+    .swiper-container.images-carousel .swiper-slide {
+        width: 100% !important;
+    }
+}

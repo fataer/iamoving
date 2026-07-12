@@ -1,0 +1,11 @@
+ALTER TABLE `colaboradores` ADD `created_at` TIMESTAMP NULL DEFAULT NULL AFTER `aceptadas_condiciones`;
+ALTER TABLE `colaboradores` ADD `updated_at` TIMESTAMP NULL DEFAULT NULL AFTER `created_at`;
+
+
+C:\laragon\www\definitivo\app\Colaboradores.php
+C:\laragon\www\definitivo\resources\views\emails\colabora.blade.php
+C:\laragon\www\definitivo\resources\views\iamovingpro\contratos\colabora.blade.php
+C:\laragon\www\definitivo\resources\views\web\colabora\index.blade.php
+C:\laragon\www\definitivo\app\Mail\ColaboraMail.php
+ColaboraController.php
+routes\web.php

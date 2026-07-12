@@ -1,0 +1,21 @@
+/* ==================================================
+ *  Component alquiler
+ * ==================================================
+ */
+.header--alquiler-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/fondo6.png");
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+.header--alquiler-text {
+    text-align: center;
+    & > * {
+      color: white !important;
+    }
+  }
+}

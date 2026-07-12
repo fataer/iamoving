@@ -1,0 +1,15 @@
+Fuentes enviados
+=================
+resources\sass\components\main-image.scss
+resources\views\navigation\lookfor.blade.php
+resources\views\navigation\navpro.blade.php
+public\img\familia.jpeg
+public\img\iamoving_blanco.jpeg
+
+Al ejecutar: npm run dev, se genera:
+===================================
+public/js/app.css
+
+
+Por favor, inclúyeme esto en la fase en curso. Mándame una valoración porfa. Ya he puesto a la Caro en aviso. Gracias.
+Nota importante sobre este desarrollo: Todos los controles deben ser del mismo tamaño

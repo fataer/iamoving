@@ -1,0 +1,61 @@
+<div id="modalAnuncia" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content col-md-12">
+      <div class="modal-header">
+
+			<!--<h4 id="modal-request-title">HAZTE IAMOVING PREMIUM</h4>-->
+
+
+			                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+	
+<br>
+
+
+      </div>
+
+      <div class="modal-body" style="padding: 0.5rem;">
+            <form id="publicarForm" action="{{ url('publicar_gratis') }}" method="post"  enctype="multipart/form-data">
+                    {!! csrf_field() !!}
+					<div class="form-group text-left" style="margin-bottom: 0.5rem;">
+	            		</div>
+                    <input type="hidden" id="tipo_publicacion" name="tipo_publicacion" />
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <input placeholder="Nombre" type="text" id="name" name="name" class="form-control" maxlength="150" autofocus required onkeyup="preventSpecials(event)">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <input placeholder="Teléfono móvil" type="text" id="phone" name="phone" class="form-control" maxlength="15"  required onkeyup="preventSpecials(event)">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <input placeholder="Email" type="email" id="email" name="email" class="form-control" maxlength="110"   required onkeyup="preventSpecials(event)">
+                        </div>
+                    </div>					
+                    <div class="form-group form-check text-center">
+						<input type="checkbox" class="form-check-input" id="conditions" name="conditions"  required>
+						<!--<label class="form-check-label" for="conditions">Acepto la <a href="/politica-privacidad" target="_blank">política de privacidad</a></label>-->
+						<label class="form-check-label" for="conditions">He leído y estoy de acuerdo con <a href="/terminosI-condiciones" target="_blank">los términos</a> y <a href="/politica-privacidad" target="_blank">la política de privacidad </a>de IAMOVING</label>
+                    </div>					
+                    <hr>
+                    <div class="form-group">
+                        <button id="btnSend" class="btn-iamoving btn-block" type="submit">
+                           <b> Registrar</b>
+                        </button>
+                    </div>
+            </form>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+

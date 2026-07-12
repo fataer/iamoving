@@ -1,0 +1,104 @@
+<?php
+namespace App\Mail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class OfertaCompradorMail extends Mailable
+{
+    use Queueable, SerializesModels;
+    
+    public $subject;
+    public $inmueble_id;
+    public $num_oferta;
+    public $email;
+    public $arras;
+    public $path_contrato;
+    public $primerNombre;
+    
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($subject, $inmueble_id, $num_oferta, $email, $arras, $path_contrato, $primerNombre = null)
+    {
+        $this->subject = $subject;
+        $this->inmueble_id = $inmueble_id;
+        $this->num_oferta = $num_oferta;
+        $this->email = $email;
+        $this->arras = $arras;
+        $this->path_contrato = $path_contrato;
+        $this->primerNombre = $primerNombre;
+    }
+    
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        $subject = $this->subject;
+        $inmueble_id = $this->inmueble_id;
+        $num_oferta = $this->num_oferta;
+        $email = $this->email;
+        $arras = $this->arras;
+        $path_contrato = $this->path_contrato;
+        $primerNombre = $this->primerNombre;
+        
+        try {
+            // Obtener el contenido del archivo PDF
+            $path_completo = "https://iamoving.com/storage/ofertacompra/{$num_oferta}/{$path_contrato}";
+            $path_condiciones = @file_get_contents($path_completo);
+            
+            if ($path_condiciones === false) {
+                // Si no se puede obtener el PDF, registrar error
+                \Log::error("No se pudo cargar el PDF desde: {$path_completo}");
+                
+                // Intentar método alternativo (ruta del servidor local)
+                $ruta_local = "/home/u819346592/domains/iamoving.com/public_html/storage/ofertacompra/{$num_oferta}/{$path_contrato}";
+                if (file_exists($ruta_local)) {
+                    $path_condiciones = file_get_contents($ruta_local);
+                    \Log::info("PDF cargado desde ruta local: {$ruta_local}");
+                } else {
+                    \Log::error("El archivo no existe en la ruta local: {$ruta_local}");
+                    // Continuar sin el adjunto
+                    return $this->from('roberto@iamoving.com', 'IAMOVING')
+                        ->replyTo('roberto@iamoving.com', 'IAMOVING')
+                        ->subject($this->subject)
+                        ->view('emails.oferta_comprador', compact('email', 'arras', 'path_contrato', 'primerNombre'))
+                        ->withSwiftMessage(function ($message) {
+                            $message->setSender('roberto@iamoving.com');
+                            $message->setReturnPath('roberto@iamoving.com');
+                        });
+                }
+            }
+            
+            // Si llegamos aquí, tenemos el PDF
+            return $this->from('roberto@iamoving.com', 'IAMOVING')
+                ->replyTo('roberto@iamoving.com', 'IAMOVING')
+                ->subject($this->subject)
+                ->view('emails.oferta_comprador', compact('email', 'arras', 'path_contrato', 'primerNombre'))
+                ->attachData($path_condiciones, "Oferta Compra Ref. {$inmueble_id}.pdf")
+                ->withSwiftMessage(function ($message) {
+                    $message->setSender('roberto@iamoving.com');
+                    $message->setReturnPath('roberto@iamoving.com');
+                });
+                
+        } catch (\Exception $e) {
+            // Registrar el error pero continuar con el envío sin adjunto
+            \Log::error("Error al adjuntar PDF: " . $e->getMessage());
+            
+            return $this->from('roberto@iamoving.com', 'IAMOVING')
+                ->replyTo('roberto@iamoving.com', 'IAMOVING')
+                ->subject($this->subject)
+                ->view('emails.oferta_comprador', compact('email', 'arras', 'path_contrato', 'primerNombre'))
+                ->withSwiftMessage(function ($message) {
+                    $message->setSender('roberto@iamoving.com');
+                    $message->setReturnPath('roberto@iamoving.com');
+                });
+        }
+    }
+}

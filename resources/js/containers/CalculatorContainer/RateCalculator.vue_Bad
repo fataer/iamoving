@@ -1,0 +1,518 @@
+<template>
+    <div class="card">
+        <div class="card-body">
+            <div class="text-center my-3">
+                <label>Precio de su inmueble :</label>
+                <money :value="defaultValue" v-bind="options" @input="change" class="form-control"></money>
+            </div>
+            <div class="text-center my-3">
+                <label><center>Vendiendo con agencias tradicionales</center></label>
+                <input type="range" class="custom-range" min="3" max="6" v-model.number="commission">
+                <div class="indicators">
+                    <div>3%</div>
+                    <div>4%</div>
+                    <div>5%</div>
+                    <div>6%</div>
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Miles de llamadas indeseadas</span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span> 
+            </div>             
+            <!--<div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Filtro de compradores </span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+            </div>              -->
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Visitas frustradas</span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span> 
+            </div>   
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Pérdida de tiempo</span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span> 
+            </div>                          
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Honorarios</span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">{{formatCurrency(output)}}</span>
+                <!--<span v-text="formatCurrency(output)"></span>-->
+            </div>              
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">IVA 21%</span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">{{formatCurrency(iva)}}</span>
+                <!--<span v-text="formatCurrency(iva)"></span>-->
+            </div>                                                  
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#000000;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Total</span>
+                <span style="color:#000000;float:right;padding: 0 0.50rem;margin-bottom: 10px;">{{formatCurrency(total)}}</span>
+                <!--<span v-text="formatCurrency(total)"></span>-->
+            </div>                                                              
+           <!-- <div class="text-center my-3">
+                <label><center><h3><b>Comisión que tú pagas a la agencia</b></h3></center></label>
+            </div>-->
+        </div>
+     
+        <div class="iamoving-theme" width="50%">
+            <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">CON IAMOVING</span>
+                
+            </div>
+            <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Elige cómo deseas anunciar tu propiedad</span>
+                
+            </div>    
+             <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">CON EXClUSIVA:</span>
+                
+            </div>
+            <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Anuncia sólo con IAMOVING. Si en 6 meses su inmueble no es vendido, la exclusividad cae y mantenemos las mismas condiciones. !Totalmente gratuito!</span>
+                
+            </div>            
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Primera visita online</span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span>
+            </div>                                                  
+            <!--<div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Visitas frustradas </span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+            </div>  -->
+            <!--<div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Comisiones   </span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+            </div>                                                  -->
+                                                    <div class="d-flex justify-content-between" >
+                                                                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;"><a href="/servicio/4"  class="font-weight-bold" style="color: #EADD03;"  target="blank">Servicios incluidos</a></span>
+                                                                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span> 
+                                                            </div>              
+                                                                                                        
+                                                    <div class="d-flex justify-content-between" >
+                                                                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;"><a href="/servicio/8"  class="font-weight-bold" style="color: #EADD03;"  target="blank">Descuentos especiales</a></span>
+                                                                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span> 
+                                                            </div>                                                 
+           <!-- <div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Tarifa de servicios</span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Gratuito</span>
+                
+            </div>                          -->
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">AHORRARÁS CON IAMOVING</span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">{{formatCurrency(total)}}</span>
+                <!--<span v-text="formatCurrency(total)"></span>-->
+            </div>  
+                        <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Vende su casa, sin comisiones ni tarifa de servicios.</span>
+                
+            </div>
+                        <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Con servicios incluidos y descuentos especiales</span>
+                
+            </div>            
+           <!--             <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Ahorrando tiempo y dinero</span>
+                
+            </div>          -->
+        </div>
+        <div class="iamoving-theme" width="50%">
+            <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">SIN EXCLUSIVA:</span>
+                
+            </div>
+            <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Anuncia con Iamoving y también puede vender con otras plataformas, inmobiliarias o por cuenta propia</span>
+                
+            </div>            
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Primera visita online</span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Si</span>
+            </div>                                                  
+            <!--<div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Visitas frustradas </span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+            </div>  -->
+            <!--<div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Comisiones   </span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+            </div>                                                  -->
+                                                    <div class="d-flex justify-content-between" >
+                                                                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;"><a href="/servicio/4"  class="font-weight-bold" style="color: #EADD03;"  target="blank">Servicios incluidos</a></span>
+                                                                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+                                                            </div>              
+                                                                                                        
+                                                    <div class="d-flex justify-content-between" >
+                                                                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;"><a href="/servicio/8"  class="font-weight-bold" style="color: #EADD03;"  target="blank">Descuentos especiales</a></span>
+                                                                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">No</span> 
+                                                            </div>                                                 
+           <!-- <div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">Tarifa de servicios</span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">Gratuito</span>
+                
+            </div>                          -->
+            <div class="d-flex justify-content-between" >
+                <span  style="color:#FFFFFF;float:left;padding: 0 0.50rem;margin-bottom: 10px;">AHORRARÁS CON IAMOVING</span>
+                <span style="color:#FFFFFF;float:right;padding: 0 0.50rem;margin-bottom: 10px;">{{formatCurrency(total)}}</span>
+                <!--<span v-text="formatCurrency(total)"></span>-->
+            </div>  
+                        <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Sin comisiones y sin tarifa de servicios</span>
+                
+            </div>
+           <!--             <div class="text-center my-3">
+                <span  style="color:#FFFFFF;padding: 0 0.50rem;margin-bottom: 10px;">Ahorrando tiempo y dinero</span>
+                
+            </div>          -->
+        </div>
+
+
+
+
+
+
+
+
+
+
+              <div class="sc-1jqkf70-0 jCQGKS">
+                <section class="sc-iwsKbI hJtXAX">
+                  <!--<div class="sc-10fklo0-0 jJsluQ sc-10rvb1h-0 iyBYz" direction="row">
+                    <div class="m70hd6-0 hsUnyu">
+                      <section class="sc-1jpmmt8-0 fZuWNc">
+                        <h2 class="sc-bdVaJa hjBPaq">
+                          <span>Condiciones con IAMOVING:</span>
+                        </h2>
+                        <h3 class="sc-bdVaJa hBnwDG">
+                          <span>Te aprovechas de los beneficios exclusivos de IAMOVING</span>
+                        </h3>
+                      </section>
+                    </div>
+                    <div class="m70hd6-0 gvSOMz"></div>
+                    <div class="m70hd6-0 fBCnjt">
+                      <section class="sc-1jpmmt8-0 fZuWNc">
+                        <h2 class="sc-bdVaJa hjBPaq">
+                          <span>Compare las condiciones de las agencias</span>
+                        </h2>
+                        <h3 class="sc-bdVaJa hBnwDG">
+                          <span>Tu dejas de aprovechar los beneficios exclusivos de IAMOVING</span>
+                        </h3>
+                      </section>
+                    </div>
+                  </div>-->
+                  <div class="sc-10rvb1h-0 htIvPI" direction="row">
+
+                    <div class="m70hd6-0 fBCnjt">
+                      <div class="jss33 jss37 jss34 sc-95xf8-0 ecJbVg" width="150px">
+                        <div class="sc-1x6rk30-0 hAjjvO">
+                          <div tabindex="-1" color="" height="24">
+                           <!-- <span class="jss259">-->
+                              <span><h5><b>SIN EXCLUSIVA</b></h5></span>
+                           <!-- </span>-->
+                          </div>
+                        </div>
+
+                        <ul class="jss200 jss201">
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Primera visita online</span>
+                              </span>
+                            </div>
+                          </li>
+                         <!-- <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Defensa jurídica hasta el desahucio</span>
+                              </span>
+                            </div>
+                          </li>
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Garantizamos el perjuicio por incendios</span>
+                              </span>
+                            </div>
+                          </li>-->
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/plan-proteccion-alquiler">Protección de alquiler</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/bonificacion-en-efectivo">Bonificación en efectivo</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <!--<li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Estudio de solvencia</span>
+                              </span>
+                            </div>
+                          </li>-->
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/servicio/3">Servicios incluidos</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/servicio/7">Descuentos especiales</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <!--<li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Tarifa servicios Gratuita</span>
+                              </span>
+                            </div>
+                          </li>-->                        
+                        </ul>
+                       <!-- <a tabindex="0" class="jss190 jss168 jss177 jss179 jss180 jss182 sc-1xghyk2-0 jeqLQt sc-jWBwVP hpjIvM" role="button" theme="[object Object]" href="/anunciar-imovel#anunciar">
+                          <span class="jss169">
+                            <span>Anunciar exclusivo</span>
+                          </span>
+                          <span class="jss193"></span>
+                        </a>-->
+                      </div>
+                    </div>
+
+
+
+                    <div class="m70hd6-0 fBCnjt">
+                      <div class="jss33 jss37 jss34 sc-95xf8-0 ecJbVg" width="150px">
+                        <div class="sc-1x6rk30-0 hAjjvO">
+                          <div tabindex="-1" color="" height="24">
+                           <!-- <span class="jss259">-->
+                              <span><h5><b>SIN EXCLUSIVA</b></h5></span>
+                           <!-- </span>-->
+                          </div>
+                        </div>
+
+                        <ul class="jss200 jss201">
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Primera visita online</span>
+                              </span>
+                            </div>
+                          </li>
+                         <!-- <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Defensa jurídica hasta el desahucio</span>
+                              </span>
+                            </div>
+                          </li>
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Garantizamos el perjuicio por incendios</span>
+                              </span>
+                            </div>
+                          </li>-->
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/plan-proteccion-alquiler">Protección de alquiler</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/bonificacion-en-efectivo">Bonificación en efectivo</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <!--<li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Estudio de solvencia</span>
+                              </span>
+                            </div>
+                          </li>-->
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/servicio/3">Servicios incluidos</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span><a href="/servicio/7">Descuentos especiales</a></span>
+                              </span>
+                            </div>
+                          </li>
+                          <!--<li class="jss204 jss208 jss211">
+                            <svg class="jss215 jss217 jss214 sc-6ysmz4-0 gqysQO" focusable="false" viewBox="0 0 24 24" aria-hidden="true" theme="[object Object]">
+                              <g>
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                              </g>
+                            </svg>
+                            <div class="jss221 jss223">
+                              <span class="sc-bdVaJa jiARkd">
+                                <span>Tarifa servicios Gratuita</span>
+                              </span>
+                            </div>
+                          </li>-->                        
+                        </ul>
+                       <!-- <a tabindex="0" class="jss190 jss168 jss177 jss179 jss180 jss182 sc-1xghyk2-0 jeqLQt sc-jWBwVP hpjIvM" role="button" theme="[object Object]" href="/anunciar-imovel#anunciar">
+                          <span class="jss169">
+                            <span>Anunciar exclusivo</span>
+                          </span>
+                          <span class="jss193"></span>
+                        </a>-->
+                      </div>
+                    </div>
+                   <!-- <div class="m70hd6-0 gvSOMz">
+                      <span class="sc-1wk3z2y-0 jWLPEz">
+                        <div class="jss261 jss262 sc-13q38wx-0 jugaIX" theme="[object Object]">Vs.</div>
+                      </span>
+                    </div>-->
+
+                  </div>
+                </section>
+              </div>
+
+
+
+
+    </div>
+</template>
+
+<script>
+import { Money } from 'v-money';
+import { options, format } from "./utils";
+
+export default {
+    components: {
+        Money
+    },
+    props: {
+        defaultValue: {
+            type: Number,
+            default: 0
+        },
+    },
+    data() {
+        return {
+            options,
+            value: 0,
+            commission: 4
+        }
+    },
+    methods: {
+        change(value) {
+            this.value = value;
+        },
+        formatCurrency(value) {
+            return format(value);
+        }
+    },
+    computed: {
+        output() {
+            return this.value * (this.commission / 100);
+        },
+        iva() {
+            return this.value * (this.commission / 100) * (21/100);
+        },
+        total() {
+            return (this.value * (this.commission / 100)) + (this.value * (this.commission / 100) * (21/100));
+        }
+    }
+}
+</script>

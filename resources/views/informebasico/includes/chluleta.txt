@@ -1,0 +1,16 @@
+<?php
+																					$variable  = limpieza_url(trim($detalle->propiedad_estado));
+																					$old = array("obra-nueva", "reformado-a-estrenar","a-reformar","en-buen-estado","recian-reformado");
+																					$new   = array("New", "Brand new refurbished","To reform","In good state","Newly renovated");
+																					$newphrase = str_replace($old, $new, $variable);
+																					echo $newphrase;
+																					?></span>
+																					
+																					
+<?php
+																					$variable  = limpieza_url(trim($detalle->$detalle->amueblada ));
+																					$old = array("totalmente-sin-muebles", "sin-muebles-con-cocina-equipada","semi-amueblado","amueblado");
+																					$new   = array("Totally unfurnished", "Empty but the kitchen equipped","Partly furnished","Furnished");
+																					$newphrase = str_replace($old, $new, $variable);
+																					echo $newphrase;
+																					?>																					

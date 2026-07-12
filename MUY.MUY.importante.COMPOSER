@@ -1,0 +1,4 @@
+λ composer self-update --preview
+Updating to version 2.3.3 (preview channel).
+   Downloading (100%)
+Use composer self-update --rollback to return to version 1.8.0

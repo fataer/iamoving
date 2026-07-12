@@ -1,0 +1,379 @@
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+require('./bootstrap');
+
+window.Vue = require('vue');
+
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+// Components
+Vue.component('video-card', require('./components/VideoCard/VideoCard.vue').default);
+Vue.component('show-case', require('./components/ShowCase/ShowCase.vue').default);
+Vue.component('input-currency', require('./components/InputCurrency/InputCurrency.vue').default);
+Vue.component('orientaciones', require('./components/Orientaciones').default);
+Vue.component('visitas', require('./components/Visita/Visita.vue').default);
+Vue.component('favoritos', require('./components/Favourite/Favourite.vue').default);
+Vue.component('language-switcher', require('./components/LanguageSwitcher/LanguageSwitcher.vue').default);
+
+// Containers
+Vue.component('modal-auth', require('./containers/ModalAuth').default);
+Vue.component('modal-authorization', require('./containers/ModalAuthorization').default);
+Vue.component('modal-request', require('./containers/ModalRequest').default);
+Vue.component('modal-quiero', require('./containers/ModalQuiero').default);
+Vue.component('report-content', require('./containers/ReportContent').default);
+Vue.component('report-minimo', require('./containers/ReportMin').default);
+Vue.component('report-basico', require('./containers/ReportBas').default);
+Vue.component('report-garage', require('./containers/ReportGarage').default);
+Vue.component('report-edificio', require('./containers/ReportEdificio').default);
+Vue.component('report-lugar', require('./containers/ReportLugar').default);
+Vue.component('calculator-app', require('./containers/CalculatorContainer/Calculator.vue').default);
+Vue.component('rate-calculator', require('./containers/CalculatorContainer/RateCalculator.vue').default);
+Vue.component('bon-calculator', require('./containers/CalculatorContainer/BonCalculator.vue').default);
+Vue.component('sale-calculator', require('./containers/CalculatorContainer/SaleCalculator.vue').default);
+Vue.component('rental-calculator', require('./containers/CalculatorContainer/RentalCalculator.vue').default);
+
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+const app = new Vue({
+    el: '#app',
+    data: {
+        user: null
+    },
+    created() {
+		//console.log(localStorage.getItem("user"));
+		//console.log(this);
+		var str =window.location.pathname;
+		var n = str.includes("iamovingpro");
+		//console.log(window.location);
+		console.log("entra");
+        if(localStorage.getItem("user")){
+            this.user = JSON.parse(localStorage.getItem("user"));
+            if (this.user.role_id < 3)
+			{
+				this.user =null;
+			}
+			//if (n)
+			//console.log(this.user.iamoving);
+			//if (this.user.iamoving==1)
+			if (n)
+			{
+				console.log("tres0");
+				if (this.user.role_id==3)
+				{
+					console.log("tres");
+					this.user =null;
+				}
+			}
+			else
+			{
+				console.log("cuatro0");
+				console.log("cuatro0");
+				if (this.user.role_id==4)
+				{
+					console.log("cuatro");
+					this.user =null;
+				}
+			}
+            console.log("User Logged");
+        }
+		//console.log(this.user.role_id);
+        console.log(this.user);
+		console.log("App created");
+		
+
+    },
+    methods: {
+        setUser(user) {
+		var str =window.location.pathname;
+		var n = str.includes("iamovingpro");			
+			 console.log("set user");
+		this.user = user;
+		//if (n)
+		//if (this.user.iamoving==1)
+		if (n)
+		{
+			if (user.role_id==3)
+			{
+				this.user = null;
+				console.log(this.user);
+			}
+		}
+		else
+		{
+			if (user.role_id==4)
+			{
+				this.user = null;
+				console.log(this.user);
+			}			
+		}
+        },
+        refreshToken(){
+            var self = this;
+            axios.post('/auth/refresh', {},{
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then((response) => {
+                    if (response.status === 200) {
+                       localStorage.setItem("token", response.data.access_token);
+                    }
+                })
+                .catch((exception) => {
+                    self.user = null;
+                    localStorage.removeItem("user");
+                    localStorage.removeItem("token");
+                })
+        },
+        logout() {
+            var self = this;
+			console.log("LOGUT");
+            axios.post('/auth/logout', {},{
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then((response) => {
+                    if (response.status === 200) {
+                       self.user = null; 
+                       localStorage.removeItem("token");
+                       localStorage.removeItem("user");
+                       location.href = '/';
+                    }
+                })
+                .catch((exception) => {
+                    self.user = null;
+                    localStorage.removeItem("user");
+                    localStorage.removeItem("token");
+                    location.href = '/';
+                })
+        },
+        request(reference){
+            console.log("Send request:" + reference);
+            if(this.user.email_verified_at!=null){
+                $('#modalRequest').modal('show');
+                axios.post('/comprar_alquilar', {user_id:this.user.id, reference: reference})
+                    .then((response) => {
+                        $('#modalRequest').modal('hide');
+                        if (response.status == 200) {
+                            Swal.fire(
+                                'Gracias',
+                                'Su solicitud ha sido procesada, lo estaremos contactando',
+                                'success'
+                            );
+                        }
+                    })
+                    .catch((exception) => {
+                        $('#modalRequest').modal('hide');
+                        console.log(exception.response);
+                        Swal.fire(
+                            'Disculpe',
+                            'No hemos podido procesar su solicitud , intente de nuevo',
+                            'error'
+                        );
+                    })
+            }else{
+                location.href = "/bloqueado"
+            }
+            
+        },
+
+        resend(){
+            console.log("Resend");
+            if(this.user!=null){
+                $('#modalResend').modal('show');
+                axios.post('/auth/resend', {id:this.user.id})
+                    .then((response) => {
+                        $('#modalResend').modal('hide');
+                        if (response.status == 200) {
+                            Swal.fire(
+                                'Gracias',
+                                'Su solicitud ha sido procesada, le hemos reenviado el correo de verificación',
+                                'success'
+                            );
+                        }
+                    })
+                    .catch((exception) => {
+                        $('#modalResend').modal('hide');
+                        console.log(exception.response);
+                        Swal.fire(
+                            'Disculpe',
+                            'No hemos podido procesar su solicitud , intente de nuevo',
+                            'error'
+                        );
+                    })
+            }
+        },
+
+        profile(){
+            if(this.user.email_verified_at!=null){
+                location.href = "/perfil"
+            }else{
+                location.href = "/bloqueado"
+            }
+        },
+        profileSubmitHandle(form){
+            console.log("profileSubmited");
+            var formData = new FormData(this.$refs.pform);
+            $('#modalResend').modal('show');
+            axios.post('/guardar_perfil',formData,{
+                        headers: {
+                            Authorization: 'Bearer ' + localStorage.getItem('token')
+                        }
+                    })
+                    .then((response) => {
+                        $('#modalResend').modal('hide');
+                        if (response.status == 200) {
+
+                            localStorage.setItem("user", JSON.stringify(response.data.user));
+                            this.user = response.data.user;
+
+                            Swal.fire(
+                                'Gracias',
+                                'Su perfil ha sido actualizado',
+                                'success'
+                            );
+                        }
+                    })
+                    .catch((exception) => {
+                        $('#modalResend').modal('hide');
+                        Swal.fire(
+                            'Disculpe',
+                            'No hemos podido procesar su solicitud , intente de nuevo',
+                            'error'
+                        );
+                    })
+        },
+        citaSubmitHandle(){
+            console.log("visitaSubmited");
+            var form = this.$refs.cform;
+            var formData = new FormData(form);
+
+            $('#modalCita').modal('hide');
+            $('#modalResend').modal('show');
+            axios.post('/agendar_visita',formData,{
+                        headers: {
+                            Authorization: 'Bearer ' + localStorage.getItem('token')
+                        }
+                    })
+                    .then((response) => {
+                        $('#modalResend').modal('hide');
+                        if (response.status == 200) {
+                            $("#citaForm")[0].reset();
+                            if(response.data.success){
+                                  
+                                Swal.fire({
+                                  type: 'success',
+                                  title: 'Gracias',
+                                  //html: '<p>Te hemos enviado un correo con la información de su visita</p><b>Recuerda</b><br><b>Fecha:</b>' + response.data.fecha + '<br><b>Lugar:</b>' + response.data.lugar,
+								  html: '<p>Su solicitud se está procesado</p><p>En breve, nos pondremos en contacto contigo.</p>',
+                                  
+                                })
+                            }else{
+                                Swal.fire(
+                                    'Aviso',
+                                    'Usted ya tiene una visita programada para este inmueble',
+                                    'info'
+                                );    
+                            }
+                            
+                        }
+                    })
+                    .catch((exception) => {
+                        $('#modalResend').modal('hide');
+                        Swal.fire(
+                            'Disculpe',
+                            'No hemos podido procesar su solicitud , intente de nuevo',
+                            'error'
+                        );
+                    })
+        },
+        visitas(){
+            if(this.user.email_verified_at!=null){
+                location.href = "/visitas"
+            }else{
+                location.href = "/bloqueado"
+            }
+        },
+
+        favoritos(){
+            if(this.user.email_verified_at!=null){
+                location.href = "/favoritos"
+            }else{
+                location.href = "/bloqueado"
+            }
+        },
+
+        agregarFavorito(reference){
+            console.log("favoritoSubmited");
+            if(this.user.email_verified_at!=null){
+                axios.post('/guardar_favorito',{reference:reference},{
+                            headers: {
+                                Authorization: 'Bearer ' + localStorage.getItem('token')
+                            }
+                        })
+                        .then((response) => {
+                            if (response.status == 200) {
+                                $.notify({
+                                    message: 'Agregado a favoritos'
+                                },{
+                                    type: 'success'
+                                });
+                            }
+                        })
+                        .catch((exception) => {
+                            console.log(exception);
+                        })
+            }
+        },
+
+        auth(action,data){
+            console.log("modalAuth");
+            localStorage.setItem("action",action);
+            localStorage.setItem("action_data",data);
+            $("#modal-auth").modal('show');
+        },
+        modalVisita(){
+            if(this.user){
+                $("#step1").show();
+                $("#step2").hide();
+                $("#modalCita").modal('show');
+            }
+        },
+        
+        modalDoc(){
+                $("#modalDocumentos").modal('show');
+        },
+        modalAhorra(){
+                $("#modalAhorrando").modal('show');
+        },
+        modalAumenta(){
+                $("#modalAumentando").modal('show');
+        },
+        modalEvita(){
+                $("#modalEvitando").modal('show');
+        },
+        modalInfo(){
+                $("#modalInformacion").modal('show');
+        } 		
+    }
+});

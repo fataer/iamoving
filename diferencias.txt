@@ -1,0 +1,50 @@
+He encontrado q el index.php del search y el buscador.js tenían una versión diferente en local y en servidor. Se tocó el día 1. Bueno el hecho es que he dejado la versión local y todo va igual. Sigue sin funcionar la imagen.
+
+
+Los damas cambios entran dentro de lo que cabe:
+app\Providers\AppServiceProvider.php
+------------------------------------
+--En el servidor existe este código dentro de la función register mientras que en local está vacío:
+    public function register()
+    {
+                 $this->app->bind('path.public', function() {
+        return base_path('public_html');
+    });
+    } 
+	
+config\app.php
+--------------
+Esta puesta las variables en produ como siguen:
+    'url' => env('APP_URL', 'https://www.iamoving.com/'),
+      'debug' => env('APP_DEBUG', false),
+
+    
+config\filesystems.php
+-----------------------
+Se pone en produ esta línea:
+            'root' => public_path('storage'),
+En local esta esta:
+            'root' => storage_path('app'),          
+            
+Y ademas esta otra:
+            'root' => public_path('storage'),
+Y en local está esta:
+            'root' => storage_path('app/public'),   
+            
+EN LA RUTA DE EMAIL!!!!!!!!!!!!!
+ESTA PUESTO FIJO IAMOVING.cOM!!!! cuando tiene que poner URL!!!     
+
+public\.htaccess
+-----------------
+Es distinto el de produ porque tiene un tema de https
+
+public\index.php
+----------------
+Tambien es diferente
+
+
+
+
+	
+
+			

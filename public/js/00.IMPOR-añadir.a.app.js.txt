@@ -1,0 +1,42 @@
+Hay que editar el fichero app.js y buscar la cadena "translate3d" y poner lo siguiente:
+
+PARA SOLO UN MENÚ DELANTE EL "sobre"
+v>90&&v<100&&(v-=50),v>135&&v<145&&(v-=97),
+
+SI HAY DOS MENUS POR EJEMPLO "LLAMAR" Y "sOBRE" ENTONCES PONER ESTE:
+v>90&&v<100&&(v-=50),v>135&&v<145&&(v-=97),v>185&&v<195&&(v-=144),
+
+
+SI HAY 3 MENUS POR EJEMPLO "LLAMAR" Y "sOBRE" ENTONCES PONER ESTE:
+v>90&&v<100&&(v-=50),v>135&&v<145&&(v-=97),v>185&&v<195&&(v-=144),v>240&&v<250&&(v-=191),
+
+(NOTA MUY IMPORTANTE a los v> se les va sumando primero 90+45=135, luego a 135+50=185 y luego a 185+55=240 y sería 240+60=300
+					  y los v< se les va sumando primero 100+45=145, luego a 145+50=195 y luego a 195+55=250 y sería 250+60=310
+					  y para los (v-=) se les va sumando 47 siempre --> 50 , 97, 144, 191, el proximo sería 238					  
+
+EL TERCER NODO v>185&&v<195&&(v-=144), SE HA AÑADIDO PORQUE EL TROZO DE CODIGO DONDE ESTÁ EL SUBMENÚ TIENE translate3d(0px, 190px, 0px);
+Y POR ESO LE HEMOS PUESTO ENTRE 185 Y 195 Y LE HEMOS REBAJADO 144 Y SE QUEDA EN 45 PX.
+
+<div class="dropdown-menu show" style="position: absolute; will-change: transform; top: 0px; left: 0px; 
+transform: translate3d(0px, 190px, 0px);" x-placement="bottom-start"><a href="https://iamoving.com/buscando-alquiler" class="dropdown-item" style="color: rgb(25, 23, 23);">ALQUILER</a> <div class="dropdown-divider"></div> <a href="https://iamoving.com/comprar " class="dropdown-item" style="color: rgb(25, 23, 23);">COMPRAR</a></div>
+
+
+
+entre
+
+a&&p) y u[p]="translate3d(
+
+y quedaría:
+PARA UN MENU:
+a&&p)v>90&&v<100&&(v-=50),v>135&&v<145&&(v-=97),u[p]="translate3d
+
+PARA DOS MENUS:
+a&&p)v>90&&v<100&&(v-=50),v>135&&v<145&&(v-=97),v>185&&v<195&&(v-=144),u[p]="translate3d
+
+<div class="dropdown-menu show" style="position: absolute; will-change: transform; top: 0px; left: 0px; 
+transform: translate3d(0px, 45px, 0px);" x-placement="bottom-start"><a href="https://iamoving.com/alquiler" class="dropdown-item" style="color: rgb(25, 23, 23);">ALQUILER</a> <div class="dropdown-divider"></div> 
+<a href="https://iamoving.com/vender " class="dropdown-item" style="color: rgb(25, 23, 23);">VENDER</a></div>
+
+
+<div class="dropdown-menu show" style="position: absolute; will-change: transform; top: 0px; left: 0px; 
+transform: translate3d(0px, 190px, 0px);" x-placement="bottom-start"><a href="https://iamoving.com/buscando-alquiler" class="dropdown-item" style="color: rgb(25, 23, 23);">ALQUILER</a> <div class="dropdown-divider"></div> <a href="https://iamoving.com/comprar " class="dropdown-item" style="color: rgb(25, 23, 23);">COMPRAR</a></div>

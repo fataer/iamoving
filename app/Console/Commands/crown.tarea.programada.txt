@@ -1,0 +1,13 @@
+	/usr/bin/php /home/u819346592/domains/iamoving.com/iamoving/artisan iamoving:notify_news
+	a las 8 de la mañana hora del servidor que en realidad es 10 o 9
+	
+	/usr/bin/php /home/u819346592/domains/iamoving.com/iamoving/artisan schedule:run >> /dev/null 2>&1
+	a las 0:10 de la mañana hora del servidor que en realidad es 1:10 o 2:10
+	
+	
+
+
+
+/usr/bin/php /home/u819346592/domains/iamoving.com/iamoving/artisan sync:klaviyo >> /dev/null 2>&1
+esta ya no depende de poner la hora en el Kernel
+	

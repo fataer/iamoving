@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+
+<!--<title>IAMOVING - Fácil de comprar y alquilar</title>--> <!--Maximum of 65 characters-->
+<title>@yield('title')</title>
+<meta name="description" content="¡Elegir tu piso perfecto va mucho más allá! Especialistas en alquiler y venta de pisos en Madrid. Alquiler y venta de apartamentos, casas, áticos y pisos - IAMOVING"/>
+<!--<meta name="robots" content="nosnippet">-->
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="@yield('title')">
+<meta property="og:description" content="@yield('description')"> <!--Maximum 65 characters-->
+<meta property="og:url" content="https://www.iamoving.com" /> 
+<!--Maximum 65 characters-->
+<meta property="og:image" content="@yield('image')">    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title', 'iamoving')</title>
+
+    <!-- Scripts -->
+    <!-- <script src="https://sdk.accountkit.com/es_ES/sdk.js" defer></script> -->
+	@if (strpos(url()->current(),"/en"))
+	<script src="{{ asset('js/app-en.js') }}" defer></script>
+	@else  
+		<script src="{{ asset('js/app.js') }}" defer></script>
+	@endif
+	<script src="{{ asset('js_theme/masonry.pkgd.min.js') }}" defer></script>
+    <script src="{{ asset('js_theme/main.js') }}" defer></script>
+	<script src="{{ asset('js/popper.min.js ') }}" defer></script>
+	<script src="{{ asset('js/ios.js ') }}" defer></script>
+	<script src="{{ asset('js/embed.js ') }}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    <!-- Ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <link rel="icon" type="image/png" href="{{ asset('img/marker.ico') }}" />
+    <link href="{{ asset('css_theme/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css_theme/animate.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-eu-cookie-law-popup.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/sweetalert2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap-clockpicker.min.css') }}" rel="stylesheet" />
+<style>
+/* Ajustes visuales para banner de cookies en móvil */
+@media (max-width: 768px) {
+    .eupopup,
+    .eupopup-container {
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        max-width: calc(100% - 20px) !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+    }
+    
+    .eupopup h3,
+    .eupopup h4 {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        padding-right: 25px !important;
+    }
+    
+    .eupopup p {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+    
+    .eupopup-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 15px !important;
+        justify-content: center !important;
+    }
+    
+    .eupopup button,
+    .eupopup a {
+        background: transparent !important;
+        color: #FFC107 !important;
+        text-decoration: underline !important;
+        border: none !important;
+        padding: 5px 10px !important;
+        font-weight: bold !important;
+    }
+    
+    .eupopup button:hover,
+    .eupopup a:hover {
+        color: #FFD54F !important;
+    }
+}
+</style>
+@yield('styles')
+    @yield('styles')
+
+    <script src="{{ asset('js/jquery-eu-cookie-law-popup.js') }}" defer></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}" defer></script>
+        
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.slim.min.js"></script>
+	@if (strpos(url()->current(),"/en"))
+		<script src="{{ asset('js/bootstrap-datepicker.en.min.js') }}" defer></script>
+	@else
+		<script src="{{ asset('js/bootstrap-datepicker.min.js') }}" defer></script>
+	@endif
+    <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap-notify.min.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+
+    <style>
+        .waiting {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -13px;
+            margin-left: -13px;
+            border-radius: 60px;
+            animation: loader 0.8s linear infinite;
+            -webkit-animation: loader 0.8s linear infinite;
+        }
+        .dropdown-item{
+            cursor:pointer;
+			width:81%;
+        }		
+        
+        #formGroupExampleInput {
+          background-color:red;
+          width:300px;
+          color:#2D2D37;
+        }
+        
+        #formGroupExampleInput::placeholder {
+         color:#2D2D37;
+        }
+        
+        #formGroupExampleInput::-webkit-input-placeholder {
+          color: #2D2D37;
+        }
+        #formGroupExampleInput::-moz-placeholder {
+          color: #2D2D37;
+             opacity:  1;
+        }
+        #formGroupExampleInput:-ms-input-placeholder {
+          color: #2D2D37;
+        }
+        #formGroupExampleInput:-moz-placeholder {
+          color: #2D2D37;
+           opacity: 1 ;
+        }
+        
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance:textfield;
+        }
+        
+        @media only screen and (max-width: 600px) {
+
+            .pagination{
+                flex-wrap: wrap !important;
+            }
+            
+            .modal{
+                width:100% !important;
+            }
+        }
+
+    </style>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '841153322970616');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=841153322970616&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153274977-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153274977-1');
+</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
+
+</head>
+<body>
+    <!-- Page Preloder -->
+	<div id="preloder">
+	    @if(Request::is('anuncio/*') or Request::is('anuncio/*')) 
+	        <div class="loading"></div>
+	    @else
+	        <div class="loader"></div>
+	    @endif
+	</div>
+    <div id="app">
+        <!--<div id="global_message" class="alert alert-success text-center" style="margin-bottom:0;"></div>-->
+        <!-- Header section -->
+        @include('navigation.navpro')
+        @yield('preheader')
+		<!-- Hero section -->
+        @yield('banner')
+        @if(isset($token))
+            <modal-auth id="modal-auth" user="{{ Auth::user() }}" secret="{{ $token }}"></modal-auth>
+        @else 
+            <modal-auth id="modal-auth" user="{{ Auth::user() }}" secret=""></modal-auth>
+        @endif
+        <main>
+            @yield('content')
+        </main>
+   
+        <div id="modalResend" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="modal-request-title" class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h5>Procesando tu petición</h5><br>
+                        <div class="waiting"></div>
+                        <br>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer section -->
+	<!--@include('navigation.prefooter')-->
+    @include('navigation.footerprotest')
+
+    @yield('scripts')
+    
+    <div class="eupopup eupopup-bottomright"></div>
+<script>
+    $(document).ready( function() {
+        $("#global_message").hide();
+        if ($(".eupopup").length > 0) {
+            $(document).euCookieLawPopup().init({
+                'popupTitle' : 'Este sitio utiliza cookies',
+                'popupText' : 'Para información sobre nuestra política de cookies haga click en el enlace "Mas información"',
+                'buttonContinueTitle': 'Aceptar',
+                'buttonLearnmoreTitle' : 'Mas información',
+                'cookiePolicyUrl': '/politicas_cookies',
+                'buttonLearnmoreOpenInNewWindow' : true
+            });
+        }
+
+        $('.pickdate').datepicker({
+            language: "es",
+            todayHighlight: true,
+            autoclose: true,
+            format: "dd/mm/yyyy"
+        });
+
+    });
+
+    $(document).bind("user_cookie_already_accepted", function(event, object) {
+        console.log("User consent: " + $(object).attr('consent'));
+    });
+    
+    $(document).bind("user_cookie_consent_changed", function(event, object) {
+        console.log("User cookie consent changed: " + $(object).attr('consent') );
+    });
+    
+    var timeoutTimer;
+    var expireTime = 1000*60*5;
+    
+    function expireSession(){
+        clearTimeout(timeoutTimer);
+        timeoutTimer = setTimeout("IdleTimeout()", expireTime);
+    }
+    function IdleTimeout() {
+        if (localStorage.getItem("token") !== null) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            location.href = '/';
+        }
+    }
+    
+    $(document).on('click mousemove scroll touchstart touchmove', function() {
+        expireSession();
+    });
+    expireSession();
+</script>
+
+
+</body>
+</html>
+

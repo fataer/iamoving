@@ -1,0 +1,40 @@
+/* ==================================================
+ *  Component Collapse
+ * ==================================================
+ */
+[aria-expanded=false] > .expanded,
+[aria-expanded=true] > .collapsed {
+    display: none;
+}
+.collapse-content {
+    .btn-collapse {
+        display: block;
+        text-decoration: none;
+        border-radius: 0.25rem;
+        background-color: var(--light);
+        padding: .25rem 1rem;
+        font-size: 20px;
+        outline: none;
+        color: #333;
+
+        &[aria-expanded=false]::before,
+        &[aria-expanded=true]::before {
+            float: right !important;
+            padding-right: 5px;
+        }
+        &[aria-expanded=false]::before {
+            content: "+";
+        }
+        &[aria-expanded=true]::before {
+            content: "-";
+        }
+
+        &:hover {
+            color: var(--warning);
+        }
+    }
+    .content-collapse {
+        background-color: #ffffff;
+        padding: .25rem 1rem;
+    }
+}

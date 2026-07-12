@@ -1,0 +1,135 @@
+/* Pero NO debe bloquear clics en el resto de la página */
+body {
+    pointer-events: auto !important;
+}
+/* Cookie Consent Banner - Versión Simplificada (2 botones) */
+.cookie-consent {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 380px;
+    background: #1a1a2e;
+    color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.3);
+    z-index: 999999;
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: auto; /* Debe permitir clics en el banner */
+}
+
+.cookie-consent.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.cookie-consent-content {
+    padding: 20px;
+}
+
+.cookie-consent h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #fff;
+}
+
+.cookie-consent p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+    color: #ccc;
+}
+
+.cookie-consent-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.cookie-consent-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.cookie-consent-btn-primary {
+    background: #b02c98;
+    color: white;
+}
+
+.cookie-consent-btn-primary:hover {
+    background: #8a2274;
+    transform: scale(1.02);
+}
+
+.cookie-consent-btn-secondary {
+    background: transparent;
+    border: 1px solid #b02c98;
+    color: #b02c98;
+}
+
+.cookie-consent-btn-secondary:hover {
+    background: rgba(176, 44, 152, 0.1);
+}
+
+.cookie-consent-link {
+    color: #b02c98;
+    text-decoration: none;
+    font-size: 0.75rem;
+    display: inline-block;
+}
+
+.cookie-consent-link:hover {
+    text-decoration: underline;
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+    .cookie-consent {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        max-width: none;
+        border-radius: 12px;
+    }
+    
+    .cookie-consent-content {
+        padding: 16px;
+    }
+    
+    .cookie-consent-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .cookie-consent-btn {
+        width: 100%;
+    }
+}
+
+@keyframes cookieSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cookie-consent.show {
+    animation: cookieSlideIn 0.3s ease forwards;
+}

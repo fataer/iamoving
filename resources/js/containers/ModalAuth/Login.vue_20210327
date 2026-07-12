@@ -1,0 +1,102 @@
+<template>
+    <div class="container1">
+        <form @submit.prevent="submitHandle" v-if="loading == 0">
+            <div class="form-group">
+                <input placeholder="Email" type="email" v-model="form.email" class="form-control" autofocus maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <input id="password-field" placeholder="Clave" name="password" type="password" v-model="form.password" class="form-control" minlength="6" maxlength="15" required>
+				<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+                <button class="btn btn-warning btn-block" type="submit">
+                    Iniciar
+                </button>
+            </div>
+        </form>
+        <div class="text-center" v-if="loading == 1">
+            <h5>Verificando</h5><br>
+            <div class="loader" ></div>
+            <br>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            loading: 0,
+            form: {
+                email: null,
+                password: null
+            }
+        }
+    },
+    created(){
+        axios.interceptors.request.use((config) => {
+            console.log("Loading true");
+            this.loading = 1;
+            return config;
+        }, (error) => {
+            console.log("Loading false");
+            this.loading = 0;
+            return Promise.reject(error);
+        });
+
+        axios.interceptors.response.use((response) => {
+            console.log("Loading false");
+            this.loading = 0;
+            return response;
+        }, (error) => {
+            console.log("Loading false");
+            this.loading = 0;
+            return Promise.reject(error);
+        });
+    },
+    methods: {
+        submitHandle() {
+            this.$emit('login', this.form);
+        }
+    }
+
+}
+
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});	
+
+</script>
+<style>
+    .loader {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -13px;
+        margin-left: -13px;
+        border-radius: 60px;
+        animation: loader 0.8s linear infinite;
+        -webkit-animation: loader 0.8s linear infinite;
+    }
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}	
+.container1{
+  padding-top:50px;
+  margin: auto;
+}
+</style>

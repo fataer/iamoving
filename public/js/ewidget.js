@@ -1,0 +1,1 @@
+function loadJsFile(e){var s=document.createElement("script");s.src=e,document.head.appendChild(s)}"undefined"==typeof ekomiWidgetMainJs&&(ekomiWidgetMainJs=!0,"fetch"in window?loadJsFile("http://iamoving.esy.es/js/f-widget.js"):loadJsFile("http://iamoving.esy.es/js/x-widget.js"));

@@ -1,0 +1,45 @@
+
+home/699/I9gU9Ju9SpyxXv6y1FmeIkolSwjhnu9UinUN2IO5.jpg
+home/700/7unfl5cXJjyw2fKoXhyqlxyLLViphFWE5oNpwFy5.jpg
+
+Campo es_venta gestionar
+Ojo con el menú del móvil.
+Repasar contenidos de los correos.
+Preguntar Roberto por los body de los correos
+
+
+Desarrollo amigo:
+routes/web.php
+	Route::get('terminos-colaboracion-iamigo', function() {
+		return view('iamovingpro.contratos.iamigo');
+	});	
+
+//Half iamigo
+	Route::get('propietario-colaborador-iamigo', 'IamigoController@index')->name('iamigo');
+	Route::post('colabora_notificar_iamigo', 'IamigoController@send');	
+//Half iamigo fin
+
+	
+nuevo fichero que hay q modificar: C:\laragon\www\definitivo\resources\views\iamovingpro\contratos\iamigo.blade.php
+nuevo fichero que hay q modificar: C:\laragon\www\definitivo\resources\views\web\amigo\index.blade.php
+nuevo fichero que hay q modificar: C:\laragon\www\definitivo\app\Http\Controllers\Web\IamigoController.php
+
+App\Mail\AmigoMail;
+
+App\Mail\AmigoAceptaMail;
+resources\views\mail\colaborador.blade.php
+
+env("CONDICIONES_AMIGO",""));
+'condiciones_propietario_colaborador_iamoving.pdf'
+
+
+--subir el config/app.php
+--el composer.json
+--Y los demás componentes del vendor
+--Ojo con la route/web.php
+ver todo lo modificado en vendor!!
+
+
+FALTA QUE FUNCIONE EL TEMA DEL EMAIL
+FALTA CAMBIAR LA RUTA DEL CONTRATO EN EL PDF
+FALTA VER DONDE GRABA!!!

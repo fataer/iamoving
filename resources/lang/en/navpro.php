@@ -1,0 +1,3 @@
+return [
+'entrar' => 'log in',
+];

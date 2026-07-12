@@ -1,0 +1,46 @@
+/* Definición de la fuente Voyager */
+@font-face {
+    font-family: 'voyager';
+    src: url('/fonts/voyager/voyager.woff') format('woff'),
+         url('/fonts/voyager/voyager.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Definición de Glyphicons para Bootstrap */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/fonts/bootstrap/glyphicons-halflings-regular.woff2') format('woff2'),
+         url('/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+         url('/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Clases de iconos de Voyager */
+[class^="voyager-"]:before,
+[class*=" voyager-"]:before {
+    font-family: 'voyager' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Códigos de iconos más comunes de Voyager */
+.voyager-trash:before { content: "\e806"; }
+.voyager-eye:before { content: "\e81b"; }
+.voyager-warning:before { content: "\e80a"; }
+.voyager-refresh:before { content: "\e81f"; }
+.voyager-search:before { content: "\e839"; }
+.voyager-browser:before { content: "\e828"; }
+.voyager-data:before { content: "\e82f"; }
+.voyager-bug:before { content: "\e868"; }
+.voyager-code:before { content: "\e825"; }
+.voyager-download:before { content: "\e82c"; }
+.voyager-documentation:before { content: "\e823"; }
+.voyager-check:before { content: "\e807"; }
+.voyager-x:before { content: "\e908"; }
