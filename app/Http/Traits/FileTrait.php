@@ -62,7 +62,8 @@ trait FileTrait {
 			$wimg = Image::make($realImg)->resize($width, $height);
             // Insertar marca de agua, centro
             //$wimg->insert('/home/u819346592/domains/iamoving.com/public_html/storage' .  '/iamoving_white_transparent.jpg', 'center', 20, 100);
-            $wimg->insert($storagePath .  '/iamoving_white_transparent.jpg', 'center', 20, 100);
+            //$wimg->insert($storagePath .  '/iamoving_white_transparent.jpg', 'center', 20, 100);
+            $wimg->insert($storagePath .  '/iamoving_white_transparent.jpg', 'center', 0, 0);
             $wimg->save($filename_no_ext . '_' . $width . 'x' . $height . '.jpg', 75);
 			}else{
 				//fotos verticales
@@ -73,7 +74,8 @@ trait FileTrait {
 				$wimg = Image::make($realImg)->resize($width, $height);
 				// Insertar marca de agua, centro
 				//$wimg->insert('/home/u819346592/domains/iamoving.com/public_html/storage' .  '/iamoving_white_transparent.jpg', 'center', 20, 100);				
-				$wimg->insert($storagePath .  '/iamoving_white_transparent.jpg', 'center', 20, 100);		
+				//$wimg->insert($storagePath .  '/iamoving_white_transparent.jpg', 'center', 20, 100);		
+				$wimg->insert($storagePath .  '/iamoving_white_transparent.jpg', 'center', 0, 0);
 				$wimg->save($filename_no_ext . '_' . $width . 'x' . $height_name . '.jpg', 75);				
 						//$fondo= imagecreatefromjpeg("/home/u819346592/domains/iamoving.com/public_html/storage/fondo/fondo.jpg");
 						$fondo= imagecreatefromjpeg($storagePath . "/fondo/fondo.jpg");
