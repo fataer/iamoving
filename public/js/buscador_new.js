@@ -108,10 +108,26 @@ if (imgElement) {
     }
     
     // Enlace del popup
-    const uriElement = document.getElementById('uri_property');
-    if (uriElement) {
-        uriElement.href = '/anuncio/' + storeId;
-    }
+/*const uriElement = document.getElementById('uri_property');
+if (uriElement) {
+    uriElement.href = '/anuncio/' + storeId;
+    uriElement.target = '_blank';          // Abre en nueva pestaña
+    uriElement.rel = 'noopener noreferrer'; // Seguridad
+}*/
+// Enlace del popup – apertura en nueva pestaña
+const uriElement = document.getElementById('uri_property');
+if (uriElement) {
+    const url = '/anuncio/' + storeId;
+    // Opcional: mantener href y target por si falla el onclick
+    uriElement.href = url;
+    uriElement.target = '_blank';
+    // Forzar apertura con window.open y evitar propagación
+    uriElement.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();  // Evita que otros manejadores interfieran
+        window.open(url, '_blank');
+    };
+}
     
     // Mostrar el popup
     infoBox.style.display = "flex";
