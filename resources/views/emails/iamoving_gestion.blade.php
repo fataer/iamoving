@@ -436,13 +436,20 @@ style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
 color:#000000;mso-color-alt:windowtext'>-------------.</span><span
 style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
 
-<p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
+<!--<p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
 color:#000000;mso-color-alt:windowtext'>Confirmo que he recibido, leído, comprendido y aceptado los Términos de Intermediación para Compradores de IAMOVING ONLINE.<span style='mso-spacerun:yes'> 
 </span></span><b><span
 style='font-size:11.5pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
 "Times New Roman";color:#000000;mso-themecolor:background1'> </span></b><span
-style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>-->
 
+
+<p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
+color:#000000;mso-color-alt:windowtext'>Yo, {{ $user->name }}@if($user->lastname ) {{ $user->lastname}}@endif, confirmo expresamente que he recibido, leído, comprendido y aceptado los Términos de Intermediación para Compradores de IAMOVING ONLINE, y solicito continuar con la tramitación de mi solicitud de visita al inmueble de mi interés.<span style='mso-spacerun:yes'> 
+</span></span><b><span
+style='font-size:11.5pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+"Times New Roman";color:#000000;mso-themecolor:background1'> </span></b><span
+style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
 
 <p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
 color:#000000;mso-color-alt:windowtext'>-------------.</span><span
