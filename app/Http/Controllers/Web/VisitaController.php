@@ -57,6 +57,7 @@ class VisitaController extends Controller
 			$user = new Users_unregistered();
 	    	$reference = InformeDetalladoCabecera::findOrFail($request->reference);
 	    	$direccion= $reference->road;
+	    	$propiedad_precio= number_format($reference->propiedad_precio, 0, ',', '.');
 	    	$visit_date = $request->date != null ? $request->date : null;
 	    	$visit_time = $request->time != null ? $request->time : null;	
 		    $isPedido = $request->has('tipo_visita');
@@ -170,7 +171,7 @@ class VisitaController extends Controller
 				}			
 		    //*ADD
 			$path_contrato = $visita->id.'_'.$path_contrato;
-			$content = PDF::loadView('iamovingpro.contratos.visita', compact(['direccion','visit_time','visit_date','fecha_letra','name', 'lastname','email','phone','inmueble_id','tipo_persona_iamoving']))->output();
+			$content = PDF::loadView('iamovingpro.contratos.visita', compact(['direccion','propiedad_precio','visit_time','visit_date','fecha_letra','name', 'lastname','email','phone','inmueble_id','tipo_persona_iamoving']))->output();
 
 			Storage::disk('public')->put('/visita/'.$inmueble_id.'/'.$path_contrato, $content);
 			//*ADD
@@ -242,6 +243,7 @@ class VisitaController extends Controller
             }	    	
 	    	$reference = InformeDetalladoCabecera::findOrFail($request->reference);
 	    	$direccion= $reference->road;
+	    	$propiedad_precio= number_format($reference->propiedad_precio, 0, ',', '.');
 	    	$visit_date = $request->date != null ? $request->date : null;
 	    	$visit_time = $request->time != null ? $request->time : null;
 	    	
@@ -344,7 +346,7 @@ class VisitaController extends Controller
 				}
 		    //*ADD	
 			$path_contrato = $visita->id.'_'.$path_contrato;
-			$content = PDF::loadView('iamovingpro.contratos.visita', compact(['direccion','visit_time','visit_date','fecha_letra','name', 'lastname','email','phone','inmueble_id','tipo_persona_iamoving']))->output();
+			$content = PDF::loadView('iamovingpro.contratos.visita', compact(['direccion','propiedad_precio','visit_time','visit_date','fecha_letra','name', 'lastname','email','phone','inmueble_id','tipo_persona_iamoving']))->output();
 
 			Storage::disk('public')->put('/visita/'.$inmueble_id.'/'.$path_contrato, $content);
 			//*ADD				

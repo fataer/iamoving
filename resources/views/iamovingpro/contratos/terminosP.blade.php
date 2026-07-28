@@ -5,479 +5,231 @@
 @section('content')
 <section class="container">
     <div class="text-center mt-5">
-       <!-- <img src="/img/icono.png" alt="iamoving logo" width="350">-->
         <h2 class="display-6 py-3">TÉRMINOS Y CONDICIONES</h2>
     </div>    
     <ol class="list-unstyled">
         <li>
              <p>
-			 Última fecha de actualización: 29 de DICIEMBRE de 2025.
+			 Última fecha de actualización: 23 de JUNIO de 2026.
             </p>
-        </li>
+        </li>        
+        <!-- 1. OBJETO Y ACEPTACIÓN -->
         <li>
             <h4>1. OBJETO Y ACEPTACIÓN</h4>
-            <p>
-                1.1 - El presente aviso legal regula el uso del sitio web <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (en adelante, LA PLATAFORMA), del que es titular IAMOVING ONLINE, S.L.(en adelante, IAMOVING).
-            </p>
-            <p>
-                1.2 - La navegación por LA PLATAFORMA atribuye la condición de usuario del mismo e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal, que pueden sufrir modificaciones.
-            </p>
-            <p>
-                1.3 - El usuario se obliga a hacer un uso correcto de LA PLATAFORMA, de conformidad con las leyes, la buena fe, el orden público, los usos del tráfico y el presente Aviso Legal. El usuario responderá frente a IAMOVING o frente a terceros, de cualesquiera daños y perjuicios que pudieran causarse como consecuencia del incumplimiento de dicha obligación.
-            </p>
+            <p>1.1. Los presentes Términos y Condiciones regulan el acceso, navegación y uso de la plataforma inmobiliaria disponible en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (en adelante, LA PLATAFORMA), titularidad de IAMOVING ONLINE, S.L. (en adelante, IAMOVING), así como las condiciones generales aplicables a los servicios ofrecidos a través de LA PLATAFORMA.</p>
+            <p>1.2. La solicitud de información, la concertación de visitas, la utilización de los servicios de IAMOVING o la aceptación expresa de los presentes Términos y Condiciones implicará la aceptación íntegra de los mismos por parte del usuario.</p>
+            <p>1.3. El usuario se compromete a utilizar LA PLATAFORMA conforme a la legislación vigente, la buena fe y los presentes Términos y Condiciones, respondiendo de cualquier uso indebido que pueda ocasionar daños a IAMOVING o a terceros.</p>
         </li>
-        <li>
-            <h4>2. IDENTIFICACIÓN Y COMUNICACIONES</h4>
-            <p>
-                2.1 - IAMOVING, en cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, le informa que:
-            </p>
-            <!--<ol type="" style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">-->
-                <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
-                    <li>Su denominación social es: IAMOVING ONLINE, S.L.</li>
-                    <li>CIF es: B-88297825</li>
-                    <li>Su domicilio social está en: Calle Serrano 93, 3º E. 28006 - Madrid - España (AVISO IMPORTANTE: IAMOVING ONLINE es una plataforma online. Todas las gestiones se realizan de manera online. No atendemos físicamente, solo bajo cita previa)</li>
-                    <!--<li>Tel: 649623700</li>-->
-                    <li>Email: <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#110;&#102;&#111;&#064;&#105;&#097;&#109;&#111;&#118;&#105;&#110;&#103;&#046;&#099;&#111;&#109;" style="color:#EADD03;">info@iamoving.com</a>,
-                    <p mt-0 style="margin-bottom:0.1rem"><a href="mailto:roberto@iamoving.com">roberto@iamoving.com</a></p></li>
-					<li>Teléfono: +34 649 623 700</li>
-                </ul>
-            
-            <p>
-                2.2 - Todas las notificaciones y comunicaciones entre los usuarios e IAMOVING se considerarán eficaces, a todos los efectos, cuando se realicen a través de cualquiera de los medios detallado anteriormente (teléfono, mensajes de texto, WhatsApp y correo electrónico).
-            </p>
-        </li>
-<li>
-            <h4>3. FUNCIONAMIENTO Y APLICACIÓN DE IAMOVING</h4>
-            <p>
-                3.1 – IAMOVING es una plataforma inmobiliaria on-line que facilita los procesos de arrendamiento y compraventa, ayudando a los propietarios, compradores e inquilinos.
-            </p>
-            <p>
-                En el caso de que algún propietario utilice el reportaje audiovisual de IAMOVING con su marca de agua fuera de www.iamoving.com, como particular para comercializar su propiedad en otros canales diferentes de IAMOVING, la plataforma IAMOVING no se responsabilizará en ningún caso de los acuerdos que alcancen directamente entre los arrendatarios, arrendadores, compradores y vendedores.
-            </p>
-            <p>
-                En estos casos, IAMOVING queda exento de cualquier tipo de percance o situación perjudicial que pueda originarse entre las partes.
-            </p>
-        </li>
-		
-        <li>
-            <h4>4. CONTENIDO AUDIOVISUAL DE IAMOVING </h4>
-            <p>
-                4.1 - Tanto las imágenes como los vídeos son llevados a cabo de manera exclusiva por IAMOVING, quedando fuera de esta realización cualquier persona ajena a la empresa.
-            </p>
-           <!-- <p>
-                Aún con todo lo anterior, la información vertida tanto en el vídeo como en la descripción del inmueble será facilitada por el propietario del mismo, garantizando así la imparcialidad de todo el contenido. 
-            </p>-->
-            <p>
-                De esta forma, IAMOVING se reserva todos los derechos de autor, así como de propiedad intelectual del contenido audiovisual; siendo así, y de acuerdo con esta cláusula, IAMOVING es el único que puede utilizar el contenido del inmueble, sin previa autorización por escrito de la misma.
-            </p>
-            <p>
-				De acuerdo con lo anterior, IAMOVING podrá retirar el contenido audiovisual y el anuncio de la plataforma de manera unilateral en cualquier momento y sin consultar con el propietario del inmueble.
-            </p>
-            <p>
-				<b>4.2. Veracidad</b>. 
-            </p>
-			<p>
-                Toda la información vertida tanto en el vídeo, fotografía, como en la descripción del anuncio será facilitada por los propietarios, ellos son responsables de dicha información facilitada a IAMOVING, así como de la veracidad de la misma, exonerando de cualquier tipo de responsabilidad a IAMOVING con respecto al contenido audiovisual y de dicha información.
-            </p>			
-			<p>
-				En el caso de que la visita virtual (video, fotografías e información) del inmueble varíe en el tiempo (por reformas, cambio de muebles, diferentes colores de pintura o algún tipo de cambio de información), los propietarios deberán avisar por escrito a la plataforma en <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#110;&#102;&#111;&#064;&#105;&#097;&#109;&#111;&#118;&#105;&#110;&#103;&#046;&#099;&#111;&#109;" style="color:#EADD03;">info@iamoving.com</a>, para que la misma actualice dichas observaciones en su publicación. 
-            </p>
-            <!--<p>
-				<b>4.7 Servicios adicionales</b>. 
-            </p>-->
-			<!--<p>
-                En el caso de que el propietario, inmobiliaria, compradores o arrendatarios decidan contratar los servicios adicionales de IAMOVING, sus valores y condiciones estarán a disposición al usuario en la plataforma: <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>
-            </p>			-->
-        </li>
-        <li>
-            <h4>5. CONDICIONES DE ACCESO Y UTILIZACIÓN</h4>
-            <p>
-                5.1 - LA PLATAFORMA y sus servicios son de acceso libre, no obstante, IAMOVING condiciona la utilización de algunos de los servicios ofrecidos a la previa cumplimentación del correspondiente formulario.
-            </p>
-            <p>
-                5.2 - El usuario garantiza la autenticidad y actualidad de todos aquellos datos que comunique a LA PLATAFORMA y será el único responsable de las manifestaciones falsas o inexactas que realice.
-            </p>
-            <p>
-                5.3 - El usuario se compromete expresamente a hacer un uso adecuado de los contenidos y servicios de LA PLATAFORMA y a no emplearlos para, entre otros:
-            </p>
-            <ol type="a" style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
-                <li>
-                <p>
-                    Difundir contenidos delictivos, violentos, pornográficos, racistas, xenófobo, ofensivos, de apología del terrorismo o, en general, contrarios a la ley o al orden público.
-                </p>
-                </li>
-                <li>
-                <p>
-                    Introducir en la red virus informáticos o realizar actuaciones susceptibles de alterar, estropear, interrumpir o generar errores o daños en los documentos electrónicos, datos o sistemas físicos y lógicos de LA PLATAFORMA o de terceras personas; así como obstaculizar el acceso de otros usuarios a LA PATAFORMA y a sus servicios.
-                </p>
-                </li>
-                <li>                
-                <p>
-                    Intentar acceder a las cuentas de correo electrónico de otros usuarios o a áreas restringidas de los sistemas informáticos de LA PLATAFORMA para extraer información.
-                </p>
-                </li>
-                <li>                
-                <p>
-                    Vulnerar los derechos de propiedad intelectual o industrial, así como violar la confidencialidad de la información de LA PLATAFORMA o de terceros.
-                </p>
-                </li>
-                <li>                
-                <p>
-                    Suplantar la identidad de otro usuario, de las administraciones públicas o de un tercero.
-                </p>
-                </li>
-                <li>                
-                <p>
-                    Reproducir, copiar, distribuir, poner a disposición de, o cualquier otra forma de comunicación pública, transformar o modificar los contenidos, a menos que se cuente con la autorización del titular de los correspondientes derechos o ello resulte legalmente permitido.
 
-                </p> 
-                </li>
-                <li>                
-                <p>
-                    Recabar datos con finalidad publicitaria y de remitir publicidad de cualquier clase y comunicaciones con fines de venta u otras de naturaleza comercial sin que medie su previa solicitud o consentimiento.
-                </p>
-                </li>
-
-            </ol>
-            <p>
-                5.4 - Todos los contenidos de LA PLATAFORMA, como textos, fotografías, gráficos, imágenes, iconos, tecnología, software, así como su diseño gráfico y códigos fuente, constituyen una obra cuya propiedad pertenece a IAMOVING, sin que puedan entenderse cedidos al usuario ninguno de los derechos de explotación sobre los mismos más allá de lo estrictamente necesario para el correcto uso de la web.
-            </p>
-            <p>
-                5.5 - En definitiva, los usuarios que accedan a LA PLATAFORMA pueden visualizar los contenidos y efectuar, en su caso, copias privadas autorizadas siempre que los elementos reproducidos no sean cedidos posteriormente a terceros, ni se instalen a servidores conectados a redes, ni sean objeto de ningún tipo de explotación.
-            </p>
-            <p>
-                5.6 - Asimismo, todas las marcas, nombres comerciales o signos distintivos de cualquier clase que aparecen en el sitio web son propiedad de IAMOVING, sin que pueda entenderse que el uso o acceso al mismo atribuya al usuario derecho alguno sobre los mismos.
-            </p>
-            <p>
-                5.7 - La distribución, modificación, cesión o comunicación pública de los contenidos y cualquier otro acto que no haya sido expresamente autorizado por el titular de los derechos de explotación quedan prohibidos.
-            </p>
-            <p>
-                5.8 - El establecimiento de un hiperenlace no implica en ningún caso la existencia de relaciones entre IAMOVING y el propietario del sitio web en la que se establezca, ni la aceptación y aprobación por parte de IAMOVING de sus contenidos o servicios. Aquellas personas que se propongan establecer un hiperenlace previamente deberán solicitar autorización por escrito a IAMOVING. En todo caso, el hiperenlace únicamente permitirá el acceso a la home-page o página de inicio de LA PLATAFORMA, asimismo deberá abstenerse de realizar manifestaciones o indicaciones falsas, inexactas o incorrectas sobre IAMOVING, o incluir contenidos ilícitos, contrarios a las buenas costumbres y al orden público.
-            </p>   
-            <p>
-                5.9 - IAMOVING no se responsabiliza del uso que cada usuario le dé a los materiales puestos a disposición en LA PLATAFORMA ni de las actuaciones que realice en base a los mismos.
-            </p>             
-        </li>
+        <!-- 2. IDENTIFICACIÓN Y COMUNICACIONES -->
         <li>
-            <h4>6. EXCLUSIÓN DE GARANTÍAS Y DE RESPONSABILIDAD</h4>
-            <p>
-                6.1 - El contenido de LA PLATAFORMA es de carácter general y tiene una finalidad meramente informativa, sin que se garantice plenamente el acceso a todos los contenidos, ni su exhaustividad, corrección, vigencia o actualidad, ni su idoneidad o utilidad para un objetivo específico.
-            </p>
-            <p>
-                6.2 - IAMOVING excluye, hasta donde permite el ordenamiento jurídico, cualquier responsabilidad por los daños y perjuicios de toda naturaleza derivados de:
-            </p>
-            <ol type="a" style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
-                <li>
-                <p>
-                    La imposibilidad de acceso a LA PLATAFORMA o la falta de veracidad, exactitud, exhaustividad y/o actualidad de los contenidos, así como la existencia de vicios y defectos de toda clase de los contenidos transmitidos, difundidos, almacenados, puestos a disposición, a los que se haya accedido a través de LA PLATAFORMA o de los servicios que se ofrecen.
-                </p>
+            <h4>2. IDENTIFICACIÓN Y COMUNICACIONES</h4>
+            <p>2.1. En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y Comercio Electrónico, se informa de los siguientes datos:</p>
+            <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
+                <li>IAMOVING ONLINE, S.L.</li>
+                <li>CIF: B-88297825</li>
+                <li>Domicilio social: Calle Serrano 93, 3.º E, 28006 Madrid, España.</li>
+                <li>IAMOVING es una plataforma inmobiliaria online. La atención y gestión habitual de los servicios se realiza principalmente mediante medios digitales. La atención presencial a usuarios se realizará únicamente mediante cita previa solicitada a través de los canales de contacto indicados.</li>
+                <li>Correo electrónico: <a href="mailto:info@iamoving.com" style="color:#EADD03;">info@iamoving.com</a> y <a href="mailto:roberto@iamoving.com" style="color:#EADD03;">roberto@iamoving.com</a>
+                    </ul>
                 </li>
-                <li>
-                <p>
-                    La presencia de virus o de otros elementos en los contenidos que puedan producir alteraciones en los sistemas informáticos, documentos electrónicos o datos de los usuarios.
-                </p>
-                </li>
-                <li>                
-                <p>
-                    El incumplimiento de las leyes, la buena fe, el orden público, los usos del tráfico y el presente aviso legal como consecuencia del uso incorrecto de LA PLATAFORMA. En particular, y a modo ejemplificativo, IAMOVING no se hace responsable de las actuaciones de terceros que vulneren derechos de propiedad intelectual e industrial, secretos empresariales, derechos al honor, a la intimidad personal y familiar y a la propia imagen, así como la normativa en materia de competencia desleal y publicidad ilícita.
-                </p>
-                </li>                
-            </ol>
-            <p>
-                6.3 - Asimismo, IAMOVING declina cualquier responsabilidad respecto a la información que se halle fuera de esta web y no sea gestionada directamente por nuestro webmaster. La función de los links que aparecen en esta web es exclusivamente la de informar al usuario sobre la existencia de otras fuentes susceptibles de ampliar los contenidos que ofrece LA PLATAFORMA. IAMOVING no garantiza ni se responsabiliza del funcionamiento o accesibilidad de los sitios enlazados; ni sugiere, invita o recomienda la visita a los mismos, por lo que tampoco será responsable del resultado obtenido. IAMOVING no se responsabiliza del establecimiento de hipervínculos por parte de terceros.
-            </p>
+                <li>Teléfono: +34 649 623 700</li>
+            </ul>
+            <p>2.2. Las comunicaciones entre IAMOVING y los usuarios podrán realizarse mediante correo electrónico, teléfono, WhatsApp u otros medios de contacto facilitados por el usuario.</p>
         </li>
-        <li>
-            <h4>7. PROCEDIMIENTO EN CASO DE REALIZACIÓN DE ACTIVIDADES DE CARÁCTER ILÍCITO</h4>
-            <p>
-                7.1 - En el caso de que cualquier usuario o un tercero considere que existen hechos o circunstancias que revelen el carácter ilícito de la utilización de cualquier contenido y/o de la realización de cualquier actividad incluidas o accesibles a través de LA PLATAFORMA, deberá enviar una notificación a IAMOVING, identificándose debidamente, especificando las supuestas infracciones y declarando expresamente y bajo su responsabilidad que la información proporcionada en la notificación es exacta.
-            </p>
-            <p>
-                7.2 - Para toda cuestión litigiosa que incumba LA PLATAFORMA, será aplicará la legislación española.
-            </p>
-            <h4>8. PUBLICACIONES</h4>
-            <p>
-                8.1- La información administrativa facilitada a través de LA PLATAFORMA, no sustituye la publicidad legal de las leyes, normativas, planes, disposiciones generales y actos que tengan que ser publicados formalmente a los diarios oficiales de las administraciones públicas, que constituyen el único instrumento que da fe de su autenticidad y contenido. La información disponible en LA PLATAFORMA debe entenderse como una guía sin propósito de validez legal.
-            </p>
-            <p>
-            </p>
-        </li>		
-        <li>
-            <h4>9. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING PARA ARRENDATARIO</h4>
-            <p>
-                9.1 - <b>USUARIO ARRENDATARIO</b>
-            </p>
-			<p>La intermediación de IAMOVING se inicia para cualquier usuario ARRENDATARIO que solicita una visita a un inmueble publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>. El usuario ARRENDATARIO reconoce que cualquier tipo de oferta económica relativa a dicho inmueble se realizará a través de IAMOVING. Esto se aplica para cualquier usuario ARRENDATARIO que visite o solicite una visita a un inmueble publicado en la plataforma <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>.</p>			
-            <p>
-                9.2 - <b>OFERTA DE ARRENDAMIENTO</b>
-            </p>			
-			<p>El usuario ARRENDATARIO que tenga el interés de pasar a ser el inquilino de un inmueble publicado en la plataforma, deberá manifestárselo a IAMOVING y proceder con una señal para formalizar su oferta de arrendamiento, a través del pago correspondiente de una mensualidad de la renta, realizado por transferencia bancaria en la cuenta de la plataforma. En el caso de que el propietario de manera unilateral decida no iniciar la relación contractual con el usuario ARRENDATARIO, le será devuelto por IAMOVING el importe total de la señal depositada.</p>			
-            <p>
-                9.3 - <b>PENALIZACIÓN</b>
-            </p>			
-			<p>En el caso de que el usuario ARRENDATARIO, de manera unilateral decida no iniciar la relación contractual con el propietario, no le será devuelto el importe de la señal depositada.</p>									
-            <p>
-                9.4 - <b>PENALIZACIÓN</b>
-            </p>			
-			<p>En el caso de que el usuario ARRENDATARIO, o alguno de sus parientes o incluso una entidad en la que el mismo participe, alquile un inmueble publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, de manera unilateral y sin el conocimiento o consentimiento de la mercantil, el usuario ARRENDATARIO reconoce la obligación de abonar unos honorarios correspondientes <b>a una mensualidad + IVA del precio de la renta del inmueble</b>, en concepto de penalización.</p>		
-            <!--<p>
-                <b><u>Nuestros honorarios</u></b>: Una mensualidad de la renta + IVA, en un pago único, a aquellos usuarios arrendatarios que alquilen un inmueble publicado en IAMOVING. En el caso de que el usuario no abone dichos honorarios a la mercantil hasta la firma del contrato, se le aplicará una penalización de dos mensualidades de la renta + iva, del inmueble que haya alquilado con IAMOVING. La mercantil notificará el usuario un requerimiento de pago para que proceda al mismo en un plazo de siete (7) días naturales, reservándose el derecho de iniciar un procedimiento judicial con el fin de salvaguardar lo que a su beneficio convenga.
-            </p>
-            <p>
-                <b><u>Final del servicio</u></b>: Una vez se haya realizado la firma de contrato de alquiler, y estando todas las partes de acuerdo se finaliza los servicios de IAMOVING y la misma no se responsabiliza de cualquier acción posterior realizada por el inquilino o propietario.
-            </p>-->			
-            <h4>10. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING PARA COMPRADOR</h4>
-            <p>
-                10.1 - <b>EL COMPRADOR RECONOCE Y ACEPTA LA INTERMEDIACIÓN DE LA PLATAFORMA INMOBILIARIA <a href="https://www.iamoving.com" style="color:#EADD03;">WWW.IAMOVING. COM</a></b>
-            </p>
-            <p>El comprador declara expresamente que <b>no conocía la oferta de venta del inmueble</b> objeto de su solicitud de visita presencial a través de ningún otro canal distinto de <b>IAMOVING ONLINE</b>. Asimismo, <b>manifiesta no haber visitado previamente dicho inmueble de manera presencial ni virtual</b>, por medio de otras agencias inmobiliarias, terceras personas o directamente con la propiedad.
-            </p>   
-            <p><b>El comprador al solicitar la visita presencial, declara que ha proporcionado sus datos personales de forma veraz y voluntaria</b>, y confirma que he leído, comprendido y acepta todos términos de Intermediación de IAMOVING ONLINE para Comprador, que se mencionan en este documento.
-            </p>            
-            <p>La intermediación de la plataforma inmobiliaria <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> se inicia cuando un <b>usuario comprador</b> solicita una <b>visita presencial</b> a un inmueble publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> gestionada por <b>IAMOVING ONLINE, S.L.</b>, con <b>C.I.F. B-88297825</b>, con datos de contacto: <b>teléfono +34 649 623 700</b> y correos electrónicos de contacto: <b>info@iamoving.com</b>, <b>juridico@iamoving.com</b> y <b>roberto@iamoving.com</b>.
-            </p>
 
-			<!--<p>La intermediación de IAMOVING se inicia para cualquier usuario COMPRADOR que solicita una visita a un inmueble publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> o que visita un inmueble publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>. El usuario COMPRADOR reconoce que cualquier tipo de oferta económica relativa a dicho inmueble se realizará a través de IAMOVING. Esto se aplica para cualquier usuario COMPRADOR que visite o solicite una visita a un inmueble publicado en la plataforma <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>.</p>-->
-			<p><b>DATOS DEL COMPRADOR DEL INMUEBLE</b><p>
-			<p><b>Nombre y apellidos</b>:<?php if (isset($name))
-															{echo $name;}
-															else
-															{echo '..........................';}
-															?> <?php if (isset($lastname))
-															{echo $lastname;}
-															else
-															{echo '';}
-															?> </p>
-			<p><b>Datos de contacto</b>: <b>Correo electrónico</b>: <?php if (isset($email))
-															{echo $email;}
-															else
-															{echo '..........................';}
-															?>  <b>Teléfono</b>: <?php if (isset($phone))
-															{echo $phone;}
-															else
-															{echo '...........';}
-															?></p>
-			<p><b>DATOS DEL INMUEBLE DE LA SOLICITUD DE VISITA</b></p>
-			<p><b>Fecha y hora de solicitud de visita del COMPRADOR</b>: <?php if (isset($visit_date))
-															{echo $visit_date;}
-															else
-															{echo 'dd/mm/aaaa';}
-															?>, <?php if (isset($visit_time))
-															{echo $visit_time;}
-															else
-															{echo 'hh:mm';}
-															?> h (pendiente de confirmación por la propiedad).</p>			
-<p><b>Enlace del inmueble</b>: <a href="<?php 
-    if (isset($inmueble_id)) {
-        echo 'https://www.iamoving.com/anuncio/' . $inmueble_id;
-    } else {
-        echo 'https://www.iamoving.com/';
-    }
-?>" style="color:#EADD03;"><?php 
-    if (isset($inmueble_id)) {
-        echo 'https://iamoving.com/anuncio/' . $inmueble_id;
-    } else {
-        echo 'https://iamoving.com/anuncio/....';
-    }
-?></a></p>
-			<p><b>Dirección</b>: <?php   if (isset($direccion))
-																{echo $direccion;}
-															else
-																{echo '..........................';}
-															?> (la dirección exacta se comunicará una vez que el propietario confirme la solicitud).</p>			
-			<p>10.2 - <b>NOTIFICACIONES</b>. 
-			</p>
-			<p>Todas las notificaciones y comunicaciones entre el <b>COMPRADOR</b> e <b>IAMOVING ONLINE</b> se considerarán válidas y efectivas cuando se realicen por cualquiera de los siguientes medios: <b>teléfono, mensaje de texto, WhatsApp o correo electrónico</b>, utilizando los datos de contacto indicados anteriormente en la cláusula (10.1)</p>
-			<p>10.3 - <b>EXCLUSIVIDAD DE LA INTERMEDIACIÓN</b>. 
-			</p>
-			<p>Al iniciar la intermediación, IAMOVING ONLINE tiene derechos exclusivos y será la interlocutora entre el comprador y la parte vendedora del inmueble cuyo se haya iniciado la intermediación, incluso si el inmueble ya no está publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> al momento de la compra. Cualquier duda, pregunta u oferta sobre un inmueble que está publicado o que teníamos publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, el comprador debe informar a IAMOVING ONLINE.</p>
-			<p>10.4 - <b>SERVICIOS</b>. 
-			</p>
-			<p>Así que, el usuario COMPRADOR que solicita una visita presencial a un inmueble que esté publicado o haya estado publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, recibirá una serie de servicios que IAMOVING le proporcionará siguiendo el orden de trabajo mencionado a continuación.</p>
-			<p>Dichos servicios por orden que el usuario COMPRADOR recibirá de IAMOVING son:</p>
-<ol type="A" style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
-               <!-- <li style="list-style-type:disc">
-                <p>
-                    <b>ACCESO ILIMITADO</b>: a todos los inmuebles que están publicados en <a href="https://iamoving.com" target="_blank">www.iamoving.com</a>. 
-                </p>
-                </li>-->
-                <li>
-                <p>
-                    <b>GESTIÓN</b>: Respondemos lo antes posible todas sus dudas y consultas que el usuario COMPRADOR tiene al inmueble de su interés, mientras esperamos la confirmación de su solicitud de visita de la propiedad.
-                </p>
-                </li>
-                <li>
-                <p>
-                    <b>CONECTAMOS</b>: Una vez que IAMOVING recibe la confirmacion de visita de la propiedad, pasamos al usuario COMPRADOR la dirección exacta del inmueble de su interés, (de su solicitud de visita) y así conectamos el usuario COMPRADOR con la propiedad para que sea posible realizar una visita presencial entre ellos.
-                </p>
-                </li>									
-                <li>
-                <p>
-                    <b>NEGOCIACIÓN DEL PRECIO DE COMPRAVENTA</b>: El proceso de negociación requiere de experiencia y conocimiento, por lo que es uno de los momentos en los que más se hace valer un buen asesoramiento profesional.
-                </p>
-                </li>													
-                <li>
-                <p>
-                    <b>OFERTA DE COMPRA</b>: IAMOVING realiza una oferta de valor a la propiedad, bajo un documento de oferta, demostrando el interés real de nuestro usuario COMPRADOR, aumentando sus posibilidades de compra.
-                </p>
-                </li>																	
-                <li>
-                <p>
-                    <b>VERIFICACIÓN PREVIA</b>: Esto tiene como finalidad, conocer la situación real del bien en cuanto a documentación y su estado, en un primer momento desde el punto de vista jurídico. De esta manera, nuestra asesoría jurídica podrá detallar los aspectos tales como la realidad registral del inmueble, lo cual indicará si sobre el mismo pesan o no algún tipo de cargas.
-                </p>
-                </li>																					
-                <li>
-                <p>
-                    <b>CONTRATO DE ARRAS</b>: Negociación y redacción del contrato de arras en nombre del usuario COMPRADOR y en defensa de sus intereses.
-                </p>
-                </li>
-                <li>
-                <p>
-                   <b>REVISIÓN</b>: Redacción y/o Revisión y/o Asesoramiento para la formalización de la Escritura de Compraventa. Resolución de consultas relativas al contrato de arras y/o escritura de compraventa por escrito, mediante correo electrónico.
-                </p>
-                </li>
-                <li>
-                <p>
-                    <b>COMUNICACIÓN</b>: Redacción y envío de todas aquellas comunicaciones que deban ser remitidas a la parte vendedora hasta la formalización de la escritura de compraventa.
-                </p>
-                </li>
-                <li>
-                <p>
-                    <b>FINANCIACIÓN</b>: Ayudamos el usuario COMPRADOR en Búsqueda de una financiación (en caso de que lo requiera).
-                </p>
-                </li>
-                <li>
-                <p>
-                    <b>GESTIÓN DE SERVICIOS COMO NUEVO PROPIETARIO</b>: (cambio/alta suministros, cambio de cerraduras, etc.)
-                </p>
-                </li>				
-                <li>
-                <p>
-                    <b>INVERSIÓN</b>: Operación de compraventa para posterior alquiler del inmueble (servicio incluido al usuario COMPRADOR para su primer inquilino): Búsqueda y selección de inquilinos, contrato de arrendamiento, gestión de seguro de impago y otros trámites administrativos. La búsqueda y selección de inquilinos es un proceso delicado que requiere de diversas gestiones (análisis de candidatos, contratación de seguro de impago, etc.)
-                </p>
-                </li>								
-			</ol>						
-			<p>10.5 - El usuario comprador reconoce que todos los servicios que solicita a IAMOVING mencionados en la cláusula 10.4 y son de (A al K), son de manera online y en el caso que el usuario COMPRADOR prefiera no hacer uso de todos los servicios, los honorarios de IAMOVING no sufrirán ninguna disminución.</p>
-			<p>10.6 - <b>HONORARIOS</b>. 
-			</p>
-			<p>El coste de intermediación es del 3% + IVA sobre el precio final de venta, pagaderos al firmar el contrato de compraventa o del contrato de arras.</p>		
-			<p>10.7 - <b>PENALIZACIÓN POR MORA</b>. 
-			</p>
-			<p>Si el comprador no paga los honorarios a tiempo, se aplicará una penalización del 6% + IVA sobre el monto de la venta.</p>
-			<p>10.8 - <b>CONFIRMACIÓN DE OFERTA</b>. 
-			</p>
-			<p>Para formalizar una oferta, el comprador debe pagar 3.000€ mediante transferencia, bajo un documento de oferta, Si la oferta no es aceptada, se devolverá el monto.</p>			
-			<p>10.9 - <b>PENALIZACIÓN POR CANCELACIÓN</b>. 
-			</p>
-			<p>Si el comprador decide no proceder con la compra, no se reembolsará la cantidad depositada.</p>			
-			<p>10.10 - <b>CLÁUSULA INDEMNIZATORIA POR ELUSIÓN DE LA INTERMEDIACIÓN:</b>		</p>
-<!--<p>El usuario <b>COMPRADOR</b> reconoce que la labor de intermediación de IAMOVING consiste en la presentación de las partes y la facilitación del negocio jurídico, habiéndose devengado el derecho a la remuneración desde el momento en que IAMOVING pone en contacto al COMPRADOR con el inmueble, conforme a la jurisprudencia consolidada del Tribunal Supremo (Sentencias de 21 de mayo de 2014, 30 de julio de 2014 y 13 de octubre de 2011, entre otras).</p>-->
-<!--<p>En consecuencia, en caso de que el usuario COMPRADOR, o alguno de sus parientes hasta el cuarto grado de consanguinidad o afinidad, su cónyuge o pareja de hecho, o cualquier entidad en la que el COMPRADOR o cualquiera de los anteriores participe de forma directa o indirectamente, o cualquier persona física o jurídica que actúe como testaferro o interpósita persona del COMPRADOR, adquiera un inmueble al que haya tenido acceso a través de LA PLATAFORMA sin la intermediación de IAMOVING, el COMPRADOR quedará obligado al pago de una indemnización equivalente al 6% + IVA del precio de dicho inmueble que tenemos o teníamos publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, en concepto de penalización.</p>-->
-<p>En caso de que el usuario COMPRADOR, o alguno de sus parientes hasta el cuarto grado de consanguinidad o afinidad, su cónyuge o pareja de hecho, o cualquier entidad en la que el COMPRADOR o cualquiera de los anteriores participe de forma directa o indirectamente, o cualquier persona física o jurídica que actúe como testaferro o interpósita persona del COMPRADOR, adquiera un inmueble al que haya tenido acceso a través de LA PLATAFORMA sin la intermediación de IAMOVING, el COMPRADOR quedará obligado al pago de una indemnización equivalente al 6% + IVA del precio de dicho inmueble que tenemos o teníamos publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, en concepto de penalización.</p>
-			<p><b>Naturaleza jurídica</b></p>
-			<!--<p>Esta indemnización <b>tiene carácter de obligación contractual principal</b>, no de cláusula penal. Por tanto, no puede ser reducida judicialmente conforme al artículo 1154 del Código Civil.Representa la <b>compensación por los servicios profesionales prestados por IAMOVING ONLINE</b>, con independencia de que la compraventa se haya cerrado o no a través de la plataforma.</p>			-->
-			<p>Esta indemnización tiene carácter de obligación contractual principal, no de cláusula penal. Por tanto, no puede ser reducida judicialmente conforme al artículo 1154 del Código Civil.Representa la compensación por los servicios profesionales prestados por IAMOVING ONLINE, con independencia de que la compraventa se haya cerrado o no a través de la plataforma.</p> 
-			<p><b>La indemnización será exigible, aunque</b>:</p>
-			<ol type="none" style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
-               <li style="list-style-type:disc">
-                <p>
-                    El inmueble ya no esté publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>.
-                </p>
-                </li>
-                <li style="list-style-type:disc">
-                <p>
-                    El inmueble ha modificado su precio o condiciones.
-                </p>
-                </li>
-               <!-- <li style="list-style-type:disc">
-                <p>
-                    El comprador alegue desconocimiento de estos términos.
-                </p>
-                </li>-->
-                <!--<li style="list-style-type:disc">
-                <p>
-                    El vendedor haya incumplido sus obligaciones con IAMOVING.
-                </p>
-                </li>-->
-			</ol>			
-
-			<p><b>Obligación de información</b>: El <b>COMPRADOR</b> deberá informar a IAMOVING ONLINE, en un plazo máximo de <b>7 días naturales</b>, de cualquier compraventa realizada sobre inmuebles conocidos a través de <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>. Si no lo hace, se considerará <b>una actuación de mala fe</b> y se aplicarán <b>intereses de demora según la Ley 3/2004, de 29 de diciembre</b>, desde la fecha de la compraventa hasta el pago total de la indemnización, sin necesidad de requerimiento previo.</p>			
-			<!--<p>10.11 - <b>DERECHOS DE  IAMOVING ONLINE</b>. 
-			</p>
-			<p><b>IAMOVING ONLINE</b> mantiene sus derechos sobre las propiedades, incluso si no están en un momento determinado, siempre que hayan estado publicadas anteriormente.</p>			-->
-			<p>10.11 - <b>FINAL DEL SERVICIO DE IAMOVING ONLINE</b></p>
-			<p>En la fecha que se firme las escrituras de compraventa, y estando todas las partes de acuerdo, se finaliza los servicios de IAMOVING al usuario COMPRADOR y la misma no se responsabiliza de cualquier acción realizada posterior a esta fecha.</p>
-            <h4>11. TÉRMINOS  DE  INTERMEDIACIÓN  DE  IAMOVING  PARA PROPIETARIOS VENDIENDO</h4>
-            <p>
-                11.1 - <b>USUARIOS PROPIETARIOS VENDIENDO</b>
-            </p>
-                <p>
-                   Aplica para cualquier usuario que en calidad de propietario o representante de la propiedad de un inmueble que aceptan o desean vender su inmueble a través de la plataforma.
-                </p>
-                <p>
-                   11.2- Precio y condiciones: anuncia, vende gratis y sin exclusivas. Podrás conocer todas las ventajas de vender con la INTERMEDIACIÓN DE IAMOVING a través de este <a href="https://iamoving.com/vender" target="_blank">enlace</a>. 
-                </p>
-            <h4>12. TÉRMINOS  DE  INTERMEDIACIÓN  DE  IAMOVING  PARA  PROPIETARIOS ALQUILANDO </h4>
-            <p>
-                12.1 - <b>USUARIOS PROPIETARIOS ALQUILANDO</b>
-            </p>				
-			<p>
-				El usuario ARRENDADOR reconoce que IAMOVING ONLINE es una plataforma inmobiliaria intermediaria online. El usuario ARRENDADOR reconoce que si alquilar su inmueble a un usuario de <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, será el, el usuario ARRENDADOR el que abonará el coste de los servicios de IAMOVING. El usuario ARRENDADOR reconoce que todos los servicios ofrecidos por IAMOVING ONLINE, son de manera online. Y dichos servicios el usuario ARRENDADOR podrás conocer a través de este <a href="https://iamoving.com/alquiler" target="_blank">enlace</a>.
-			</p>
-            <p>
-                12.2 - <b><u>Condiciones al arrendador</u></b>: 3 meses de exclusiva. La fecha de inicio será la  fecha de alta de su inmueble publicado en la plataforma <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>. Llegado el vencimiento de la exclusiva, éste se prorrogará por 3 meses más y así sucesivamente, salvo que el arrendador manifieste a IAMOVING por escrito, con treinta días de antelación como mínimo a la fecha de vencimiento de la exclusiva o de cualquiera de las prórrogas su voluntad de no renovarlo. En el caso de que el arrendador rescindir la exclusividad estipulada anteriormente, el arrendador reconoce abonar una mensualidad del precio de su inmueble que lo tenemos publicado bajo su voluntad o aceptación de alquiler en la plataforma, en concepto de penalización.
-            </p>
-            <p>
-                12.3 - <b><u>Nuestros honorarios al arrendador</u></b>: Una mensualidad de la renta + IVA, en un pago único. En el caso de que la propiedad no abone dichos honorarios a la mercantil hasta la firma del contrato, se le aplicará una penalización de dos mensualidades de la renta + iva. La mercantil notificará el usuario un requerimiento de pago para que proceda al mismo en un plazo de siete (7) días naturales, reservándose el derecho de iniciar un procedimiento judicial con el fin de salvaguardar lo que a su beneficio convenga.
-            </p>
-            <p>
-                12.4 - <b><u>Final del servicio</u></b>: Una vez se haya realizado la firma de contrato de alquiler, y estando todas las partes de acuerdo se finaliza los servicios de IAMOVING y la misma no se responsabiliza de cualquier acción posterior realizada por el arrendatario o arrendador.
-            </p>            
-                
-                <p>
-                    12.5 - <b>PENALIZACIÓN</b>. Que en el caso de que el arrendador alquile su inmueble a uno de los usuarios arrendatarios facilitados y/o presentados por LA PLATAFORMA o a algún pariente de las personas que la plataforma hubiera presentado o incluso a una entidad en la que ellos mismos participen de manera unilateral y sin el conocimiento o consentimiento de la mercantil, el propietario tendrá la obligación de abonar unos honorarios correspondientes a dos mensualidades del precio de su inmueble que lo tenemos publicado bajo su voluntad o aceptación de alquiler en la plataforma, en concepto de penalización.
-                </p>
-               
-                <p>
-                   12.6 - <b>PENALIZACIÓN</b>. Una vez que el propietario manifieste su intención de alquilar su inmueble a uno de nuestros usuarios se llevará a cabo la formalización de este interés con una señal en concepto de reserva de arrendamiento entre nuestro usuario arrendatario y la plataforma. En el caso de que el arrendador decida no continuar con la firma del contrato, siendo la causa achacable única y exclusivamente del arrendador éste deberá indemnizar la plataforma en concepto de penalización, correspondientes a dos mensualidades del precio de su inmueble que lo tenemos publicado bajo su voluntad o aceptación de alquiler en la plataforma, en concepto de penalización.
-                </p>
-            <p>
-            </p>
+        <!-- 3. FUNCIONAMIENTO DE IAMOVING -->
+        <li>
+            <h4>3. FUNCIONAMIENTO DE IAMOVING</h4>
+            <p>3.1. IAMOVING es una plataforma inmobiliaria que facilita el acceso a oportunidades inmobiliarias y presta servicios de gestión e intermediación en operaciones inmobiliarias de compraventa y arrendamiento.</p>
+            <p>3.2. A efectos de los presentes Términos y Condiciones, tendrá la consideración de usuario toda persona que facilite sus datos a través de LA PLATAFORMA para solicitar información sobre un inmueble, concertar una visita o utilizar cualquiera de los servicios ofrecidos por IAMOVING.</p>
+            <p>3.3. Los usuarios serán responsables de la veracidad de la información y documentación que faciliten a IAMOVING durante la utilización de los servicios.</p>
+            <p>3.4. Los propietarios que colaboren con IAMOVING serán responsables de la veracidad, exactitud y actualización de la información relativa a sus inmuebles.</p>
         </li>
-      <!--  <li>
-            <h4>11. SERVCIOS Y COSTES DE IAMOVING PREMIUM </h4>
-            <p>
-                <b>Asesoría inmobiliaria personalizada: </b>Escuchamos tus peticiones y buscaremos tu inmueble ideal en el mercado.
-            </p>
-            <p>
-                <b>Hacemos visitas por ti: </b>Entendemos que puede resultarte difícil realizar visitas si está ocupado o no vives cerca del inmueble, por lo cual vamos al inmueble por ti y te enseñamos todo en directo por videollamada.
-            </p>			
-            <p>
-                <b>Asesoría Jurídica: </b>Te proporcionamos una ayuda profesional y así, orientarte en los diferentes asuntos fiscales y tributarios a los que tendrás que hacer frente en el proceso de compra.
-            </p>
-            <p>
-                <b>TIPS asesoría: </b>Reportamos los costes de transporte, alimentación, escuelas, etc, en España y te ayudamos a encontrar profesionales de confianza que necesites, como: Mudanza, reformistas, limpieza, cuidadoras, etc.
-            </p>										
-            <p>
-                <b>Asesoramiento fiscal: </b>Reportamos los costes de transporte, alimentación, escuelas, etc, en España y te ayudamos a encontrar profesionales de confianza que necesites, como: Mudanza, reformistas, limpieza, cuidadoras, etc.
-            </p>										
-            <p>
-                <b>Préstamo hipotecario: </b>Tendrás un experto financiero asignado para solucionar tus dudas a la hora de comprar.
-            </p>													
-            <p>
-                <b>Asesoría Golden Visa: </b>¿Cómo invertir en España y conseguir la residencia? Nuestro equipo te mostrará todos los pasos a seguir.
-            </p>													
-            <p>
-                Costes: 50€ + IVA( Dicha cantidad será descontada de nuestros honorarios, siempre y cuando se alquile o compre un inmueble publicado en www.iamoving.com)
-            </p>																
-            <p>
-				Duración del servicio: Todos los servicios están ilimitados durante 1 mes.
-            </p>
-            <p>
-				<b>Fecha de inicio:</b> Dicho servicio Premium entrará en vigor una vez que IAMOVING haya recibida dicha cuantía <b>50€ +IVA</b>.
-            </p>			
-        </li>	-->	
+
+        <!-- 4. PUBLICACIÓN DE INMUEBLES Y CONTENIDOS -->
+        <li>
+            <h4>4. PUBLICACIÓN DE INMUEBLES Y CONTENIDOS</h4>
+            <p>.4.1 - La información publicada en LA PLATAFORMA, incluyendo fotografías, vídeos, visitas virtuales y descripciones, corresponde a la información relativa a los inmuebles de los propietarios que colaboran con IAMOVING.</p>
+            <p>4.2. Los propietarios colaboradores deberán comunicar a IAMOVING cualquier modificación relevante que pueda afectar a la información publicada sobre sus inmuebles.</p>
+            <p>4.3. IAMOVING podrá modificar, suspender, ocultar o retirar cualquier publicación cuando existan motivos razonables relacionados con el cumplimiento normativo, la calidad del servicio, la seguridad de LA PLATAFORMA o la veracidad de la información publicada.</p>
+            <p>4.4. En caso de que fotografías, vídeos u otros materiales elaborados por IAMOVING sean utilizados fuera de LA PLATAFORMA, IAMOVING no será responsable de los acuerdos, negociaciones u operaciones que terceros puedan realizar directamente al margen de los servicios prestados por IAMOVING.</p>
+        </li>
+
+        <!-- 5. USO DE LA PLATAFORMA -->
+        <li>
+            <h4>5. USO DE LA PLATAFORMA</h4>
+            <p>5.1. El usuario se compromete a no:</p>
+            <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
+                <li>Facilitar información falsa, inexacta o fraudulenta.</li>
+                <li>Utilizar LA PLATAFORMA para fines ilícitos o contrarios a la buena fe.</li>
+                <li>Introducir virus, malware o cualquier elemento que pueda afectar a la seguridad o funcionamiento de LA PLATAFORMA.</li>
+                <li>Acceder sin autorización a sistemas o información de terceros.</li>
+                <li>Suplantar la identidad de otras personas.</li>
+                <li>Vulnerar derechos de propiedad intelectual, industrial, privacidad o confidencialidad.</li>
+            </ul>
+            <p>5.2. IAMOVING podrá limitar, suspender o cancelar el acceso de cualquier usuario que incumpla los presentes Términos y Condiciones o cuya actuación pueda afectar al correcto funcionamiento de LA PLATAFORMA.</p>
+        </li>
+
+        <!-- 6. PROPIEDAD INTELECTUAL -->
+        <li>
+            <h4>6. PROPIEDAD INTELECTUAL</h4>
+            <p>6.1. Todos los contenidos disponibles en LA PLATAFORMA, incluyendo diseños, textos, fotografías, vídeos, elementos gráficos, marcas, software y demás contenidos propios, son titularidad de IAMOVING o de terceros que hayan autorizado su utilización.</p>
+            <p>6.2. Queda prohibida la reproducción, distribución, transformación, comunicación pública o utilización de dichos contenidos sin autorización previa y por escrito de IAMOVING o de su legítimo titular.</p>
+        </li>
+
+        <!-- 7. LIMITACIÓN DE RESPONSABILIDAD -->
+        <li>
+            <h4>7. LIMITACIÓN DE RESPONSABILIDAD</h4>
+            <p>7.1. IAMOVING realiza esfuerzos razonables para que la información disponible en LA PLATAFORMA sea correcta y esté actualizada.</p>
+            <p>7.2. IAMOVING no será responsable de:</p>
+            <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
+                <li>Errores, omisiones o inexactitudes en la información facilitada por propietarios, usuarios o terceros.</li>
+                <li>Modificaciones de los inmuebles que no hayan sido comunicadas a IAMOVING.</li>
+                <li>Interrupciones temporales del servicio por causas técnicas, mantenimiento o circunstancias ajenas a su control.</li>
+                <li>Acuerdos, negociaciones u operaciones realizadas directamente entre terceros fuera del ámbito de actuación de IAMOVING.</li>
+            </ul>
+            <p>7.3. IAMOVING no garantiza la disponibilidad permanente de LA PLATAFORMA ni la ausencia absoluta de incidencias técnicas.</p>
+        </li>
+
+        <!-- 8. LEGISLACIÓN APLICABLE Y PUBLICACIONES -->
+        <li>
+            <h4>8. LEGISLACIÓN APLICABLE Y PUBLICACIONES</h4>
+            <p>8.1. La información publicada en LA PLATAFORMA tiene carácter meramente informativo y no sustituye la información oficial que deba consultarse ante organismos públicos u otras fuentes oficiales.</p>
+            <p>8.2. Los presentes Términos y Condiciones se regirán e interpretarán conforme a la legislación española.</p>
+            <p>8.3. Cualquier controversia que pudiera derivarse de la utilización de LA PLATAFORMA se someterá a los juzgados y tribunales competentes conforme a la normativa vigente.</p>
+        </li>
+
+        <!-- 9. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING ONLINE, S.L. PARA ARRENDATARIO -->
+        <li>
+            <h4>9. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING ONLINE, S.L. PARA ARRENDATARIO</h4>
+            <p>9.1. <b>USUARIO ARRENDATARIO</b></p>
+            <p>La intermediación de IAMOVING se inicia cuando el usuario ARRENDATARIO solicita una visita a un inmueble publicado en LA PLATAFORMA.</p>
+            <p>El ARRENDATARIO reconoce que cualquier oferta o propuesta económica relacionada con dicho inmueble deberá realizarse a través de IAMOVING.</p>
+            <p>9.2. <b>DOCUMENTO DE RESERVA DE ARRENDAMIENTO (CONDICIONADO A LA ACEPTACIÓN DEL PROPIETARIO)</b></p>
+            <p>El ARRENDATARIO interesado en alquilar un inmueble deberá comunicarlo a IAMOVING y realizar una señal equivalente a una mensualidad de renta mediante transferencia bancaria. Dicha señal quedará regulada mediante un documento de reserva de arrendamiento condicionado a la aceptación del propietario.</p>
+            <p>Si el propietario decide no aceptar la reserva, IAMOVING devolverá al ARRENDATARIO el importe íntegro de la señal.</p>
+            <p>Si, una vez aceptada la reserva por el propietario, el ARRENDATARIO decide unilateralmente no continuar con la operación, no tendrá derecho a la devolución de la señal.</p>
+            <p>9.3. <b>ELUSIÓN DE LA INTERMEDIACIÓN</b></p>
+            <p>Si el ARRENDATARIO, sus familiares hasta el cuarto grado de consanguinidad o afinidad, su cónyuge o pareja de hecho, entidades en las que participe directa o indirectamente, o cualquier persona física o jurídica que actúe por cuenta del ARRENDATARIO, formaliza el arrendamiento de un inmueble publicado o que hubiera estado publicado en LA PLATAFORMA sin la intermediación de IAMOVING, deberá abonar a IAMOVING una indemnización equivalente a una mensualidad de renta más IVA, en concepto de compensación por los servicios profesionales prestados.</p>
+        </li>
+
+        <!-- 10. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING ONLINE, S.L. PARA COMPRADOR -->
+        <li>
+            <h4>10. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING ONLINE, S.L. PARA COMPRADOR</h4>
+
+            <p>10.1 - <b>EL COMPRADOR RECONOCE Y ACEPTA LA INTERMEDIACIÓN DE IAMOVING ONLINE, S.L.</b></p>
+            <p>El COMPRADOR declara expresamente que, con anterioridad a la solicitud de visita presencial realizada a través de IAMOVING ONLINE, S.L., no tenía conocimiento previo de la oferta de venta del inmueble objeto de su solicitud, ni había recibido información, contacto o presentación del mismo por ningún otro medio o canal, directamente de la propiedad o a través de cualquier otro intermediario distinto de IAMOVING ONLINE, S.L.</p>
+            <p>Asimismo, manifiesta no haber visitado previamente dicho inmueble de manera presencial ni virtual por medio de otras agencias inmobiliarias, terceras personas o directamente con la propiedad.</p>
+            <p>El COMPRADOR, al solicitar la visita presencial, declara que ha proporcionado sus datos personales de forma veraz y voluntaria, y confirma que ha leído, comprendido y acepta todos los términos de intermediación de IAMOVING ONLINE, S.L. para comprador que se mencionan en este documento.</p>
+            <p>La intermediación de IAMOVING ONLINE, S.L. se inicia cuando un usuario COMPRADOR solicita una visita presencial a un inmueble publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA), titularidad de IAMOVING ONLINE, S.L., con C.I.F. B-88297825.</p>
+            <p><b>Datos de contacto:</b></p>
+            <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
+                <li>Teléfono: +34 649 623 700</li>
+                <li>Correos electrónicos de contacto: <a href="mailto:info@iamoving.com" style="color:#EADD03;">info@iamoving.com</a>, <a href="mailto:juridico@iamoving.com" style="color:#EADD03;">juridico@iamoving.com</a> y <a href="mailto:roberto@iamoving.com" style="color:#EADD03;">roberto@iamoving.com</a>
+                </li>
+            </ul>
+
+            <p><b>DATOS DEL COMPRADOR DEL INMUEBLE</b></p>
+            <p><b>Nombre y apellidos</b>: <?php if (isset($name)) { echo $name; } else { echo '____'; } ?> <?php if (isset($lastname)) { echo $lastname; } else { echo ''; } ?></p>
+            <p><b>Datos de contacto:</b><br>
+            <b>Correo electrónico</b>: <?php if (isset($email)) { echo $email; } else { echo '____'; } ?><br>
+            <b>Teléfono</b>: <?php if (isset($phone)) { echo $phone; } else { echo '____'; } ?></p>
+
+            <p><b>DATOS DEL INMUEBLE DE LA SOLICITUD DE VISITA</b></p>
+            <p><b>Fecha y hora de solicitud de visita del COMPRADOR</b>:<br>
+            <?php if (isset($visit_date)) { echo $visit_date; } else { echo 'dd/mm/aaaa'; } ?>, <?php if (isset($visit_time)) { echo $visit_time; } else { echo 'hh:mm'; } ?> h<br>
+            (pendiente de confirmación por la propiedad).</p>
+            <p><b>Enlace del inmueble</b>:<br>
+            <a href="<?php if (isset($inmueble_id)) { echo 'https://www.iamoving.com/anuncio/' . $inmueble_id; } else { echo 'https://www.iamoving.com/'; } ?>" style="color:#EADD03;">
+            <?php if (isset($inmueble_id)) { echo 'https://iamoving.com/anuncio/' . $inmueble_id; } else { echo 'https://iamoving.com/anuncio/….'; } ?>
+            </a></p>
+            <p><b>Precio del inmueble</b>: ____</p>
+            <p><b>Dirección</b>:<br>
+            <?php if (isset($direccion)) { echo $direccion; } else { echo '____'; } ?><br>
+            (La dirección exacta se comunicará una vez que el propietario confirme la solicitud).</p>
+
+            <p>10.2 - <b>NOTIFICACIONES</b></p>
+            <p>Todas las notificaciones y comunicaciones entre el COMPRADOR e IAMOVING ONLINE, S.L. se considerarán válidas y efectivas cuando se realicen por cualquiera de los siguientes medios:</p>
+            <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
+                <li>Teléfono.</li>
+                <li>Mensaje de texto.</li>
+                <li>WhatsApp.</li>
+                <li>Correo electrónico.</li>
+            </ul>
+            <p>Utilizando los datos de contacto indicados anteriormente en la cláusula 10.1.</p>
+
+            <p>10.3 - <b>INTERMEDIACIÓN Y GESTIÓN DE LA COMUNICACIÓN ENTRE LAS PARTES</b></p>
+            <p>Al iniciar la intermediación, IAMOVING ONLINE, S.L. será la entidad encargada de gestionar la comunicación entre el comprador y la parte vendedora del inmueble en el que se haya iniciado la intermediación, incluso si el inmueble ya no está publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA) en el momento de la compra.</p>
+            <p>Cualquier duda, pregunta u oferta sobre un inmueble que está publicado o que teníamos publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA), el comprador debe informar a IAMOVING ONLINE, S.L.</p>
+
+            <p>10.4 - <b>SERVICIOS</b></p>
+            <p>El usuario COMPRADOR que solicita una visita presencial a un inmueble que esté publicado o haya estado publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA) recibirá una serie de servicios que IAMOVING ONLINE, S.L. le proporcionará siguiendo el orden de trabajo mencionado a continuación.</p>
+            <p>Dichos servicios que el usuario COMPRADOR recibirá de IAMOVING ONLINE, S.L. son:</p>
+            <ul style="margin-left: 3rem; font-size: 1.125rem; margin-bottom: 1rem;">
+                <li><b>GESTIÓN</b>: Respondemos lo antes posible todas las dudas y consultas que el usuario COMPRADOR tenga sobre el inmueble de su interés, mientras esperamos la confirmación de su solicitud de visita por parte de la propiedad.</li>
+                <li><b>CONECTAMOS</b>: Una vez que IAMOVING ONLINE, S.L. recibe la confirmación de visita de la propiedad, pasamos al usuario COMPRADOR la dirección exacta del inmueble de su interés y así conectamos al usuario COMPRADOR con la propiedad para que sea posible realizar una visita presencial entre ellos.</li>
+                <li><b>NEGOCIACIÓN DEL PRECIO DE COMPRAVENTA</b>: El proceso de negociación requiere de experiencia y conocimiento, por lo que es uno de los momentos en los que más se hace valer un buen asesoramiento profesional.</li>
+                <li><b>OFERTA DE COMPRA</b>: IAMOVING ONLINE, S.L. realiza una oferta de valor a la propiedad mediante un documento de oferta, demostrando el interés real de nuestro usuario COMPRADOR, aumentando sus posibilidades de compra.</li>
+                <li><b>VERIFICACIÓN PREVIA</b>: Tiene como finalidad conocer la situación real del bien en cuanto a documentación y estado, inicialmente desde el punto de vista jurídico. De esta manera, nuestra asesoría jurídica podrá detallar aspectos como la realidad registral del inmueble, indicando si sobre el mismo pesan o no algún tipo de cargas.</li>
+                <li><b>CONTRATO DE ARRAS</b>: Negociación y redacción del contrato de arras en nombre del usuario COMPRADOR y en defensa de sus intereses.</li>
+                <li><b>REVISIÓN</b>: Redacción y/o revisión y/o asesoramiento para la formalización de la escritura de compraventa. Resolución de consultas relativas al contrato de arras y/o escritura de compraventa por escrito, mediante correo electrónico.</li>
+                <li><b>COMUNICACIÓN</b>: Redacción y envío de todas aquellas comunicaciones que deban ser remitidas a la parte vendedora hasta la formalización de la escritura de compraventa.</li>
+                <li><b>FINANCIACIÓN</b>: Ayudamos al usuario COMPRADOR en la búsqueda de una financiación (en caso de que lo requiera).</li>
+                <li><b>GESTIÓN DE SERVICIOS COMO NUEVO PROPIETARIO</b>: (cambio/alta suministros, cambio de cerraduras, etc.).</li>
+                <li><b>INVERSIÓN</b>: Operación de compraventa para posterior alquiler del inmueble (servicio incluido al usuario COMPRADOR para su primer inquilino): búsqueda y selección de inquilinos, contrato de arrendamiento, gestión de seguro de impago y otros trámites administrativos.</li>
+            </ul>
+
+            <p>10.5 - <b>ACEPTACIÓN DE LOS SERVICIOS</b></p>
+            <p>El usuario COMPRADOR reconoce que todos los servicios que solicita a IAMOVING ONLINE, S.L. mencionados en la cláusula 10.4 son de manera online y, en el caso de que el usuario COMPRADOR prefiera no hacer uso de todos los servicios, los honorarios de IAMOVING ONLINE, S.L. no sufrirán ninguna disminución.</p>
+
+            <p>10.6 - <b>HONORARIOS AL COMPRADOR</b></p>
+            <p>El coste de intermediación es del 3% + IVA sobre el precio final de venta, pagaderos al firmar el contrato de compraventa o el contrato de arras.</p>
+
+            <p>10.7 - <b>PENALIZACIÓN POR MORA</b></p>
+            <p>Si el comprador no paga los honorarios de IAMOVING ONLINE, S.L. en el tiempo indicado en la cláusula 10.6, se aplicará una penalización del 6% + IVA sobre el importe de la venta.</p>
+
+            <p>10.8 - <b>CONFIRMACIÓN DE OFERTA</b></p>
+            <p>Para formalizar una oferta, el comprador debe pagar 3.000 € mediante transferencia, bajo un documento de oferta donde se detallan todas las condiciones de la compra. Si la oferta no es aceptada, se devolverá el importe.</p>
+
+            <p>10.9. <b>COMPROMISO DE RESPETO A LA INTERMEDIACIÓN DE IAMOVING ONLINE, S.L.</b></p>
+            <p>El COMPRADOR reconoce que el inmueble le ha sido presentado por IAMOVING ONLINE, S.L. y se compromete a no formalizar la compraventa de dicho inmueble sin la intermediación de IAMOVING ONLINE, S.L., ya sea directamente o a través de su cónyuge o pareja de hecho, familiares hasta el cuarto grado de consanguinidad o afinidad, sociedades en las que participe directa o indirectamente, o cualquier otra persona física o jurídica que actúe por su cuenta, en su representación o como persona interpuesta.</p>
+            <p>En caso de que el COMPRADOR, o cualquiera de las personas o entidades anteriormente indicadas, formalice la compraventa de dicho inmueble eludiendo la intermediación de IAMOVING ONLINE, S.L., deberá abonar una indemnización equivalente al 6 % + IVA sobre el precio del inmueble publicado o que hubiera estado publicado en <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a>, como compensación por los servicios profesionales prestados por IAMOVING ONLINE, S.L.</p>
+            <p>Esta indemnización será exigible con independencia de que, en el momento de la compraventa, el inmueble continúe publicado, haya sido retirado de LA PLATAFORMA o haya experimentado modificaciones en su precio o condiciones de comercialización.</p>
+            <p>El COMPRADOR se compromete a comunicar a IAMOVING ONLINE, S.L., en un plazo máximo de siete (7) días naturales, cualquier compraventa realizada sobre dicho inmueble.</p>
+            <p>En caso de incumplimiento de esta obligación de comunicación, IAMOVING ONLINE, S.L. podrá reclamar la indemnización correspondiente y, en su caso, los intereses de demora legalmente aplicables desde la fecha de la compraventa hasta su completo pago, conforme a la legislación vigente.</p>
+
+            <p>10.10 - <b>FINAL DEL SERVICIO DE IAMOVING ONLINE, S.L.</b></p>
+            <p>En la fecha en la que se firmen las escrituras de compraventa, y estando todas las partes de acuerdo, finalizarán los servicios de IAMOVING ONLINE, S.L. al usuario COMPRADOR y la misma no se responsabiliza de cualquier acción realizada con posterioridad a dicha fecha.</p>
+        </li>
+
+        <!-- 11. TÉRMINOS DE COLABORACIÓN DE IAMOVING ONLINE, S.L. PARA PROPIETARIOS VENDEDORES (GRATIS Y SIN EXCLUSIVIDAD) -->
+        <li>
+            <h4>11. TÉRMINOS DE COLABORACIÓN DE IAMOVING ONLINE, S.L. PARA PROPIETARIOS VENDEDORES (GRATIS Y SIN EXCLUSIVIDAD)</h4>
+            <p>11.1 - <b>PROPIETARIOS COLABORADORES</b></p>
+            <p><a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA) es una plataforma inmobiliaria dirigida a compradores interesados en la compra o el alquiler de viviendas.</p>
+            <p>Tendrá la consideración de propietario colaborador cualquier propietario o representante de la propiedad de un inmueble que acepte o desee colaborar con IAMOVING ONLINE, S.L. para la publicación y comercialización de su inmueble a través de <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA).</p>
+            <p>El propietario podrá vender su inmueble de forma gratuita y sin exclusividad con la intermediación de IAMOVING ONLINE, S.L. Asimismo, podrá conocer todas las ventajas de colaboración a través del siguiente <a href="https://iamoving.com/vender" target="_blank">enlace</a>.</p>
+        </li>
+
+        <!-- 12. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING ONLINE, S.L. PARA PROPIETARIOS ARRENDADORES -->
+        <li>
+            <h4>12. TÉRMINOS DE INTERMEDIACIÓN DE IAMOVING ONLINE, S.L. PARA PROPIETARIOS ARRENDADORES</h4>
+            <p>12.1 - <b>PROPIETARIOS ARRENDADORES</b></p>
+            <p>El propietario ARRENDADOR reconoce que IAMOVING ONLINE, S.L. presta servicios de intermediación inmobiliaria a través de <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA).</p>
+            <p>En caso de alquilar su inmueble a un usuario presentado o facilitado por IAMOVING ONLINE, S.L., el ARRENDADOR abonará a IAMOVING ONLINE, S.L. los honorarios correspondientes por los servicios de intermediación prestados.</p>
+            <p>Los servicios ofrecidos por IAMOVING ONLINE, S.L. podrán consultarse a través del siguiente <a href="https://iamoving.com/alquiler" target="_blank">enlace</a>.</p>
+
+            <p>12.2 - <b>HONORARIOS</b></p>
+            <p>Los honorarios de IAMOVING ONLINE, S.L. serán de una mensualidad de renta más IVA, en un único pago.</p>
+
+            <p>12.3 - <b>FINALIZACIÓN DEL SERVICIO</b></p>
+            <p>Una vez firmado el contrato de arrendamiento, finalizarán los servicios de IAMOVING ONLINE, S.L., no siendo responsable de las actuaciones posteriores entre ARRENDADOR y arrendatario.</p>
+
+            <p>12.4 - <b>PENALIZACIÓN POR ELUSIÓN O CANCELACIÓN</b></p>
+            <p>Si el ARRENDADOR alquila el inmueble a un usuario presentado por IAMOVING ONLINE, S.L. sin su intervención, deberá abonar a IAMOVING ONLINE, S.L. una cantidad equivalente a dos mensualidades de renta más IVA.</p>
+            <p>Asimismo, si, una vez aceptada la reserva de arrendamiento por el ARRENDADOR, este decide no continuar con la operación por causa imputable al mismo, deberá abonar dicha cantidad en concepto de penalización.</p>
+        </li>
     </ol>
 </section>
-
 @endsection
