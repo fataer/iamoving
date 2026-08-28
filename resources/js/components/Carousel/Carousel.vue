@@ -1,12 +1,12 @@
 <template>
     <div>
         <!-- Carrusel -->
-        <div ref="carousel" id="carouselControls" class="carousel slide" data-ride="carousel" data-interval="false" data-touch="true">
+        <div ref="carousel" id="carouselControls" class="carousel slide allow-pinch" data-ride="carousel" data-interval="false" data-touch="true">
             <div class="carousel-inner">
-                <div v-for="(image, imgIndex) in images" :key="imgIndex" 
-                        class="carousel-item" 
+                <div v-for="(image, imgIndex) in images" :key="imgIndex"
+                        class="carousel-item"
                         :class="{ active: imgIndex == 0 }">
-                    
+
                     <div class="image-container" @click.stop="openLightbox(imgIndex)">
                         <img :src="getURL(image.img)" :alt="imgIndex" class="d-block w-100" />
                         <!-- Overlay de "Ampliar" - SOLO visible en escritorio -->
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Controles con color amarillo #e3db20 -->
             <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -34,13 +34,34 @@
                 <button class="custom-lightbox-close" @click.stop="closeLightbox">
                     &times;
                 </button>
-                <img :src="lightboxImageUrl" class="custom-lightbox-img" alt="Imagen ampliada" />
+
+                <!-- Zona de gestos: aquí gestionamos nosotros el pinch-to-zoom -->
+                <div class="zoom-viewport"
+                     ref="zoomViewport"
+                     @touchstart="onTouchStart"
+                     @touchmove="onTouchMove"
+                     @touchend="onTouchEnd"
+                     @touchcancel="onTouchEnd"
+                     @dblclick.stop="toggleZoom">
+                    <img :src="lightboxImageUrl"
+                         ref="zoomImg"
+                         class="custom-lightbox-img"
+                         :style="imgStyle"
+                         alt="Imagen ampliada"
+                         draggable="false" />
+                </div>
+
+                <!-- Ayuda visual solo en móvil y solo mientras no se ha hecho zoom -->
+                <div class="zoom-hint" v-if="scale === 1">Pellizca para ampliar</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+const MIN_SCALE = 1;
+const MAX_SCALE = 5;
+
 export default {
     data() {
         return {
@@ -50,7 +71,23 @@ export default {
             lightboxImageUrl: '',
             lightboxVisible: false,
             isMobile: false,
-            currentImageIndex: 0
+            currentImageIndex: 0,
+
+            // Estado del zoom
+            scale: 1,
+            translateX: 0,
+            translateY: 0,
+            isGesturing: false,
+
+            // Valores de referencia al empezar el gesto
+            startDistance: 0,
+            startScale: 1,
+            startMidX: 0,
+            startMidY: 0,
+            startX: 0,
+            startY: 0,
+            startTranslateX: 0,
+            startTranslateY: 0
         }
     },
     props: {
@@ -68,7 +105,7 @@ export default {
     mounted() {
         let refCarousel = this.$refs.carousel;
         let vm = this;
-       
+
         $(refCarousel).on('slid.bs.carousel', function (e) {
             let slide = $(refCarousel).find('.active').index();
             if (vm.activeCard !== vm.multimedia[slide].card) {
@@ -76,40 +113,160 @@ export default {
                 vm.$parent.setTitle(vm.multimedia[slide].card);
             }
         });
-        
+
         document.addEventListener('keyup', this.handleEscapeKey);
+
+        // Safari iOS: evita que el gesto de pinza haga zoom de TODA la página
+        // cuando el lightbox está abierto (dentro del lightbox mandamos nosotros).
+        document.addEventListener('gesturestart', this.blockPageGesture, { passive: false });
+        document.addEventListener('gesturechange', this.blockPageGesture, { passive: false });
     },
     computed: {
         images() {
             return this.multimedia;
+        },
+        imgStyle() {
+            return {
+                transform: `translate3d(${this.translateX}px, ${this.translateY}px, 0) scale(${this.scale})`,
+                transition: this.isGesturing ? 'none' : 'transform 0.2s ease-out'
+            };
         }
     },
     methods: {
         getURL(filename) {
             return `/storage/inmueble/${this.reference}/${filename}`;
         },
-        
+
         handleEscapeKey(e) {
             if (e.key === 'Escape' && this.lightboxVisible) {
                 this.closeLightbox();
             }
         },
-        
+
+        blockPageGesture(e) {
+            if (this.lightboxVisible) {
+                e.preventDefault();
+            }
+        },
+
         openLightbox(imgIndex) {
             this.currentImageIndex = imgIndex;
             this.lightboxImageUrl = this.getURL(this.images[imgIndex].img);
             this.lightboxVisible = true;
+            this.resetZoom();
             document.body.style.overflow = 'hidden';
         },
-        
+
         closeLightbox() {
             this.lightboxVisible = false;
             this.lightboxImageUrl = '';
+            this.resetZoom();
             document.body.style.overflow = '';
         },
-        
+
         setSlide(idx) {
             $(this.$refs.carousel).carousel(idx);
+        },
+
+        /* ---------- Pinch to zoom ---------- */
+
+        resetZoom() {
+            this.scale = MIN_SCALE;
+            this.translateX = 0;
+            this.translateY = 0;
+            this.isGesturing = false;
+        },
+
+        touchDistance(touches) {
+            const dx = touches[0].clientX - touches[1].clientX;
+            const dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        },
+
+        onTouchStart(e) {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                this.isGesturing = true;
+                this.startDistance = this.touchDistance(e.touches);
+                this.startScale = this.scale;
+                this.startMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                this.startMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                this.startTranslateX = this.translateX;
+                this.startTranslateY = this.translateY;
+            } else if (e.touches.length === 1 && this.scale > MIN_SCALE) {
+                // Arrastrar la imagen ya ampliada
+                this.isGesturing = true;
+                this.startX = e.touches[0].clientX;
+                this.startY = e.touches[0].clientY;
+                this.startTranslateX = this.translateX;
+                this.startTranslateY = this.translateY;
+            }
+        },
+
+        onTouchMove(e) {
+            if (e.touches.length === 2 && this.startDistance > 0) {
+                e.preventDefault();
+                const dist = this.touchDistance(e.touches);
+                const raw = this.startScale * (dist / this.startDistance);
+                this.scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, raw));
+
+                // Mantiene el centro de la pinza más o menos anclado
+                const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                this.translateX = this.startTranslateX + (midX - this.startMidX);
+                this.translateY = this.startTranslateY + (midY - this.startMidY);
+                this.clampTranslate();
+            } else if (e.touches.length === 1 && this.scale > MIN_SCALE && this.isGesturing) {
+                e.preventDefault();
+                this.translateX = this.startTranslateX + (e.touches[0].clientX - this.startX);
+                this.translateY = this.startTranslateY + (e.touches[0].clientY - this.startY);
+                this.clampTranslate();
+            }
+        },
+
+        onTouchEnd(e) {
+            if (e.touches.length === 0) {
+                this.isGesturing = false;
+                this.startDistance = 0;
+
+                if (this.scale <= MIN_SCALE + 0.02) {
+                    this.resetZoom();
+                } else {
+                    this.clampTranslate();
+                }
+            } else if (e.touches.length === 1) {
+                // Se ha levantado un dedo: seguimos arrastrando con el que queda
+                this.startX = e.touches[0].clientX;
+                this.startY = e.touches[0].clientY;
+                this.startTranslateX = this.translateX;
+                this.startTranslateY = this.translateY;
+                this.startDistance = 0;
+            }
+        },
+
+        // Impide arrastrar la imagen fuera de la pantalla
+        clampTranslate() {
+            const img = this.$refs.zoomImg;
+            if (!img) return;
+
+            const scaledW = img.clientWidth * this.scale;
+            const scaledH = img.clientHeight * this.scale;
+            const maxX = Math.max(0, (scaledW - window.innerWidth) / 2);
+            const maxY = Math.max(0, (scaledH - window.innerHeight) / 2);
+
+            this.translateX = Math.min(maxX, Math.max(-maxX, this.translateX));
+            this.translateY = Math.min(maxY, Math.max(-maxY, this.translateY));
+        },
+
+        // Doble clic / doble toque: ampliar o volver al tamaño original
+        toggleZoom() {
+            if (this.scale > MIN_SCALE) {
+                this.resetZoom();
+            } else {
+                this.scale = 2.5;
+                this.translateX = 0;
+                this.translateY = 0;
+            }
         }
     },
     watch: {
@@ -121,6 +278,8 @@ export default {
     },
     beforeDestroy() {
         document.removeEventListener('keyup', this.handleEscapeKey);
+        document.removeEventListener('gesturestart', this.blockPageGesture);
+        document.removeEventListener('gesturechange', this.blockPageGesture);
         document.body.style.overflow = '';
     }
 }
@@ -143,12 +302,29 @@ export default {
     transition: transform 0.3s ease;
 }
 
+/*
+ * CLAVE DEL PROBLEMA EN MÓVIL
+ * Bootstrap 4 añade la clase .pointer-event al carrusel y aplica
+ * `touch-action: pan-y`, que le dice al navegador "en este elemento solo
+ * se permite desplazamiento vertical" y por tanto BLOQUEA el pinch-to-zoom.
+ * Con `manipulation` se permiten pan y zoom, y el swipe de Bootstrap
+ * (que es JavaScript) sigue funcionando.
+ */
+#carouselControls,
+#carouselControls.pointer-event,
+#carouselControls .carousel-inner,
+#carouselControls .carousel-item,
+.image-container,
+.image-container img {
+    touch-action: manipulation !important;
+}
+
 /* Efecto hover en escritorio */
 @media (min-width: 768px) {
     .image-container:hover img {
         transform: scale(1.05);
     }
-    
+
     .image-container:hover .zoom-overlay {
         opacity: 1;
     }
@@ -234,6 +410,7 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    overscroll-behavior: contain;
 }
 
 .custom-lightbox-content {
@@ -243,6 +420,19 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Zona donde capturamos los gestos.
+   touch-action: none => el navegador no interfiere, controlamos nosotros. */
+.zoom-viewport {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 /* Botón de cerrar con círculo AMARILLO */
@@ -280,6 +470,12 @@ export default {
     object-fit: contain;
     cursor: default;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.zoom-hint {
+    display: none;
 }
 
 /* Ajustes para móvil */
@@ -293,16 +489,31 @@ export default {
         background-color: rgba(0, 0, 0, 0.8);
         border: 2px solid #e3db20;
     }
-    
+
     .custom-lightbox-img {
         max-width: 100vw;
         max-height: 100vh;
     }
-    
+
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         width: 30px;
         height: 30px;
+    }
+
+    .zoom-hint {
+        display: block;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 6px 14px;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #e3db20;
+        font-size: 13px;
+        pointer-events: none;
+        z-index: 1000000;
     }
 }
 </style>
