@@ -787,19 +787,25 @@
                                             <el-form-item v-if="form.tipoinmueble!='Local/Oficina'">
     <el-checkbox-group v-model="form.access">
         <el-checkbox label="Ascensor"  @change="reseteo"></el-checkbox>
-        <el-checkbox label="Rampas de minusválidos en el portal"  @change="reseteo"></el-checkbox>
+                    <el-checkbox label="Exterior"  @change="reseteo"></el-checkbox>
+            <el-checkbox label="Interior"  @change="reseteo"></el-checkbox>
+            <el-checkbox label="Terraza"  @change="reseteo"></el-checkbox>
+            <el-checkbox label="Balcón"  @change="reseteo"></el-checkbox>
+            <el-checkbox label="Patio"  @change="reseteo"></el-checkbox>
+            <el-checkbox label="Aire acondicionado"  @change="reseteo"></el-checkbox>
+        <!--<el-checkbox label="Rampas de minusválidos en el portal"  @change="reseteo"></el-checkbox>
         <el-checkbox label="Ascensor que entra un carrito de bebé"  @change="reseteo">
-        </el-checkbox>
-        <div class="check-filter-vuejs">
+        </el-checkbox>-->
+        <!--<div class="check-filter-vuejs">
             <el-checkbox label="Exterior"  @change="reseteo"></el-checkbox>
             <el-checkbox label="Interior"  @change="reseteo"></el-checkbox>
             <el-checkbox label="Terraza"  @change="reseteo"></el-checkbox>
             <el-checkbox label="Balcón"  @change="reseteo"></el-checkbox>
             <el-checkbox label="Patio"  @change="reseteo"></el-checkbox>
-        </div>
-        <div class="check-filter-vuejs">
+        </div>-->
+        <!--<div class="check-filter-vuejs">
             <el-checkbox label="Aire acondicionado"  @change="reseteo"></el-checkbox>
-        </div>
+        </div>-->
     </el-checkbox-group>
                                             </el-form-item>											
                                         </el-row>
@@ -2357,8 +2363,9 @@ html += `
 // 8. ¡MUY IMPORTANTE PARA MÍ!
 // ============================================
 const access = this.form.access || [];
-const accessItems = ['Ascensor','Rampas de minusválidos en el portal','Ascensor que entra un carrito de bebé',
-                     'Exterior','Interior','Terraza','Balcón','Patio','Aire acondicionado'];
+//const accessItems = ['Ascensor','Rampas de minusválidos en el portal','Ascensor que entra un carrito de bebé',
+//                     'Exterior','Interior','Terraza','Balcón','Patio','Aire acondicionado'];
+const accessItems = ['Ascensor','Exterior','Interior','Terraza','Balcón','Patio','Aire acondicionado'];
 html += `
     <div class="filter-group" style="margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 16px;">
         <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">¡Muy importante para mí!</h6>
