@@ -2,6 +2,40 @@
 @section('title', 'IAMOVING - Busca tu casa')
 @section('description', '¡Busca tu casa!')
 @section('image', 'https://iamoving.com/img/iamoving.png')
+@section('styles')
+<style>
+@media (max-width: 768px) {
+  section.container h4,
+  section.container ol.list-unstyled li h4 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  section.container p,
+  section.container li,
+  section.container ol.list-unstyled li p,
+  section.container ol.list-unstyled li {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  section.container p b,
+  section.container p strong,
+  section.container li b,
+  section.container li strong {
+    font-size: 0.8rem !important;
+  }
+
+  section.container .display-6 {
+    font-size: 1.3rem !important;
+  }
+
+  section.container ul[style*="font-size: 1.125rem"] {
+    font-size: 0.8rem !important;
+  }
+}
+</style>
+@endsection
 @section('content')
 <section class="container">
     <div class="text-center mt-5">
@@ -207,7 +241,7 @@
         <li>
             <h4>11. TÉRMINOS DE COLABORACIÓN DE IAMOVING ONLINE, S.L. PARA PROPIETARIOS VENDEDORES (GRATIS Y SIN EXCLUSIVIDAD)</h4>
             <p>11.1 - <b>PROPIETARIOS COLABORADORES</b></p>
-            <p><a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA) es una plataforma inmobiliaria dirigida a compradores interesados en la compra o el alquiler de viviendas.</p>
+            <p><a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA) es una plataforma inmobiliaria dirigida a compradores interesados en adquirir viviendas y a inquilinos interesados en alquilarlas.</p>
             <p>Tendrá la consideración de propietario colaborador cualquier propietario o representante de la propiedad de un inmueble que acepte o desee colaborar con IAMOVING ONLINE, S.L. para la publicación y comercialización de su inmueble a través de <a href="https://www.iamoving.com" style="color:#EADD03;">www.iamoving.com</a> (LA PLATAFORMA).</p>
             <p>El propietario podrá vender su inmueble de forma gratuita y sin exclusividad con la intermediación de IAMOVING ONLINE, S.L. Asimismo, podrá conocer todas las ventajas de colaboración a través del siguiente <a href="https://iamoving.com/vender" target="_blank">enlace</a>.</p>
         </li>
