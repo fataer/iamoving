@@ -296,11 +296,11 @@ style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
 <!--<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><b><span
 style='font-size:11.5pt;line-height:107%;font-family:"Arial",sans-serif;
 mso-fareast-font-family:"Times New Roman";color:#000000;mso-themecolor:background1'><o:p>&nbsp;</o:p></span></b></p>-->
-<p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
+<!--<p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
 color:#000000;mso-color-alt:windowtext'>Ahora necesitamos la aprobación de la propiedad para poder confirmarte la visita de forma definitiva. En cuanto tengamos respuesta, te lo comunicaremos lo antes posible.</span><b><span
 style='font-size:11.5pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
 "Times New Roman";color:#000000;mso-themecolor:background1'> </span></b><span
-style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+style='font-size:11.5pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>-->
 
 <!--<p style='background:white'><span style='font-size:11.5pt;font-family:"Arial",sans-serif;
 color:#000000;mso-color-alt:windowtext'>Felicidades, hemos recibido tu solicitud de visita presencial correctamente 🙂</span><b><span
