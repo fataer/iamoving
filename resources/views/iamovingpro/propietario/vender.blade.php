@@ -1,4 +1,4 @@
-@extends('layouts.iamovingpro')
+@extends('layouts.iamovingpro_vender')
 @section('title', 'IAMOVING - Busca tu casa')
 @section('description', '¡Busca tu casa!')
 @section('image', 'https://iamoving.com/img/iamoving.png')

@@ -107,7 +107,6 @@
 
     <script src="{{ asset('js/sweetalert2.min.js') }}" defer></script>
         
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.slim.min.js"></script>
 	@if (strpos(url()->current(),"/en"))
 		<script src="{{ asset('js/bootstrap-datepicker.en.min.js') }}" defer></script>
 	@else
@@ -200,7 +199,6 @@
   src="https://www.facebook.com/tr?id=841153322970616&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
 
 </head>
