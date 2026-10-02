@@ -988,8 +988,9 @@
                     <option>Mármol</option>
                     <option>Pizarra</option>
                     <option>Parquet</option>
-                    <option>Tarima flotante</option>
+                    <option>Tarima</option>
                     <option>Vinilo</option>
+                    <option>Madera</option>
             </select>
         </div>		
         <div class="form-group">
