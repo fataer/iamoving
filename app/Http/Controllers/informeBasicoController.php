@@ -153,6 +153,9 @@ class informeBasicoController extends Controller
         $informe->mascotas_no = $request->pets;
         $informe->tenderos = $request->storekeepers;
         $informe->aire_acondicionado = $request->air_conditioner;
+        $informe->barbacoa = $request->barbacoa;
+        $informe->armario_empotrado = $request->armario_empotrado;
+        $informe->chimenea = $request->chimenea;
         $informe->suite = $request->suite_room;
         $informe->lavavajillas = $request->dishwasher;
         $informe->horno = $request->oven;

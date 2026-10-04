@@ -921,12 +921,12 @@
                     NO acepta Mascotas
                 </label>
             </div>
-            <div class="checkbox">
+            <!--<div class="checkbox">
                 <label>
                     <input type="checkbox" value="1" name="acepta_tenderos" v-model="form.storekeepers">
                     Tendederos
                 </label>
-            </div>
+            </div>-->
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="1" name="acepta_aire" v-model="form.air_conditioner">
@@ -962,7 +962,25 @@
                     <input type="checkbox" value="1" name="video_portero" v-model="form.video_portero">
                     Video Portero
                 </label>
-            </div>			
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="barbacoa" v-model="form.barbacoa">
+                    Barbacoa
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="armario_empotrado" v-model="form.armario_empotrado">
+                    Armarios empotrados
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="chimenea" v-model="form.chimenea">
+                    Chimenea
+                </label>
+            </div>            
         </div>
         <div class="form-group">
             <label for="orientacion_solar">Orientación:</label>
@@ -984,6 +1002,7 @@
                     <option></option>
                     <option>Moqueta</option>
                     <option>Hormigón</option>
+                    <option>Porcelánico</option>
                     <option>Cerámica</option>
                     <option>Mármol</option>
                     <option>Pizarra</option>

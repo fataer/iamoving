@@ -264,7 +264,18 @@ echo  $url.$path;
             width:190px;
         }
         
-        
+ @media (max-width: 767px) {
+    /* Aprovecha los márgenes laterales de la columna */
+    .titulo-visita {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    /* Frase en una sola línea, con tamaño adaptado al ancho de pantalla */
+    .titulo-visita .frase-visita {
+        white-space: nowrap;
+        font-size: 4.9vw;
+    }
+}       
 	</style>
 	<style>
 .more_info1 {
@@ -959,7 +970,22 @@ vertical-align: middle;
 													<li class="list-group-item">
 														Video portero
 													</li>
-												@endif	
+												@endif
+												@if ($detalle->barbacoa)
+													<li class="list-group-item">
+														Barbacoa
+													</li>
+												@endif
+												@if ($detalle->armario_empotrado)
+													<li class="list-group-item">
+														Armarios empotrados
+													</li>
+												@endif
+												@if ($detalle->chimenea)
+													<li class="list-group-item">
+														Chimenea
+													</li>
+												@endif												
 												@if ($detalle->lavavajillas)
 													<li class="list-group-item">
 														Lavavajillas
@@ -2287,9 +2313,21 @@ document.querySelector('#mPlano').addEventListener('hidden.bs.modal', function (
 							<h5 id="modal-request-title" class="modal-title mb-1"><b>Paso 1/2</b></h5>
 		          		</div>				
 						<div class="col-md-6">
-							<h5 id="modal-request-title" class="modal-title mb-3"><b><span
+						<!--	<h5 id="modal-request-title" class="modal-title mb-3"><b><span
 style='font-size:11.5pt;font-family:"Segoe UI Emoji",sans-serif;mso-bidi-font-family:
-"Segoe UI Emoji";color:#000000'>&#9200;&#128198;</span></b> <b><u>¿Cuándo te gustaría realizar la visita?</u></b></h5>
+"Segoe UI Emoji";color:#000000'>&#9200;&#128198;</span></b> <b><u>¿Cuándo te gustaría realizar la visita?</u></b></h5>-->
+<!--<h5 id="modal-request-title" class="modal-title mb-3 text-center text-md-left">
+    <b class="d-block d-md-inline mb-1 mb-md-0"><span
+    style='font-size:11.5pt;font-family:"Segoe UI Emoji",sans-serif;mso-bidi-font-family:
+    "Segoe UI Emoji";color:#000000'>&#9200;&#128198;</span></b>
+    <b class="d-block d-md-inline"><u>¿Cuándo te gustaría realizar la visita?</u></b>
+</h5>-->
+<h5 id="modal-request-title" class="modal-title mb-3 text-center text-md-left titulo-visita">
+    <b class="d-block d-md-inline mb-1 mb-md-0"><span
+    style='font-size:11.5pt;font-family:"Segoe UI Emoji",sans-serif;mso-bidi-font-family:
+    "Segoe UI Emoji";color:#000000'>&#9200;&#128198;</span></b>
+    <b class="d-block d-md-inline frase-visita"><u>¿Cuándo te gustaría realizar la visita?</u></b>
+</h5>
 							<div class="form-group">
 								<!--<label>Escoge la fecha</label>-->
 								<input type="text" id="date" name="date" placeholder="Escoge la fecha" class="form-control" autocomplete="off" required  maxlength="10" readonly  style="background-color:white;">
@@ -2635,7 +2673,7 @@ color:#000000'>&#128100;</span></b> <b>Apellidos:</b></label>
 								<div class="form-group  col-md-12" v-if="user==null">			
 										<div class="form-group  col-md-12">	
 											<input type="checkbox" id="acepta_condiciones" name="acepta_condiciones" >	
-Al solicitar una visita presencial confirmas que has leído, comprendes y aceptas los <a href="/terminosI-condiciones" target="_blank">términos y condiciones</a> y las <a href="/politica-privacidad" target="_blank">politicas de privacidad</a> de <b>IAMOVING ONLINE, S.L.</b>
+Al solicitar esta visita presencial confirmas que has leído, comprendes y aceptas los <a href="/terminosI-condiciones" target="_blank">términos y condiciones</a> y las <a href="/politica-privacidad" target="_blank">politicas de privacidad</a> de <b>IAMOVING ONLINE, S.L.</b>
 										</div>					
 								</div>
 							</div>											    
@@ -2681,7 +2719,8 @@ Al solicitar una visita presencial confirmas que has leído, comprendes y acepta
     </div>
     
     <!-- Tooltip oculto que se mostrará al hacer hover/tap -->
-    <div class="info-tooltip" style="display: none; background-color: #f9f9f9; border-left: 4px solid #eadd03; padding: 15px; margin-top: 10px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <!--<div class="info-tooltip" style="display: none; background-color: #f9f9f9; border-left: 4px solid #eadd03; padding: 15px; margin-top: 10px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">-->
+    <div class="info-tooltip" style="display: none; background-color: #f9f9f9; padding: 15px; margin-top: 10px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
         <p class="MsoNormal text-center" style="margin-top: 0;">
             <span class="GramE">
                 <span style='font-family:"Segoe UI Emoji",sans-serif;'>&#128545;</span> 
@@ -2898,7 +2937,7 @@ color:#000000'>&#128100;</span></b> <b>Apellidos:</b></label>
 	
 									<div class="form-group  col-md-12"  v-if="user==null">
 									<input type="checkbox" id="acepta_condiciones_venta" name="acepta_condiciones_venta" >
-Al solicitar una visita presencial confirmas que has leído, comprendido y aceptas los <a href="/terminosI-condiciones" target="_blank">términos y condiciones</a> y las <a href="/politica-privacidad" target="_blank">politicas de privacidad</a> de <b>IAMOVING ONLINE, S.L.</b>
+Al solicitar esta visita presencial confirmas que has leído, comprendido y aceptas los <a href="/terminosI-condiciones" target="_blank">términos y condiciones</a> y las <a href="/politica-privacidad" target="_blank">politicas de privacidad</a> de <b>IAMOVING ONLINE, S.L.</b>
 									</div>									
 												
 		        	<div class="col-md-12 text-center">
