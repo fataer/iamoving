@@ -3415,12 +3415,13 @@ color:#000000'>&#128100;</span></b> <b>Apellidos:</b></label>
 
 @section('scripts')
 <script>
+if (!(window.google && google.maps && google.maps.importLibrary)) {
   (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
     key: "AIzaSyDZILGdMqrThTYKDDsbolOgLF9fm4lrcfA",
-    v: "weekly",
-    // Añade esta línea:
-    libraries: "marker"
+    
+    v: "weekly"
   });
+}
 </script>
 	<script>
 	$(document).ready(function(){
@@ -3428,11 +3429,8 @@ color:#000000'>&#128100;</span></b> <b>Apellidos:</b></label>
 		var is_sale = @json($detalle->is_sale);
 		var latitud = @json($detalle->latitud);
 		var longitud = @json($detalle->longitud);
-		var available_days = @json($detalle->calendar);
-		if(available_days){
-			available_days = available_days.split(",");
-		}
-		
+var available_days = @json($detalle->calendar);
+available_days = available_days ? available_days.split(",") : [];
 		$('#mInforme').on('shown.bs.modal', function (e) {
             console.log("mInforme");
         });
@@ -3463,90 +3461,39 @@ color:#000000'>&#128100;</span></b> <b>Apellidos:</b></label>
 		var producion="https://www.iamoving.com/img/marker.ico";
 		var desarrollo="https://www.iamoving.com/img/marker.ico";
 		
-let map;
-function initMap() {
-    var myLatLng = null;
-    if(latitud != null && longitud != null){
-        myLatLng = {
-            lat: parseFloat(latitud), 
-            lng: parseFloat(longitud)
-        }
-    } else {
-        myLatLng = { 
-            lat: 40.4381307,
-            lng: -3.8199627
-        }
-    }
+let mapaInicializado = false;
 
-    var map = new google.maps.Map(document.getElementById('mapa'), {
+async function initMap() {
+    if (mapaInicializado) return;
+    mapaInicializado = true;
+
+    const { Map } = await google.maps.importLibrary("maps");
+
+    const lat = parseFloat(latitud);
+    const lng = parseFloat(longitud);
+    const myLatLng = (!isNaN(lat) && !isNaN(lng))
+        ? { lat: lat, lng: lng }
+        : { lat: 40.4381307, lng: -3.8199627 };
+
+    const map = new Map(document.getElementById('mapa'), {
         center: myLatLng,
         zoom: 16,
-        disableDefaultUI: false,
         zoomControl: true,
         mapTypeControl: false,
         streetViewControl: false,
         fullscreenControl: true
     });
 
-    var marker = new google.maps.Marker({
+    new google.maps.Marker({
         position: myLatLng,
         map: map,
         title: 'Ubicación de la propiedad',
         icon: 'https://www.iamoving.com/img/marker.ico'
     });
 }
-/*
-async function initMap() {
-    // 1. Cargar las bibliotecas nuevas que necesitamos
-    const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    
-    var myLatLng = null;
-    if(latitud!=null && longitud!=null){
-        myLatLng = {
-            lat: parseFloat(latitud), 
-            lng: parseFloat(longitud)
-        }
-    } else {
-        myLatLng = { 
-            lat:40.4381307,
-            lng:-3.8199627
-        }
-    }
 
-    // 2. Crear el mapa. ¡IMPORTANTE! Añadir mapId.
-    map = new Map(document.getElementById('mapa'), {
-        center: myLatLng,
-        zoom: 16,
-        // ¡REEMPLAZA ESTE TEXTO POR TU MAP ID REAL!
-        mapId: 'TU_MAP_ID_AQUI' 
-    });
-
-    // 3. Crear el icono personalizado como elemento HTML
-    const iconUrl = "https://www.iamoving.com/img/marker.ico"; // Tu icono
-    const customIcon = document.createElement("img");
-    customIcon.src = iconUrl;
-    // Ajusta el tamaño si es necesario (ej: 32x32 píxeles)
-    customIcon.style.width = "32px";
-    customIcon.style.height = "32px";
-
-    // 4. Crear el marcador avanzado CON TU ICONO PERSONALIZADO
-    marker = new AdvancedMarkerElement({
-        map: map,
-        position: myLatLng,
-        // Esto es clave: asignas tu elemento HTML como contenido
-        content: customIcon,
-        title: 'Ubicación de la propiedad' // Texto que aparece al pasar el ratón
-    });
-}*/
-
-		
-    // Cargar el mapa cuando la API esté lista
-    google.maps.importLibrary("maps").then(() => {
-        setTimeout(function () { 
-            initMap();
-        }, 2000);
-    });
+// Crear el mapa cuando el modal ya es visible
+$('#mMapa').on('shown.bs.modal', initMap);
 
 			$("#step2").hide();
 			$("#step3").hide();
@@ -4243,12 +4190,6 @@ $("#date").prop('readonly', true);
 				
 			});
             
-// Cargar el mapa cuando la API esté lista
-google.maps.importLibrary("maps").then(() => {
-    setTimeout(function () { 
-        initMap();
-    }, 2000);
-});
 				//poner resert
 				$("#citaForm")[0].reset();
 				$("#citaFormPedido")[0].reset();

@@ -23,7 +23,7 @@
             },
             {
                 id: 'google-maps-api',
-                src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCRPcquinY1U6_qxkfRlFENFwUEtTIs_-4&libraries=marker&v=weekly',
+                src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZILGdMqrThTYKDDsbolOgLF9fm4lrcfA&libraries=marker&v=weekly',
                 async: true,
                 defer: true,
                 onload: `console.log('✅ Google Maps cargado'); 
