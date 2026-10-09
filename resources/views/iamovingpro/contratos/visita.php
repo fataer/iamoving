@@ -125,7 +125,7 @@
 			<h5>10.5.- ACEPTACIÓN DE LOS SERVICIOS</h5>
 			<p>El usuario COMPRADOR reconoce que todos los servicios que solicita a IAMOVING ONLINE, S.L. mencionados en la cláusula 10.4 son de manera online y, en el caso de que el usuario COMPRADOR prefiera no hacer uso de todos los servicios, los honorarios de IAMOVING ONLINE, S.L. no sufrirán ninguna disminución.</p>			
 			<h5>10.6.- HONORARIOS AL COMPRADOR</h5>
-			<p>El coste de intermediación es del 3% + IVA sobre el precio final de venta, pagaderos al firmar el contrato de compraventa o el contrato de arras.</p>			
+			<p>El coste de intermediación es del 3% + IVA sobre el precio final de venta, siendo los honorarios pagaderos en el momento de la firma del contrato de arras. En caso de que no se formalice contrato de arras y la compraventa se otorgue directamente mediante escritura pública, los honorarios serán pagaderos en el momento de la firma de dicha escritura pública de compraventa ante notario.</p>			
 			<h5>10.7.- PENALIZACIÓN POR MORA</h5>
 			<p>Si el comprador no paga los honorarios de IAMOVING ONLINE, S.L. en el tiempo indicado en la cláusula 10.6, se aplicará una penalización del 6% + IVA sobre el importe de la venta.</p>	
 			<h5>10.8.- CONFIRMACIÓN DE OFERTA</h5>
