@@ -210,7 +210,43 @@ echo  $url.$path;
 															<h4 class="card-text text-center mb-4">Ref. {{$detalle->id}} </h4>																
 										
 										
+{{-- PROPUESTA 1: Pasos de la oferta (desplegables) --}}
+<section class="pasos-collapse">
+    <div class="container">
+        <div class="paso-item">
+            <button type="button" class="btn-paso collapsed" data-toggle="collapse" data-target="#paso-oferta-1" aria-expanded="false" aria-controls="paso-oferta-1">
+                1. COMPLETAR LOS DATOS
+            </button>
+            <div class="collapse" id="paso-oferta-1">
+                <div class="paso-contenido">
+                    Introduce los datos de los compradores y el importe de la oferta. Una vez completados, pulsa «Enviar».
+                </div>
+            </div>
+        </div>
 
+        <div class="paso-item">
+            <button type="button" class="btn-paso collapsed" data-toggle="collapse" data-target="#paso-oferta-2" aria-expanded="false" aria-controls="paso-oferta-2">
+                2. RECIBIR Y REVISAR EL DOCUMENTO
+            </button>
+            <div class="collapse" id="paso-oferta-2">
+                <div class="paso-contenido">
+                    Nuestro sistema generará automáticamente el documento de oferta, que recibirás en tu correo electrónico para revisarlo tranquilamente, sin ningún compromiso hasta su firma.
+                </div>
+            </div>
+        </div>
+
+        <div class="paso-item">
+            <button type="button" class="btn-paso collapsed" data-toggle="collapse" data-target="#paso-oferta-3" aria-expanded="false" aria-controls="paso-oferta-3">
+                3. FORMALIZAR LA OFERTA
+            </button>
+            <div class="collapse" id="paso-oferta-3">
+                <div class="paso-contenido">
+                    Una vez que recibamos el documento de oferta firmado y el justificante del pago de 3.000 €, trasladaremos tu oferta al propietario para formalizar tu interés de compra.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 			
 			<div class="container my-0 mt-3">				
@@ -1264,4 +1300,77 @@ $("#email_confirmacion").on('input', function() {
     });
 });
 </script>
+@endsection
+@section('styles')
+<style>
+    .pasos-collapse .container { max-width: 720px; }
+    .pasos-collapse .paso-item { margin-bottom: 8px; }
+
+    .pasos-collapse .btn-paso {
+        position: relative;
+        width: 100%;
+        text-align: left;
+        background: #f7f7f7;
+        border: none;
+       /*  border-left: 4px solid #eade03; */
+        border-radius: 4px;
+        padding: 12px 42px 12px 15px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        outline: none;
+    }
+    .pasos-collapse .btn-paso:focus { outline: none; box-shadow: none; }
+
+    /* Indicador + / − */
+    .pasos-collapse .btn-paso::after {
+        content: "+";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        font-weight: 400;
+        /*color: #28a745;*/
+        color: #000; 
+    }
+    .pasos-collapse .btn-paso[aria-expanded="true"]::after { content: "−"; }
+
+    .pasos-collapse .paso-contenido {
+        padding: 10px 15px 14px 19px;
+        font-size: 15px;
+        color: #6c757d;
+        line-height: 1.5;
+    }
+
+    /* Vista móvil */
+    @media (max-width: 767.98px) {
+        .pasos-collapse .btn-paso {
+            font-size: 13.5px;
+            padding: 11px 38px 11px 12px;
+        }
+        .pasos-collapse .paso-contenido {
+            font-size: 13.5px;
+            padding: 8px 12px 12px 16px;
+        }
+    }
+/* Transición suave del color */
+.pasos-collapse .btn-paso,
+.pasos-collapse .btn-paso::after {
+    transition: color .2s ease, border-color .2s ease;
+}
+
+/* Amarillo al pasar el ratón y mientras el paso está desplegado */
+.pasos-collapse .btn-paso:hover,
+.pasos-collapse .btn-paso[aria-expanded="true"] {
+    color: #eade03;
+}
+
+/* El indicador + / − también en amarillo en esos estados */
+.pasos-collapse .btn-paso:hover::after,
+.pasos-collapse .btn-paso[aria-expanded="true"]::after {
+    color: #eade03;
+}    
+</style>
 @endsection
