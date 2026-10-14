@@ -1246,6 +1246,7 @@
 				<option value="Solar">Solar</option>
 				<option value="Aerotermia">Aerotermia</option>
 				<option value="Por conductos">Por conductos</option>
+				<option value="Por conductos (frío/calor)">Por conductos (frío/calor)</option>
                 <option value="Sin calefacción">Sin calefacción</option>
             </select>
         </div>
