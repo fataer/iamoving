@@ -530,12 +530,14 @@
                                         <div style="flex:1; flex-direction:row;">
                                             <div style="margin-right:3px;">
                                                 <label> <strong class="titulo-filter-vuejs">Mínimo</strong></label>
-                                                <el-form-item><el-input v-model="form.propiedad_price" placeholder="€" @blur="onBlurNumbere"></el-input></el-form-item>
+                                                <!--<el-form-item><el-input v-model="form.propiedad_price" placeholder="€" @blur="onBlurNumbere"></el-input></el-form-item>-->
+                                                <el-form-item><el-input v-model="form.propiedad_price" placeholder="€" @input="onInputPrice('propiedad_price')" @blur="onBlurNumbere"></el-input></el-form-item>
                                             </div>
                                             
                                             <div style="margin-right:3px;">
                                                 <label> <strong class="titulo-filter-vuejs">Máximo</strong></label>
-                                                <el-form-item><el-input v-model="form.price" placeholder="€" @blur="onBlurNumber"></el-input></el-form-item>
+                                                <!--<el-form-item><el-input v-model="form.price" placeholder="€" @blur="onBlurNumber"></el-input></el-form-item>-->
+                                                <el-form-item><el-input v-model="form.price" placeholder="€" @input="onInputPrice('price')" @blur="onBlurNumber"></el-input></el-form-item>
                                             </div>
                                         </div>
                                     
@@ -584,7 +586,7 @@
                                         <div style="text-align:center;"><el-button type="primary" @click="visibleSize = false">Ver @{{dataFilter.length}} resultados</el-button></div>
                                     </div>
                                 </template>    
-                                <el-button slot="reference" round @click="visibleSize = !visibleSize"  style="width:100%">@{{sizeText}}</el-button>
+                                <el-button slot="reference" round @click="visibleSize = !visibleSize"  style="width:100%"><span v-html="sizeText"></span></el-button>
                             </el-popover>
                         </el-row>
                     </div>
@@ -1628,7 +1630,7 @@ return 'Mostrar +';
     getPriceOptions() {
         const options = [];
         // De 60.000 a 300.000 en 20.000
-        for (let i = 60000; i <= 300000; i += 20000) {
+        for (let i = 100000; i <= 300000; i += 20000) {
             options.push({ value: i, label: i.toLocaleString() + ' €' });
         }
         // De 300.000 a 1.000.000 en 50.000
@@ -1743,6 +1745,18 @@ applyOrder() {
 					this.submiteo();
 
                 },
+onInputPrice(field) {
+    let raw = this.form[field];
+    if (raw === null || raw === undefined) return;
+    // Quita todo lo que no sean dígitos (puntos, €, espacios, etc.)
+    let digits = raw.toString().replace(/[^\d]/g, '');
+    if (digits === '') {
+        this.form[field] = '';
+        return;
+    }
+    // Formatea con puntos de miles
+    this.form[field] = digits.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+},                
                 onBlurNumber(e) {
                     if (this.form.price.indexOf("\u20AC") == -1) {
                         this.form.price = this.thousandSeprator(this.form.price) + " \u20AC";
@@ -1864,11 +1878,13 @@ submiteo(autoload) {
     
     // ========== VALIDACIÓN DE PRECIOS ==========
     // Convertir a número (eliminar puntos, símbolos, etc.)
+    // ========== VALIDACIÓN DE PRECIOS ==========
+    // Convertir a número eliminando primero los puntos de miles y luego símbolos
     const minPrice = this.form.propiedad_price
-        ? parseFloat(this.form.propiedad_price.toString().replace(/[^0-9.]/g, ''))
+        ? parseInt(this.form.propiedad_price.toString().replace(/\./g, '').replace(/[^\d]/g, ''))
         : null;
     const maxPrice = this.form.price
-        ? parseFloat(this.form.price.toString().replace(/[^0-9.]/g, ''))
+        ? parseInt(this.form.price.toString().replace(/\./g, '').replace(/[^\d]/g, ''))
         : null;
 
     // Si ambos están definidos, comprobar que min < max
@@ -1892,24 +1908,46 @@ submiteo(autoload) {
     }
     // ============================================
     
-    if (this.form.propiedad_price.trim()!=='' || this.form.price.trim()!==''){
-        this.priceText = this.form.propiedad_price.trim() + " - " + this.form.price.trim();
-        if(countFiltersText < 7){
+    const minStr = this.form.propiedad_price ? this.form.propiedad_price.trim() : '';
+    const maxStr = this.form.price ? this.form.price.trim() : '';
+    
+    if (minStr !== '' && maxStr !== '') {
+        this.priceText = minStr + " - " + maxStr;
+    } else if (minStr !== '') {
+        this.priceText = "desde " + minStr;
+    } else if (maxStr !== '') {
+        this.priceText = "hasta " + maxStr;
+    } else {
+        this.priceText = 'Precio';
+    }
+
+    if (this.priceText !== 'Precio') {
+        if (countFiltersText < 7) {
             textFilters += '<li>Precio ' + this.priceText + '</li>';
             countFiltersText++;
         }
-    }else{
-        this.priceText = 'Precio';
     }
     
-    if(this.form.propiedad_tamano.trim()!=='' || this.form.tamano.trim()!==''){
-        this.sizeText = this.form.propiedad_tamano.trim() + " - " + this.form.tamano.trim();
-        if(countFiltersText < 7){
-            textFilters += '<li>Tamaño ' + this.priceText + '</li>';
+    const minSizeStr = this.form.propiedad_tamano ? this.form.propiedad_tamano.trim() : '';
+    const maxSizeStr = this.form.tamano ? this.form.tamano.trim() : '';
+    const m2 = ' m<sup>2</sup>';
+
+    if (minSizeStr !== '' && maxSizeStr !== '') {
+        this.sizeText = minSizeStr + m2 + " - " + maxSizeStr + m2;
+    } else if (minSizeStr !== '') {
+        this.sizeText = "desde " + minSizeStr + m2;
+    } else if (maxSizeStr !== '') {
+        this.sizeText = "hasta " + maxSizeStr + m2;
+    } else {
+        this.sizeText = 'Tamaño';
+    }
+
+    if (this.sizeText !== 'Tamaño') {
+        if (countFiltersText < 7) {
+            // Nota: el código original tenía un pequeño bug aquí usando this.priceText
+            textFilters += '<li>Tamaño ' + this.sizeText + '</li>'; 
             countFiltersText++;
         }
-    }else{
-        this.sizeText = 'Tamaño';
     }
     
     if(this.form.piesas.length > 0){
