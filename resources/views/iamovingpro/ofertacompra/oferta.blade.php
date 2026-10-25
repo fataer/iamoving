@@ -452,18 +452,14 @@
                 excepto la plusvalía municipal que corre a cuenta del vendedor.
             </li>
             <li class="punto-gordo">
-                IBI: proporcional: desde el 1/1/{{ $annio }} hasta formalización de la
-                escritura el vendedor y desde esa fecha hasta el 31/12/{{ $annio }} el
-                comprador.
+                IBI: Se prorrateará proporcionalmente entre las partes, correspondiendo al vendedor el periodo comprendido entre el 1 de enero del año en que se formalice la escritura pública de compraventa y la fecha de dicha escritura, y al comprador desde esa fecha hasta el 31 de diciembre del mismo año.
             </li>
             <li class="punto-gordo">
-                La vivienda se transmitirá libre de cargas, gravámenes e inquilinos
-                u ocupantes y al corriente de gastos de suministros y de comunidad
-                de propietarios. Si existiesen cargas en el momento de otorgarse
-                la Escritura Pública de Compraventa, el comprador deducirá del
-                precio la cantidad necesaria para su cancelación económica y
-                registral, incluidos los gastos precisos para ello que correrán
-                por cuenta del vendedor.
+La vivienda se transmitirá libre de cargas y gravámenes, de inquilinos u ocupantes, y al corriente de pago de los gastos de suministros, comunidad de propietarios e Impuesto sobre Bienes Inmuebles (IBI).
+            </li>
+            <li class="punto-gordo">
+La parte vendedora se compromete a cancelar y regularizar, antes del otorgamiento de la escritura pública de compraventa, cualquier carga, deuda o gasto pendiente que le corresponda y que pudiera afectar al inmueble o a la parte compradora.En caso de que existieran cantidades pendientes en el momento de la firma, estas podrán descontarse del precio de compraventa, incluidos los gastos necesarios para su cancelación económica y registral, que serán por cuenta de la parte vendedora, garantizando que la operación se formalice sin perjuicio económico para la parte compradora.
+            </li>
             </li>
         </ul>
         
