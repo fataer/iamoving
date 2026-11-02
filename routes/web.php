@@ -424,7 +424,7 @@ Route::post('/actualiza_notificar', 'ColaboraController@condiciones');
 	Route::post('publicar_gratis', 'PublicarGratisController@send');
 	Route::post('registrar_whatsapp_click', 'PublicarGratisController@registrarWhatsAppClick');
 	
-	Route::post('registrar_lead_whatsapp_auto', 'Web\PublicarGratisController@registrarLeadWhatsAppAuto');
+	Route::post('registrar_lead_whatsapp_auto', 'PublicarGratisController@registrarLeadWhatsAppAuto');
 	
 	Route::post('publicar_vendedor', 'PublicarGratisController@sendVendedor');
 Route::post('registrar_aterrizaje_vendedor', 'PublicarGratisController@registrarAterrizajeVendedor');
@@ -675,6 +675,10 @@ Route::get('bloqueado', 'iamovingpro\HomeController@bloqueado');
 	Route::get('ofertacompra/{id}/{test_email?}', 'OfertaCompraController@show_ini');
 	Route::post('ofertacompra-formulario', 'OfertaCompraController@sendCompra');
 	
+	//Route::get('ofertapropietario/{id}', 'OfertaCompraController@show_ini');	
+	Route::get('ofertapropietario/{id}/{test_email?}', 'OfertaPropietarioController@show_ini');
+	Route::post('ofertapropietario-formulario', 'OfertaPropietarioController@sendCompra');	
+	
 				Route::get('terminos-colaborador', function() {
 		return view('iamovingpro.contratos.colabora');
 	});	
@@ -815,6 +819,7 @@ Route::post('/reportAll', function(Request $request) {
 
 
 Route::post('upload', 'FileController@upload');
+Route::post('upload-plano-principal', 'FileController@uploadPlanoPrincipal');
 
 Route::get('test/{id}', function($id) {
 	$informe = \App\InformeDetalladoDetalle::with('cabecera')

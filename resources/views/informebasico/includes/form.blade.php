@@ -4,9 +4,37 @@
     {{-- Imagen/Video Principal --}}
     <fieldset>
         <legend>Imagen Principal</legend>
-        <div class="form-group">
-            <input-file name="path_image_primary" :reference="reference.id" accept="image/*"></input-file>
-        </div>
+<div class="form-group">
+    <input-file name="path_image_primary" :reference="reference.id" accept="image/*"></input-file>
+</div>
+
+{{-- Vista previa de la imagen principal --}}
+<div class="form-group" v-if="form.path_image_primary">
+    <img :src="'/storage/' + form.path_image_primary"
+         style="max-width:240px; border:1px solid #ccc; display:block; margin-bottom:8px;">
+</div>
+{{-- ===================== PLANO PRINCIPAL ===================== --}}
+<legend>Plano Principal</legend>
+<div class="form-group">
+    <input-file
+        name="path_plano_principal"
+        url="/upload-plano-principal"
+        :reference="reference.id"
+        accept="image/*">
+    </input-file>
+</div>
+
+{{-- Vista previa + botón eliminar --}}
+<div class="form-group" v-if="form.path_plano_principal">
+    <img :src="'/storage/' + form.path_plano_principal"
+         style="max-width:240px; border:1px solid #ccc; display:block; margin-bottom:8px;">
+    <button type="button"
+            class="btn btn-danger btn-sm"
+            @click="deletePlanoPrincipal">
+        <i class="fas fa-trash"></i> Eliminar plano
+    </button>
+</div>
+{{-- =================== FIN PLANO PRINCIPAL ==================== --}}
 		<legend>Video Principal</legend>
         <div class="form-group">
             <!--<label for="">video principal</label>-->
@@ -1237,7 +1265,7 @@
             <label for="calefaccion">Calefacción</label>
             <select name="calefaccion" v-model="form.heating" id="calefaccion" class="form-control">
                 <option value="">Seleccionar...</option>
-				<option value="Individual por gas natural (Suelo radiante)">Individual por gas natural (Suelo radiante)</option>
+				<option value="Suelo radiante">Suelo radiante</option>
                 <option value="Individual por gas natural">Individual por gas natural</option>
                 <option value="Eléctrica">Eléctrica</option>
                 <option value="Central">Central</option>

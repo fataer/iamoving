@@ -225,6 +225,13 @@ class informeBasicoController extends Controller
         if ($request->has('path_image_primary')) $informe->path_image_primary = $request->path_image_primary;
         if ($request->has('path_video_transport')) $informe->path_video_transport = $request->path_video_transport;
         if ($request->has('path_video_nota')) $informe->path_video_nota = $request->path_video_nota;
+        // Plano principal
+        /*if ($request->filled('path_plano_principal')) {
+            $informe->path_plano_principal = $request->path_plano_principal;
+        } */
+if ($request->has('path_plano_principal')) {
+    $informe->path_plano_principal = $request->path_plano_principal ?: null;
+}        
 
         if($request->has('alquiler_aproximado')) $informe->alquiler_aproximado = $request->alquiler_aproximado;
         if($request->has('condiciones')) $informe->condiciones = $request->condiciones;

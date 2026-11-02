@@ -132,7 +132,10 @@
                     options: [],
                     direccion:'',
                     title: 'Informe Basico',
-                    form: {},
+                    form: {
+                            path_plano_principal: null,
+                            path_image_primary: null      // <-- AÑADIR
+                        },
                     precieFormar:null,
                     price: 0,
                     idfilter:'',
@@ -168,10 +171,13 @@
                         //let bathrooms = val.bathrooms//val.detalles.filter((item) => item.tamano_aprox_banos != null);
                         
 // Agregar dentro del watch de reference, junto con los demás campos
+this.form.path_image_primary = val.path_image_primary || null;
+this.form.path_plano_principal = val.path_plano_principal || null;
 this.form.garaje_comprar = val.garaje_comprar;
 this.form.precio_compra_garaje = val.precio_compra_garaje > 0 ? val.precio_compra_garaje : 0;
 this.form.garaje_alquilar = val.garaje_alquilar;
 this.form.precio_alquilar_garaje = val.precio_alquilar_garaje > 0 ? val.precio_alquilar_garaje : 0;
+
 
                         this.estadoInmueble = val.estado_inmueble;
                         
@@ -500,6 +506,11 @@ onGarajeAlquilarChange() {
     }
     // Forzar actualización
     this.$forceUpdate();
+},
+deletePlanoPrincipal() {
+    if (confirm("¿Eliminar el plano? Se borrará al pulsar ACTUALIZAR.")) {
+        this.form.path_plano_principal = null;
+    }
 },
     // ← AÑADIR ESTE MÉTODO AQUÍ
     copyToClipboard(text, linkId) {

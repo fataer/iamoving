@@ -174,7 +174,8 @@ class InformeDetalladoCabecera extends Model
 'trastero_numero',
 'municipio',
 'plazo_escritura',
-'comision_iamoving'
+'comision_iamoving',
+'path_plano_principal'
     ];
 
     //protected $appends = ['meters','bedrooms','bathrooms', 'coordinates'];
