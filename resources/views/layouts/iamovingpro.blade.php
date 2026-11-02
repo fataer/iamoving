@@ -101,6 +101,12 @@
         color: #FFD54F !important;
     }
 }
+.icono-plano {
+    width: 1.25em;          /* mismo ancho que fa-fw */
+    height: 1em;
+    vertical-align: -0.125em;
+    margin-right: 2px;
+}
 </style>
 @yield('styles')
     @yield('styles')

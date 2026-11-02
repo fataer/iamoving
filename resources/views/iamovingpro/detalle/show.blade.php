@@ -132,7 +132,11 @@ else
 	} elseif ($detalle->bedrooms==0) {
 		$dormitorio= "";
 	} elseif ($detalle->bedrooms>1) {
+		if($detalle->id == 1624) {
+		$dormitorio= $detalle->bedrooms." habitaciones y ";
+		} else {		
 		$dormitorio= $detalle->bedrooms." dormitorios y ";
+		}
 	} else {
 		$dormitorio= "";
 	}
@@ -196,7 +200,16 @@ echo  $url.$path;
 	    color: #000 !important;
 	    font-weight: bold;
 	}
-	
+/* Los pickers se posicionan respecto al cuerpo del modal */
+#modalCita .modal-body,
+#modalPedido .modal-body { position: relative; }
+
+/* Por encima del contenido del modal */
+#modalCita .datepicker, #modalPedido .datepicker,
+#modalCita .clockpicker-popover, #modalPedido .clockpicker-popover { z-index: 1060 !important; }
+
+/* Que el popover del reloj no quede recortado */
+#modalCita .modal-body, #modalPedido .modal-body { overflow: visible; }	
 .modal-dialog {
   /*display: flex;
   flex-direction: column;
@@ -622,11 +635,19 @@ vertical-align: middle;
 											</li>									
 											@else
 											<li>
+											    @if($detalle->id == 1624)
+											    												<span class="fa-li" ><i class="fas fa-bed"></i></span>
+												Habitaciones: @if($detalle->id !=57){{$detalle->bedrooms}}
+															@else
+															2
+														@endif
+											    @else
 												<span class="fa-li" ><i class="fas fa-bed"></i></span>
 												Dormitorios: @if($detalle->id !=57){{$detalle->bedrooms}}
 															@else
 															2
 														@endif
+												@endif
 											</li>
 											@endif
 										@endif
@@ -700,7 +721,20 @@ vertical-align: middle;
 										<i class="fas fa-image fa-fw"></i>
 										Fotos
 									</button>
-								</div>	
+								</div>
+@if($detalle->path_plano_principal)
+<div class="collapse-item">
+    <button id="id_plano_principal" class="btn-collapse text-left" href="#mPlanoPrincipal" style="cursor:pointer;color:#eadd03;width:100%;border:none;outline:none;" data-toggle="modal"
+            data-target="#mPlanoPrincipal" role="button" aria-expanded="false">
+<svg class="icono-plano" viewBox="0 0 24 24" aria-hidden="true"
+     fill="none" stroke="currentColor" stroke-width="2.2"
+     stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M2.5 4H21.5V20H13.8V15Q13.8 13.6 12.4 13.6H11.2C8.6 13.6 7.4 16.6 7.2 20H2.5Z"/>
+</svg>
+        Plano
+    </button>
+</div>
+@endif								
 							@if($detalle->hay_barrio == 1)		
 								<div class="collapse-item">
 									<button  id="id_barrio"  class="btn-collapse text-left"  href="#mInformeBarrio"  style="cursor:pointer;color:#eadd03;width:100%;border: none;outline:none;" data-toggle="modal" data-target="#mInformeBarrio" role="button" aria-expanded="false" >
@@ -900,7 +934,7 @@ vertical-align: middle;
 									<div class="collapse" id="collapse-importante"> 
 										<div class="content-collapse">
 											<ul class="list-group list-group-flush">
-												@if ($detalle->estudio || $detalle->loft || $detalle->apartamento || $detalle->piso || $detalle->bajo || $detalle->atico)	
+	
     												@if ($detalle->lift)
     													<li class="list-group-item">
     														Ascensor: Si
@@ -909,8 +943,7 @@ vertical-align: middle;
     													<li class="list-group-item">
     														Ascensor: No
     													</li>
-    												@endif
-												@endif											    
+    												@endif											    
 												@if ($detalle->exterior)
 													<li class="list-group-item">
 														Exterior
@@ -1256,7 +1289,9 @@ vertical-align: middle;
                                                     @if ($detalle->plazas_garaje >1)
                                                         {{$detalle->plazas_garaje}} plazas de garaje
 													@else
-														Garaje
+														Garaje @if($detalle->id == 1624)
+														        10 plazas aprox.
+														        @endif
                                                     @endif
                                                     </li>
 												@endif	
@@ -1343,7 +1378,11 @@ vertical-align: middle;
 
 											<ul class="list-group list-group-flush">
 												@if ($detalle->jardin)
-													<li class="list-group-item">Jardín</li>
+														@if($detalle->id == 1624)
+	<li class="list-group-item">Parcela de 1.467 m<sup>2</sup></li> 
+	@else
+	<li class="list-group-item">Jardín</li>
+	@endif
 												@endif
 												@if ($detalle->piscina)
 													<li class="list-group-item">Piscina</li>
@@ -1900,7 +1939,68 @@ echo number_format($detalle->alquiler_aproximado, 0, '', '.');
 				  </div>
 				</div>
 			  </div>			
-		</div>			
+		</div>
+@if($detalle->path_plano_principal)
+<div class="modal fade" id="mPlanoPrincipal" tabindex="-1" role="dialog"
+     aria-labelledby="mPlanoPrincipalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" style="max-width:98vw; margin:5px auto;">
+    <div class="modal-content">
+      <div class="modal-header py-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-weight:bold;color:#EADD1B;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="plano-principal-container">
+          <img src="/storage/{{ $detalle->path_plano_principal }}"
+               class="plano-principal-image"
+               alt="Plano principal del inmueble">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Escritorio: modal grande, imagen centrada, contiene */
+.plano-principal-container{
+  display:flex; justify-content:center; align-items:center;
+  height:calc(100vh - 130px); overflow:auto; padding:10px;
+}
+.plano-principal-image{
+  max-width:95%;
+  max-height:calc(95vh - 130px);
+  object-fit:contain;
+}
+
+/* Móvil: modal a pantalla completa y plano en VERTICAL */
+@media (max-width: 767px) {
+  #mPlanoPrincipal .modal-dialog{
+    margin:0; max-width:100%; height:100vh;
+  }
+  #mPlanoPrincipal .modal-content{
+    border-radius:0; height:100vh;
+  }
+  #mPlanoPrincipal .modal-body{
+    height:calc(100vh - 40px);
+    display:flex; justify-content:center; align-items:center;
+    overflow:hidden;
+  }
+  .plano-principal-container{
+    height:100%; width:100%; padding:5px;
+    display:flex; justify-content:center; align-items:center;
+  }
+  .plano-principal-image{
+    /* Rotamos 90º para aprovechar pantalla vertical */
+    transform: rotate(90deg);
+    max-height: 95vw;   /* limitado por el ancho del móvil */
+    max-width: 95vh;    /* limitado por el alto del móvil */
+    width:auto; height:auto;
+    object-fit:contain;
+  }
+}
+</style>
+@endif		
 @if($detalle->path_plano)
 <div class="modal fade" id="mPlano" tabindex="-1" role="dialog" aria-labelledby="mPlano" aria-hidden="true">
   <div class="modal-dialog modal-xl" style="max-width: 98vw; margin: 5px auto;">
@@ -2707,9 +2807,9 @@ Al solicitar esta visita presencial confirmas que has leído, comprendes y acept
 
 <!-- INICIO BLOQUE MODIFICADO -->
 <div class="col-md-12">
-    <div class="form-group" style="margin-bottom: 0;">
+    <div class="form-group" style="margin-bottom: 0; text-align: center;">
         <!-- Contenedor que en móvil pone el icono justo después del texto -->
-        <div class="text-with-icon">
+        <div class="text-with-icon" style="justify-content: center; text-align: center;">
             <p class="MsoNormal" style="margin-bottom: 0; display: inline;">
                 <b>Te dejamos algunas sencillas preguntas que al propietario le gustaría conocer antes de confirmar una visita.</b>
             </p>
@@ -3414,6 +3514,25 @@ color:#000000'>&#128100;</span></b> <b>Apellidos:</b></label>
 @endsection
 
 @section('scripts')
+@php
+    // Ubicación aproximada: el navegador nunca recibe las coordenadas reales
+    $radioCirculo = 300; // metros
+    $latAprox = null;
+    $lngAprox = null;
+
+    if (is_numeric($detalle->latitud) && is_numeric($detalle->longitud)) {
+        $latReal = (float) $detalle->latitud;
+        $lngReal = (float) $detalle->longitud;
+
+        // Desplazamiento pseudoaleatorio pero fijo para cada inmueble
+        $seed      = crc32('iamoving-circulo-' . $detalle->id);
+        $angulo    = deg2rad($seed % 360);
+        $distancia = (($seed >> 9) % 1000) / 1000 * ($radioCirculo * 0.6); // máx. 60% del radio
+
+        $latAprox = $latReal + ($distancia * cos($angulo)) / 111320;
+        $lngAprox = $lngReal + ($distancia * sin($angulo)) / (111320 * cos(deg2rad($latReal)));
+    }
+@endphp
 <script>
 if (!(window.google && google.maps && google.maps.importLibrary)) {
   (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
@@ -3427,8 +3546,11 @@ if (!(window.google && google.maps && google.maps.importLibrary)) {
 	$(document).ready(function(){
 		var id=@json($id); 
 		var is_sale = @json($detalle->is_sale);
-		var latitud = @json($detalle->latitud);
-		var longitud = @json($detalle->longitud);
+		//var latitud = @json($detalle->latitud);
+		//var longitud = @json($detalle->longitud);
+        var latitud = @json($latAprox);
+        var longitud = @json($lngAprox);
+        var radioCirculo = @json($radioCirculo);		
 var available_days = @json($detalle->calendar);
 available_days = available_days ? available_days.split(",") : [];
 		$('#mInforme').on('shown.bs.modal', function (e) {
@@ -3471,25 +3593,35 @@ async function initMap() {
 
     const lat = parseFloat(latitud);
     const lng = parseFloat(longitud);
-    const myLatLng = (!isNaN(lat) && !isNaN(lng))
+    const hayUbicacion = !isNaN(lat) && !isNaN(lng);
+    const centro = hayUbicacion
         ? { lat: lat, lng: lng }
         : { lat: 40.4381307, lng: -3.8199627 };
 
     const map = new Map(document.getElementById('mapa'), {
-        center: myLatLng,
-        zoom: 16,
+        center: centro,
+        zoom: 15,
+        maxZoom: 17,           // impide acercarse a nivel de portal
         zoomControl: true,
         mapTypeControl: false,
         streetViewControl: false,
-        fullscreenControl: true
+        fullscreenControl: true,
+        clickableIcons: false
     });
 
-    new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Ubicación de la propiedad',
-        icon: 'https://www.iamoving.com/img/marker.ico'
-    });
+    if (hayUbicacion) {
+        new google.maps.Circle({
+            map: map,
+            center: centro,
+            radius: radioCirculo,
+            strokeColor: '#eadd03',
+            strokeOpacity: 0.9,
+            strokeWeight: 2,
+            fillColor: '#eadd03',
+            fillOpacity: 0.25,
+            clickable: false
+        });
+    }
 }
 
 // Crear el mapa cuando el modal ya es visible
@@ -3526,45 +3658,56 @@ $('#mMapa').on('shown.bs.modal', initMap);
 			var today = dd + '/' + mm + '/' + yyyy;
 
 
-			$('#date').datepicker({
-                language: "es",
-                format: "dd/mm/yyyy",
-				//beforeShowDay: highlightDays,
-      //todayHighlight: true,
-      //startDate: new Date(),
-	   startDate: today,
-    			autoclose: true,
-    			ignoreReadonly: true
-				//orientation: 'top'
-    			//daysOfWeekDisabled: disable_days
-            });
+// ---- DATEPICKERS: se pintan dentro del .modal-body del modal en el que están ----
+function initDatepickerEnModal(selector) {
+    var $input = $(selector);
+    if (!$input.length) return;
+    var $contenedor = $input.closest('.modal-body');
 
-			$('#fecha_desde').datepicker({
-                language: "es",
-                format: "dd/mm/yyyy",
-    			startDate: today,
-    			autoclose: true,
-    			ignoreReadonly: true
-				//orientation: 'top'
-    			//daysOfWeekDisabled: disable_days
-            });
-            
-            $('#p_fecha_desde').datepicker({
-                language: "es",
-                format: "dd/mm/yyyy",
-    			startDate: today,
-    			autoclose: true,
-    			ignoreReadonly: true
-    			//daysOfWeekDisabled: disable_days
-            });
-			
-            $('.clockpicker').clockpicker({
-				default: 'now',
-			    placement: 'bottom',
-			    align: 'left',
-			    donetext: 'OK',
-				autoclose: 'true'
-			});
+    $input.datepicker({
+        language: "es",
+        format: "dd/mm/yyyy",
+        startDate: today,
+        autoclose: true,
+        ignoreReadonly: true,
+        orientation: 'bottom left',
+        container: $contenedor.length ? $contenedor[0] : 'body'
+    });
+}
+initDatepickerEnModal('#date');
+initDatepickerEnModal('#fecha_desde');
+initDatepickerEnModal('#p_fecha_desde');
+
+// ---- CLOCKPICKER: v0.0.7 no tiene opción "container", así que sobreescribimos su locate() ----
+$('.clockpicker').clockpicker({
+    default: 'now',
+    placement: 'bottom',
+    align: 'left',
+    donetext: 'OK',
+    autoclose: 'true'
+}).each(function () {
+    var cp = $(this).data('clockpicker');
+    if (!cp) return;
+    var $grupo = $(this);                       // .input-group.clockpicker
+    var $contenedor = $grupo.closest('.modal-body');
+    if (!$contenedor.length) return;            // fuera de un modal: comportamiento normal
+
+    cp.locate = function () {
+        // Mover el popover dentro del modal (relativo al .modal-body)
+        if (this.popover.parent()[0] !== $contenedor[0]) {
+            this.popover.appendTo($contenedor);
+        }
+        // Posición calculada con getBoundingClientRect: no depende del scroll de la página
+        var rInput = $grupo[0].getBoundingClientRect();
+        var rCont  = $contenedor[0].getBoundingClientRect();
+
+        this.popover.show().css({
+            position: 'absolute',
+            top:  (rInput.bottom - rCont.top + $contenedor.scrollTop()) + 'px',
+            left: (rInput.left   - rCont.left) + 'px'
+        });
+    };
+});
 	
 			$("#time").click(function(){
 				//alert('hola2');
