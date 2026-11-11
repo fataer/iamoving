@@ -241,6 +241,10 @@ if ($request->has('path_plano_principal')) {
 		if($request->has('tipo_plan')) $informe->tipo_plan = $request->tipo_plan;
 		//
 		if($request->has('meters')) $informe->square_meters = $request->meters;
+		if($request->has('parcela_metros')) $informe->parcela_metros = $request->parcela_metros;
+		if($request->has('sala_eventos')) $informe->sala_eventos = $request->sala_eventos;
+		if($request->has('piscina_climatizada')) $informe->piscina_climatizada = $request->piscina_climatizada;
+		if($request->has('persianas_electricas')) $informe->persianas_electricas = $request->persianas_electricas;
 
         //if($request->has('estado_inmueble')) $informe->estado_inmueble = $request->inmueblestate;
 		$informe->estado_inmueble = empty($request->inmueblestate)?"":$request->inmueblestate;

@@ -231,6 +231,10 @@ this.form.precio_alquilar_garaje = val.precio_alquilar_garaje > 0 ? val.precio_a
                         this.form.numero= val.numero_direccion;
                         this.form.time= val.fecha_de_alta;
 
+                        this.form.parcela_metros = val.parcela_metros;
+                        this.form.sala_eventos = val.sala_eventos>0 ? 1 : 0 ;
+						this.form.piscina_climatizada = val.piscina_climatizada>0 ? 1 : 0 ;
+						this.form.persianas_electricas = val.persianas_electricas>0 ? 1 : 0 ;
 
                         this.form.price_property =val.propiedad_precio;
                         this.form.bedrooms = val.bedrooms;

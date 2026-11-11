@@ -514,6 +514,10 @@
 			<legend>Metros cuadrados</legend>
             <input type="number" min="0" max="9999" class="form-control" id="metros_cuadrados" name="metros_cuadrados" v-model="form.meters" placeholder="Metros cuadrados...">
         </div>
+        <div class="form-group">
+			<legend>Parcela m<sup>2</sup></legend>
+            <input type="number" min="0" max="99999" class="form-control" id="parcela_metros" name="parcela_metros" v-model="form.parcela_metros" placeholder="Parcela Metros cuadrados...">
+        </div>		
     </fieldset>
     {{-- Calendario --}}
     <fieldset>
@@ -1008,7 +1012,13 @@
                     <input type="checkbox" value="1" name="chimenea" v-model="form.chimenea">
                     Chimenea
                 </label>
-            </div>            
+            </div>  
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="persianas_electricas" v-model="form.persianas_electricas">
+                    Persianas eléctricas
+                </label>
+            </div> 			
         </div>
         <div class="form-group">
             <label for="orientacion_solar">Orientación:</label>
@@ -1503,6 +1513,12 @@
             </div>
             <div class="checkbox">
                 <label>
+                    <input type="checkbox" value="1" name="piscina_climatizada" v-model="form.piscina_climatizada">
+                    Piscina climatizada 365 días
+                </label>
+            </div>			
+            <div class="checkbox">
+                <label>
                     <input type="checkbox" value="1" name="datos_edificio_gym" v-model="form.gym">
                     Gym
                 </label>
@@ -1524,7 +1540,13 @@
                     <input type="checkbox" value="1" name="datos_edificio_zona_infantil" v-model="form.childish_zone">
                     Zona infantil
                 </label>
-            </div>		
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="sala_eventos" v-model="form.sala_eventos">
+                    Sala de eventos comunitarios
+                </label>
+            </div>				
             <!--<div class="checkbox">
                 <label>
                     <input type="checkbox" value="1" name="datos_edificio_garaje_mismo_edificio" v-model="form.garage_option">

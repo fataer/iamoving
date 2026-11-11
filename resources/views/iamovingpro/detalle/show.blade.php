@@ -1011,14 +1011,23 @@ vertical-align: middle;
 												@endif
 												@if ($detalle->armario_empotrado)
 													<li class="list-group-item">
-														Armarios empotrados
+														Armarios empotrados: Si
 													</li>
+    											@else
+													<li class="list-group-item">
+														Armarios empotrados: No
+													</li>													
 												@endif
 												@if ($detalle->chimenea)
 													<li class="list-group-item">
 														Chimenea
 													</li>
 												@endif												
+												@if ($detalle->persianas_electricas)
+													<li class="list-group-item">
+														Persianas eléctricas
+													</li>
+												@endif													
 												@if ($detalle->lavavajillas)
 													<li class="list-group-item">
 														Lavavajillas
@@ -1361,7 +1370,7 @@ vertical-align: middle;
 								{{-- datos del edificios --}}
 @if ($detalle->jardin || $detalle->piscina || $detalle->gym || $detalle->sauna || $detalle->zona_deportiva || $detalle->zona_infantil 
  || $detalle->garaje_opcion || $detalle->opcion_trastero_edificio || $detalle->aproximate_cost_garages || $detalle->venta_cost_garage || 
- $detalle->antiguedad_edificio 
+ $detalle->antiguedad_edificio || $detalle->sala_eventos || $detalle->piscina_climatizada || $detalle->parcela_metros
  || ($detalle->garaje_comprar && ($detalle->garaje_comprar == 'Opción de garaje en el mismo edificio' || $detalle->garaje_comprar == 'Opción de garaje en el mismo edificio con acceso directo'))
  || ($detalle->garaje_alquilar && ($detalle->garaje_alquilar == 'Opción de garaje en el mismo edificio' || $detalle->garaje_alquilar == 'Opción de garaje en el mismo edificio con acceso directo')))		
 								<div class="collapse-item">
@@ -1378,15 +1387,20 @@ vertical-align: middle;
 
 											<ul class="list-group list-group-flush">
 												@if ($detalle->jardin)
-														@if($detalle->id == 1624)
-	<li class="list-group-item">Parcela de 1.467 m<sup>2</sup></li> 
-	@else
-	<li class="list-group-item">Jardín</li>
-	@endif
+
+	                                                <li class="list-group-item">Jardín</li>
+	                                            @endif
+												@if($detalle->parcela_metros)
+
+												<li class="list-group-item">Parcela de {{ number_format($detalle->parcela_metros, 0, ',', '.') }} m<sup>2</sup></li> 
+												</li>								
 												@endif
 												@if ($detalle->piscina)
 													<li class="list-group-item">Piscina</li>
 												@endif
+												@if ($detalle->piscina_climatizada)
+													<li class="list-group-item">Piscina climatizada 365 días</li>
+												@endif												
 												@if ($detalle->gym)
 													<li class="list-group-item">Gym</li>
 												@endif
@@ -1399,6 +1413,9 @@ vertical-align: middle;
 												@if ($detalle->zona_infantil)
 													<li class="list-group-item">Zona infantil</li>
 												@endif
+												@if ($detalle->sala_eventos)
+													<li class="list-group-item">Sala de eventos comunitarios</li>
+												@endif												
 												@if ($detalle->garaje_opcion)
 													<li class="list-group-item">Opción de garaje en el mismo edificio</li>    													
 												@endif
