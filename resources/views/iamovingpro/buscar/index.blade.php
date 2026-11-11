@@ -86,6 +86,13 @@
             padding-left: 0px;
         }
 
+/* Estilo para el botón de filtrar activo en móvil */
+.btn-filter-active {
+    background-color: #eadd03 !important;
+    border-color: #eadd03 !important;
+    color: #2d2e35 !important;
+    font-weight: 600 !important;
+}
 
 #image
 {    
@@ -922,7 +929,7 @@
                                         </div>
                                         <div class="rf-right">
                                             <!--<p><i class="fa fa-bed"></i> Dormitorios: @{{data.bedrooms}}</p>-->
-                            <p v-if="data.bedrooms && data.tipo_inmueble!='Local/Oficina'" ><i class="fas fa-bed"></i> Dormitorios: @{{data.bedrooms}} </p>
+                            <p v-if="data.bedrooms && data.tipo_inmueble!='Local/Oficina'" ><i class="fas fa-bed"></i> @{{data.id == 1624 ? 'Habitaciones' : 'Dormitorios' }}: @{{data.bedrooms}} </p>
                             <p v-if="data.bedrooms && data.tipo_inmueble=='Local/Oficina'" ><i class="fas fa-bed"></i> Estancias: @{{data.bedrooms}} </p>										
                                             <p  v-if="data.bathrooms"><i class="fa fa-bath"></i> Baños: @{{data.bathrooms}}</p>
                                             <p  v-if="data.tipo_inmueble=='Local/Oficina' && !data.bathrooms && data.aseos"><i class="fa fa-bath"></i> Aesos: @{{data.aseos}}</p>
@@ -1565,6 +1572,34 @@ order: 'relevance',
                 
             },
             computed: {
+                // ✅ Comprueba si hay algún filtro activo para el botón móvil
+                hasActiveFilters() {
+                    const f = this.form;
+                    const minPrice = f.propiedad_price ? f.propiedad_price.trim() : '';
+                    const maxPrice = f.price ? f.price.trim() : '';
+                    const minSize = f.propiedad_tamano ? f.propiedad_tamano.trim() : '';
+                    const maxSize = f.tamano ? f.tamano.trim() : '';
+                    const contract = f.contract ? f.contract.toString().trim() : '';
+
+                    return (
+                        (f.tipoinmueble && f.tipoinmueble !== 'Pisos y casas') ||
+                        minPrice !== '' ||
+                        maxPrice !== '' ||
+                        minSize !== '' ||
+                        maxSize !== '' ||
+                        contract !== '' ||
+                        (f.furnished_types && f.furnished_types.length > 0) ||
+                        (f.piesas && f.piesas.length > 0) ||
+                        (f.numerosBanos && f.numerosBanos.length > 0) ||
+                        (f.estadoInmueble && f.estadoInmueble.length > 0) ||
+                        (f.access && f.access.length > 0) ||
+                        (f.building && f.building.length > 0) ||
+                        (f.qualities && f.qualities.length > 0) ||
+                        (f.room && f.room.length > 0) ||
+                        (f.heating && f.heating.length > 0) ||
+                        (f.calderaAgua && f.calderaAgua.length > 0)
+                    );
+                },                
                 titleFilters() {
                     if (this.filters) {
 						//alert('hola');
@@ -2709,6 +2744,17 @@ toggleMapView() {
         
     },
 watch: {
+                    // ✅ Vigila si hay filtros activos y pinta el botón móvil
+                hasActiveFilters: {
+                    handler(newVal) {
+                        if (newVal) {
+                            $('#btn-filters-mobile').addClass('btn-filter-active');
+                        } else {
+                            $('#btn-filters-mobile').removeClass('btn-filter-active');
+                        }
+                    },
+                    immediate: true // Se ejecuta nada más cargar la página
+                },
     dataFilter: {
         handler: function(newData, oldData) {
             console.log("📊 dataFilter cambió:", newData ? newData.length : 0, "propiedades");

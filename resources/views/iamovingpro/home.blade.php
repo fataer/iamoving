@@ -108,7 +108,7 @@
 													<div class="rf-left">
 														
 														@if($item->bedrooms && $item->tipo_inmueble !='Local/Oficina')
-															<p><i class="fas fa-bed"></i> Dormitorios: {{$item->bedrooms}} </p>    
+															<p><i class="fas fa-bed"></i> {{ $item->id == 1624 ? 'Habitaciones' : 'Dormitorios' }}: {{$item->bedrooms}} </p>    
 														@endif
 														@if($item->bedrooms && $item->tipo_inmueble =='Local/Oficina')
 															<p><i class="fas fa-bed"></i> Estancias: {{$item->bedrooms}} </p>										    
@@ -699,7 +699,7 @@
 								category = $(this).val() ;    
 							}
 						});
-						var url = '/iamovingpro/find?category=' + category;
+						var url = '/iamovingpro/buscar?category=' + category;
 						if($("#city").val()!=""){
 							url += "&city=" + $("#city").val();
 							location.href = url;

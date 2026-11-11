@@ -1,14 +1,20 @@
 <template>
     <div>
         <!-- Carrusel -->
-        <div ref="carousel" id="carouselControls" class="carousel slide allow-pinch" data-ride="carousel" data-interval="false" data-touch="true">
-            <div class="carousel-inner">
+        <!-- data-touch="false": el swipe lo gestionamos nosotros (ver onCarouselTouch*),
+             así evitamos dobles saltos y no dependemos del touch-action de Bootstrap -->
+        <div ref="carousel" id="carouselControls" class="carousel slide allow-pinch" data-ride="carousel" data-interval="false" data-touch="false">
+            <div class="carousel-inner"
+                 @touchstart.passive="onCarouselTouchStart"
+                 @touchmove.passive="onCarouselTouchMove"
+                 @touchend.passive="onCarouselTouchEnd"
+                 @touchcancel.passive="onCarouselTouchCancel">
                 <div v-for="(image, imgIndex) in images" :key="imgIndex"
                         class="carousel-item"
                         :class="{ active: imgIndex == 0 }">
 
                     <div class="image-container" @click.stop="openLightbox(imgIndex)">
-                        <img :src="getURL(image.img)" :alt="imgIndex" class="d-block w-100" />
+                        <img :src="getURL(image.img)" :alt="imgIndex" class="d-block w-100" draggable="false" />
                         <!-- Overlay de "Ampliar" - SOLO visible en escritorio -->
                         <div class="zoom-overlay desktop-only">
                             <span>Ampliar</span>
@@ -35,7 +41,7 @@
                     &times;
                 </button>
 
-                <!-- Zona de gestos: aquí gestionamos nosotros el pinch-to-zoom -->
+                <!-- Zona de gestos: aquí gestionamos nosotros el pinch-to-zoom y el swipe -->
                 <div class="zoom-viewport"
                      ref="zoomViewport"
                      @touchstart="onTouchStart"
@@ -52,7 +58,9 @@
                 </div>
 
                 <!-- Ayuda visual solo en móvil y solo mientras no se ha hecho zoom -->
-                <div class="zoom-hint" v-if="scale === 1">Pellizca para ampliar</div>
+                <div class="zoom-hint" v-if="scale === 1">
+                    Pellizca para ampliar<span v-if="images.length > 1"> · Desliza para cambiar</span>
+                </div>
             </div>
         </div>
     </div>
@@ -61,6 +69,11 @@
 <script>
 const MIN_SCALE = 1;
 const MAX_SCALE = 5;
+
+// Swipe
+const SWIPE_MIN_DISTANCE = 50;   // px mínimos en horizontal para considerarlo swipe
+const SWIPE_DIRECTION_RATIO = 1.2; // el movimiento horizontal debe dominar sobre el vertical
+const CLICK_AFTER_SWIPE_MS = 400; // ignora el "click" que algunos navegadores lanzan tras un swipe
 
 export default {
     data() {
@@ -87,7 +100,12 @@ export default {
             startX: 0,
             startY: 0,
             startTranslateX: 0,
-            startTranslateY: 0
+            startTranslateY: 0,
+
+            // Swipe
+            carouselSwipe: null,   // { x, y } inicio del swipe en el carrusel
+            lightboxSwipe: null,   // { x, y } inicio del swipe en el lightbox
+            lastSwipeAt: 0
         }
     },
     props: {
@@ -150,6 +168,9 @@ export default {
         },
 
         openLightbox(imgIndex) {
+            // Si acabamos de hacer swipe, no abrimos el lightbox por accidente
+            if (Date.now() - this.lastSwipeAt < CLICK_AFTER_SWIPE_MS) return;
+
             this.currentImageIndex = imgIndex;
             this.lightboxImageUrl = this.getURL(this.images[imgIndex].img);
             this.lightboxVisible = true;
@@ -160,6 +181,7 @@ export default {
         closeLightbox() {
             this.lightboxVisible = false;
             this.lightboxImageUrl = '';
+            this.lightboxSwipe = null;
             this.resetZoom();
             document.body.style.overflow = '';
         },
@@ -168,7 +190,70 @@ export default {
             $(this.$refs.carousel).carousel(idx);
         },
 
-        /* ---------- Pinch to zoom ---------- */
+        /* ---------- Swipe (común) ---------- */
+
+        // Devuelve 'left', 'right' o null según el desplazamiento entre inicio y fin
+        getSwipeDirection(start, endX, endY) {
+            const dx = endX - start.x;
+            const dy = endY - start.y;
+            if (Math.abs(dx) < SWIPE_MIN_DISTANCE) return null;
+            if (Math.abs(dx) < Math.abs(dy) * SWIPE_DIRECTION_RATIO) return null;
+            return dx < 0 ? 'left' : 'right';
+        },
+
+        /* ---------- Swipe en el carrusel ---------- */
+
+        onCarouselTouchStart(e) {
+            // Solo un dedo; con dos es un pellizco y no lo tocamos
+            if (e.touches.length !== 1 || this.images.length < 2) {
+                this.carouselSwipe = null;
+                return;
+            }
+            this.carouselSwipe = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        },
+
+        onCarouselTouchMove(e) {
+            if (e.touches.length > 1) this.carouselSwipe = null;
+        },
+
+        onCarouselTouchEnd(e) {
+            if (!this.carouselSwipe) return;
+            const t = e.changedTouches[0];
+            const dir = this.getSwipeDirection(this.carouselSwipe, t.clientX, t.clientY);
+            this.carouselSwipe = null;
+
+            if (dir) {
+                this.lastSwipeAt = Date.now();
+                $(this.$refs.carousel).carousel(dir === 'left' ? 'next' : 'prev');
+            }
+        },
+
+        onCarouselTouchCancel() {
+            this.carouselSwipe = null;
+        },
+
+        /* ---------- Navegación en el lightbox ---------- */
+
+        showImage(index) {
+            const n = this.images.length;
+            if (n === 0) return;
+            const idx = (index + n) % n;
+            this.currentImageIndex = idx;
+            this.lightboxImageUrl = this.getURL(this.images[idx].img);
+            this.resetZoom();
+            // Mantiene el carrusel (y el título) sincronizado con el lightbox
+            this.setSlide(idx);
+        },
+
+        nextImage() {
+            this.showImage(this.currentImageIndex + 1);
+        },
+
+        prevImage() {
+            this.showImage(this.currentImageIndex - 1);
+        },
+
+        /* ---------- Pinch to zoom + swipe en el lightbox ---------- */
 
         resetZoom() {
             this.scale = MIN_SCALE;
@@ -186,6 +271,7 @@ export default {
         onTouchStart(e) {
             if (e.touches.length === 2) {
                 e.preventDefault();
+                this.lightboxSwipe = null; // un pellizco nunca es swipe
                 this.isGesturing = true;
                 this.startDistance = this.touchDistance(e.touches);
                 this.startScale = this.scale;
@@ -194,12 +280,16 @@ export default {
                 this.startTranslateX = this.translateX;
                 this.startTranslateY = this.translateY;
             } else if (e.touches.length === 1 && this.scale > MIN_SCALE) {
-                // Arrastrar la imagen ya ampliada
+                // Arrastrar la imagen ya ampliada (sin swipe)
+                this.lightboxSwipe = null;
                 this.isGesturing = true;
                 this.startX = e.touches[0].clientX;
                 this.startY = e.touches[0].clientY;
                 this.startTranslateX = this.translateX;
                 this.startTranslateY = this.translateY;
+            } else if (e.touches.length === 1 && this.images.length > 1) {
+                // Imagen sin zoom: posible swipe para cambiar de foto
+                this.lightboxSwipe = { x: e.touches[0].clientX, y: e.touches[0].clientY };
             }
         },
 
@@ -221,18 +311,39 @@ export default {
                 this.translateX = this.startTranslateX + (e.touches[0].clientX - this.startX);
                 this.translateY = this.startTranslateY + (e.touches[0].clientY - this.startY);
                 this.clampTranslate();
+            } else if (e.touches.length === 1 && this.lightboxSwipe && this.scale === MIN_SCALE) {
+                // Feedback visual: la foto sigue al dedo en horizontal mientras deslizas
+                e.preventDefault();
+                this.isGesturing = true;
+                this.translateX = e.touches[0].clientX - this.lightboxSwipe.x;
             }
         },
 
         onTouchEnd(e) {
             if (e.touches.length === 0) {
+                // ¿Ha sido un swipe con la imagen sin zoom?
+                let swipeDir = null;
+                if (this.lightboxSwipe && this.scale === MIN_SCALE && e.changedTouches.length) {
+                    const t = e.changedTouches[0];
+                    swipeDir = e.type === 'touchcancel'
+                        ? null
+                        : this.getSwipeDirection(this.lightboxSwipe, t.clientX, t.clientY);
+                }
+                this.lightboxSwipe = null;
+
                 this.isGesturing = false;
                 this.startDistance = 0;
 
                 if (this.scale <= MIN_SCALE + 0.02) {
-                    this.resetZoom();
+                    this.resetZoom(); // si no hubo swipe, la foto vuelve a su sitio
                 } else {
                     this.clampTranslate();
+                }
+
+                if (swipeDir === 'left') {
+                    this.nextImage();
+                } else if (swipeDir === 'right') {
+                    this.prevImage();
                 }
             } else if (e.touches.length === 1) {
                 // Se ha levantado un dedo: seguimos arrastrando con el que queda
@@ -300,15 +411,15 @@ export default {
     width: 100%;
     display: block;
     transition: transform 0.3s ease;
+    -webkit-user-drag: none;
 }
 
 /*
- * CLAVE DEL PROBLEMA EN MÓVIL
- * Bootstrap 4 añade la clase .pointer-event al carrusel y aplica
- * `touch-action: pan-y`, que le dice al navegador "en este elemento solo
- * se permite desplazamiento vertical" y por tanto BLOQUEA el pinch-to-zoom.
- * Con `manipulation` se permiten pan y zoom, y el swipe de Bootstrap
- * (que es JavaScript) sigue funcionando.
+ * GESTOS TÁCTILES EN EL CARRUSEL
+ * - pan-y:      el navegador sigue haciendo scroll vertical de la página.
+ * - pinch-zoom: se mantiene el pellizco para hacer zoom.
+ * - El desplazamiento horizontal queda libre para NUESTRO swipe
+ *   (onCarouselTouch*), sin que el navegador lo cancele.
  */
 #carouselControls,
 #carouselControls.pointer-event,
@@ -316,7 +427,7 @@ export default {
 #carouselControls .carousel-item,
 .image-container,
 .image-container img {
-    touch-action: manipulation !important;
+    touch-action: pan-y pinch-zoom !important;
 }
 
 /* Efecto hover en escritorio */
@@ -512,6 +623,7 @@ export default {
         background-color: rgba(0, 0, 0, 0.7);
         color: #e3db20;
         font-size: 13px;
+        white-space: nowrap;
         pointer-events: none;
         z-index: 1000000;
     }

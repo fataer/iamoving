@@ -37,7 +37,7 @@
                 <div class="room-info-warp">
                     <div class="room-info">
                         <div class="rf-left">
-                            <p v-if="data.bedrooms && data.tipo_inmueble!='Local/Oficina'"><i class="fas fa-bed"></i> Dormitorios: {{data.bedrooms}} </p>
+                            <p v-if="data.bedrooms && data.tipo_inmueble!='Local/Oficina'"><i class="fas fa-bed"></i> {{ data.id == 1624 ? 'Habitaciones' : 'Dormitorios' }}: {{data.bedrooms}}</p>
                             <p v-if="data.bedrooms && data.tipo_inmueble=='Local/Oficina'"><i class="fas fa-bed"></i> Estancias: {{data.bedrooms}} </p>
                             <p v-if="data.square_meters"><i class="fas fa-th-large"></i> {{data.square_meters}} Metros<sup>2</sup></p>
                         </div>
