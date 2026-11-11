@@ -27,9 +27,9 @@ class BuscarController extends Controller
 		//TODO-->Se puede poner por defecto "Pisos y casas" `preguntar Roberto
 		//->whereIn('estado_inmueble', ['Disponible', 'Reservado','Alquilado','Vendido'])
 		->whereIn('estado_inmueble', ['Disponible', 'Reservado'])
-		->where('ciudad_inmueble', $city->id)
+		//->where('ciudad_inmueble', $city->id)
 		->where('tipo_inmueble','Pisos y casas')
-		->whereNotNull('ciudad_inmueble')
+		//->whereNotNull('ciudad_inmueble')
 		->orderBy('created_at', 'DESC')->get();
 		//->orderBy('created_at', 'DESC')->get();
             foreach ($data as $i => $d) {
