@@ -1011,12 +1011,8 @@ vertical-align: middle;
 												@endif
 												@if ($detalle->armario_empotrado)
 													<li class="list-group-item">
-														Armarios empotrados: Si
+														Armario empotrado
 													</li>
-    											@else
-													<li class="list-group-item">
-														Armarios empotrados: No
-													</li>													
 												@endif
 												@if ($detalle->chimenea)
 													<li class="list-group-item">
