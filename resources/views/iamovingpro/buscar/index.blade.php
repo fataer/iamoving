@@ -925,6 +925,7 @@
                                             <p v-if="data.piso==1"><i class="fa fa-check-square"></i> Piso</p>
                                             <p v-if="data.bajo==1"><i class="fa fa-check-square"></i> Bajo</p>
                                             <p v-if="data.atico==1"><i class="fa fa-check-square"></i> Ático</p>
+                                            <p v-if="data.casa==1"><i class="fa fa-check-square"></i> Casa</p>
                                             <p><i class="fa fa-th-large"></i> @{{data.square_meters}} m<sup>2</sup></p>
                                         </div>
                                         <div class="rf-right">

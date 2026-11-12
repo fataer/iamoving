@@ -139,7 +139,9 @@
 														@if($item->atico == 1)
 															<p><i class="fa fa-check-square"></i> Ático</p>
 														@endif
-														
+														@if($item->casa == 1)
+															<p><i class="fa fa-check-square"></i> Casa</p>
+														@endif														
 														@if($item->bathrooms)
 															<p><i class="fa fa-bath"></i> Baños: {{$item->bathrooms}}</p>    
 														@endif

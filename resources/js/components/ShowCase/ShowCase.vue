@@ -46,6 +46,7 @@
                             <p v-if="data.apartamento==1"><i class="fas fa-check-circle text-success"></i> Apartamento</p>
                             <p v-if="data.chalet==1"><i class="fas fa-check-circle text-success"></i> Chalet</p>
                             <p v-if="data.atico==1"><i class="fas fa-check-circle text-success"></i> Ático</p>
+                            <p v-if="data.casa==1"><i class="fas fa-check-circle text-success"></i> Casa</p>
                             <p v-if="data.loft==1"><i class="fas fa-check-circle text-success"></i> Loft</p>
                             <p v-if="data.piso==1"><i class="fas fa-check-circle text-success"></i> Piso</p>
                             <p v-if="data.bajo==1"><i class="fas fa-check-circle text-success"></i> Bajo</p>
