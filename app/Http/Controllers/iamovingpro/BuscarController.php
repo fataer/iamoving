@@ -106,13 +106,34 @@ class BuscarController extends Controller
             });
         }
         
-if($request->has('piesas') && count($request->piesas)> 0){
-    if($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {
-        $piesas = $request->piesas;
-        $hasPlusFive = in_array('+5', $piesas) || in_array('5', $piesas); // soporta ambos formatos
-        $otherNumbers = array_filter($piesas, function($v) {
-            return $v !== '+5' && $v !== '5';
-        });
+// Helper: detecta si un valor del filtro significa "5 o más"
+// Acepta: '5', '+5', '5 ó más', '5 o más', '5+', '5 baños o más', etc.
+$isFiveOrMore = function($v) {
+    $raw = trim((string)$v);
+    if ($raw === '') {
+        return false;
+    }
+    if (preg_match('/^\+?\s*(\d+)/u', $raw, $m)) {
+        return ((int)$m[1]) >= 5;
+    }
+    return false;
+};
+
+// ============================================
+// DORMITORIOS (pisas)
+// ============================================
+if ($request->has('piesas') && count((array)$request->piesas) > 0) {
+    if ($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {
+        $piesas = (array)$request->piesas;
+        $hasPlusFive = false;
+        $otherNumbers = [];
+        foreach ($piesas as $p) {
+            if ($isFiveOrMore($p)) {
+                $hasPlusFive = true;
+            } else {
+                $otherNumbers[] = $p;
+            }
+        }
 
         $informes->where(function($query) use ($otherNumbers, $hasPlusFive) {
             if (!empty($otherNumbers)) {
@@ -129,13 +150,21 @@ if($request->has('piesas') && count($request->piesas)> 0){
     }
 }
 
-if($request->has('numerosBanos') && count($request->numerosBanos)> 0){
-    if($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {
-        $banos = $request->numerosBanos;
-        $hasPlusFive = in_array('+5', $banos) || in_array('5', $banos);
-        $otherNumbers = array_filter($banos, function($v) {
-            return $v !== '+5' && $v !== '5';
-        });
+// ============================================
+// BAÑOS (numerosBanos)
+// ============================================
+if ($request->has('numerosBanos') && count((array)$request->numerosBanos) > 0) {
+    if ($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {
+        $banos = (array)$request->numerosBanos;
+        $hasPlusFive = false;
+        $otherNumbers = [];
+        foreach ($banos as $b) {
+            if ($isFiveOrMore($b)) {
+                $hasPlusFive = true;
+            } else {
+                $otherNumbers[] = $b;
+            }
+        }
 
         $informes->where(function($query) use ($otherNumbers, $hasPlusFive) {
             if (!empty($otherNumbers)) {
@@ -151,41 +180,35 @@ if($request->has('numerosBanos') && count($request->numerosBanos)> 0){
         });
     }
 }
-
 // Busca el bloque donde se procesan los tipos de vivienda y reemplázalo con:
 
-if($request->has('furnished_types') && count($request->furnished_types)> 0){
+if($request->has('numerosBanos') && count($request->numerosBanos)> 0){
     if($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {
-        $informes->where(function($query) use ($request) {
-            $types = $request->furnished_types;
-            
-            // Mapear los valores del checkbox a los campos de la base de datos
-            $fieldMap = [
-                'estudio' => 'estudio',
-                'loft' => 'loft',
-                'apartamento' => 'apartamento',
-                'piso' => 'piso',
-                'chalet' => 'chalet',
-                'casa' => 'casa', // <-- NUEVO
-                'atico' => 'atico',
-                'bajo' => 'bajo',
-                'dúplex' => 'duplex',  // AÑADIR DÚPLEX
-                'duplex' => 'duplex'   // También por si viene sin acento
-            ];
-            
-            foreach($types as $type) {
-                $key = strtolower(trim($type));
-                if(isset($fieldMap[$key])) {
-                    $query->orWhere($fieldMap[$key], 1);
+        $banos = $request->numerosBanos;
+        $hasPlusFive = in_array('+5', $banos)
+                    || in_array('5', $banos)
+                    || in_array('5 ó más', $banos);   // ← NUEVO (escritorio)
+
+        $otherNumbers = array_filter($banos, function($v) {
+            return $v !== '+5'
+                && $v !== '5'
+                && $v !== '5 ó más';                    // ← NUEVO (escritorio)
+        });
+
+        $informes->where(function($query) use ($otherNumbers, $hasPlusFive) {
+            if (!empty($otherNumbers)) {
+                $query->whereIn('bathrooms', $otherNumbers);
+            }
+            if ($hasPlusFive) {
+                if (!empty($otherNumbers)) {
+                    $query->orWhere('bathrooms', '>=', 5);
+                } else {
+                    $query->where('bathrooms', '>=', 5);
                 }
             }
         });
     }
-}
-		
-
-
-		
+}		
 
 		//Esto sustituye lo de arriba. Lo de arriba si cogía más de uno descartaba los dos
         if($request->has('qualities') && count($request->qualities)> 0){
