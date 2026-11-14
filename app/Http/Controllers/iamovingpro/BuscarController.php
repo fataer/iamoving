@@ -50,10 +50,11 @@ class BuscarController extends Controller
     
     public function searchFilters(Request $request, $category,$city) {
         //print_r($request);
-        $informes = \App\InformeDetalladoCabecera::where('is_sale', '=', $category)->where('ciudad_inmueble', $city)
+        $informes = \App\InformeDetalladoCabecera::where('is_sale', '=', $category)
+        //->where('ciudad_inmueble', $city)
 		->where('published',true)
 		//TODO-->Se puede quitar el iampro>0 si se quiere probarlo!!!
-		->where('iamoving_pro','>',0)
+		//->where('iamoving_pro','>',0)
 		//->whereIn('estado_inmueble', ['Disponible', 'Reservado','Alquilado','Vendido']);
 		->whereIn('estado_inmueble', ['Disponible', 'Reservado']);
 		
