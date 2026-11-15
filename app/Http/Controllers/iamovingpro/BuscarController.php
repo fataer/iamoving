@@ -378,9 +378,18 @@ if($request->has('calderaAgua') && count($request->calderaAgua)> 0){
 if($request->has('building') && count($request->building)> 0){
     foreach($request->building as $b){
         if($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {    
-            if($b == "Jardín"){
+           /* if($b == "Jardín"){
                 $informes->where('jardin',1);   
-            }
+            }*/
+if($b == "Jardín"){
+    $informes->where(function($q) {
+        $q->where('jardin', 1)
+          ->orWhere(function($q2) {
+              $q2->whereNotNull('parcela_metros')
+                 ->where('parcela_metros', '>', 0);
+          });
+    });
+}            
             if($b == "Piscina"){
                 $informes->where('piscina',1);   
             }
