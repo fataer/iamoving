@@ -2259,27 +2259,63 @@ $('#order-select-mobile').on('change', function() {
             });
             $('#mobileFiltersModal').modal('show');
         },
-    generateMobileFilters() {
+generateMobileFilters() {
     // Obtener las opciones de precio y tamaño
     const priceOptions = this.getPriceOptions();
-    const sizeOptions = this.getSizeOptions();
-    
-    // Generar opciones HTML para precio
-    let priceOptionsHtml = '<option value="">Mín</option>';
+    const sizeOptions  = this.getSizeOptions();
+
+    // ============================================
+    // Normalizador: acepta "300000", "300.000", "300.000 €", 300000 …
+    // devuelve siempre "300000" (o "" si vacío)
+    // ============================================
+    const normNum = (v) => {
+        if (v === null || v === undefined) return '';
+        return String(v).replace(/\./g, '').replace(/[^\d]/g, '');
+    };
+
+    const curMinPrice = normNum(this.form.propiedad_price);
+    const curMaxPrice = normNum(this.form.price);
+    const curMinSize  = normNum(this.form.propiedad_tamano);
+    const curMaxSize  = normNum(this.form.tamano);
+
+    // ============================================
+    // Opciones MÍNIMO precio
+    // ============================================
+    let priceOptionsMinHtml = '<option value="">Mín</option>';
     priceOptions.forEach(opt => {
-        const selected = this.form.propiedad_price == opt.value ? 'selected' : '';
-        priceOptionsHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
+        const selected = (curMinPrice !== '' && curMinPrice === String(opt.value)) ? 'selected' : '';
+        priceOptionsMinHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
     });
-    
-    // Generar opciones HTML para tamaño
-    let sizeOptionsHtml = '<option value="">Mín</option>';
+
+    // ============================================
+    // Opciones MÁXIMO precio (parte de cero, sin 'selected' heredado)
+    // ============================================
+    let priceOptionsMaxHtml = '<option value="">Máx</option>';
+    priceOptions.forEach(opt => {
+        const selected = (curMaxPrice !== '' && curMaxPrice === String(opt.value)) ? 'selected' : '';
+        priceOptionsMaxHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
+    });
+
+    // ============================================
+    // Opciones MÍNIMO tamaño
+    // ============================================
+    let sizeOptionsMinHtml = '<option value="">Mín</option>';
     sizeOptions.forEach(opt => {
-        const selected = this.form.propiedad_tamano == opt.value ? 'selected' : '';
-        sizeOptionsHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
+        const selected = (curMinSize !== '' && curMinSize === String(opt.value)) ? 'selected' : '';
+        sizeOptionsMinHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
     });
-    
+
+    // ============================================
+    // Opciones MÁXIMO tamaño
+    // ============================================
+    let sizeOptionsMaxHtml = '<option value="">Máx</option>';
+    sizeOptions.forEach(opt => {
+        const selected = (curMaxSize !== '' && curMaxSize === String(opt.value)) ? 'selected' : '';
+        sizeOptionsMaxHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
+    });
+
     let html = '';
-    
+
     // ============================================
     // 1. TIPO DE INMUEBLE
     // ============================================
@@ -2302,7 +2338,7 @@ $('#order-select-mobile').on('change', function() {
             </div>
         </div>
     `;
-    
+
     // ============================================
     // 2. PRECIO
     // ============================================
@@ -2311,22 +2347,21 @@ $('#order-select-mobile').on('change', function() {
             <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Precio</h6>
             <div style="display: flex; gap: 10px;">
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;" 
+                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
                             onchange="window.filterVue.form.propiedad_price = this.value; window.filterVue.reseteo();">
-                        ${priceOptionsHtml}
+                        ${priceOptionsMinHtml}
                     </select>
                 </div>
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;" 
+                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
                             onchange="window.filterVue.form.price = this.value; window.filterVue.reseteo();">
-                        <option value="">Máx</option>
-                        ${priceOptionsHtml.replace('Mín', 'Máx')}
+                        ${priceOptionsMaxHtml}
                     </select>
                 </div>
             </div>
         </div>
     `;
-    
+
     // ============================================
     // 3. TAMAÑO
     // ============================================
@@ -2335,41 +2370,40 @@ $('#order-select-mobile').on('change', function() {
             <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Tamaño</h6>
             <div style="display: flex; gap: 10px;">
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;" 
+                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
                             onchange="window.filterVue.form.propiedad_tamano = this.value; window.filterVue.reseteo();">
-                        ${sizeOptionsHtml}
+                        ${sizeOptionsMinHtml}
                     </select>
                 </div>
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;" 
+                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
                             onchange="window.filterVue.form.tamano = this.value; window.filterVue.reseteo();">
-                        <option value="">Máx</option>
-                        ${sizeOptionsHtml.replace('Mín', 'Máx')}
+                        ${sizeOptionsMaxHtml}
                     </select>
                 </div>
             </div>
         </div>
     `;
-    
+
     // ============================================
     // 4. TIPO DE VIVIENDA
     // ============================================
-const furnishedTypes = this.form.furnished_types || [];
-html += `
-    <div class="filter-group" style="margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 16px;">
-        <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Tipo de vivienda</h6>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            ${['Estudio','Loft','Apartamento','Piso','Chalet','Casa','Atico','Bajo','Dúplex'].map(type => `
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
-                    <input type="checkbox" value="${type}" ${furnishedTypes.includes(type) ? 'checked' : ''} 
-                           onchange="window.filterVue.toggleFilter('furnished_types', '${type}', this.checked);">
-                    ${type}
-                </label>
-            `).join('')}
+    const furnishedTypes = this.form.furnished_types || [];
+    html += `
+        <div class="filter-group" style="margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 16px;">
+            <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Tipo de vivienda</h6>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                ${['Estudio','Loft','Apartamento','Piso','Chalet','Casa','Atico','Bajo','Dúplex'].map(type => `
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
+                        <input type="checkbox" value="${type}" ${furnishedTypes.includes(type) ? 'checked' : ''}
+                               onchange="window.filterVue.toggleFilter('furnished_types', '${type}', this.checked);">
+                        ${type}
+                    </label>
+                `).join('')}
+            </div>
         </div>
-    </div>
-`;
-    
+    `;
+
     // ============================================
     // 5. DORMITORIOS
     // ============================================
@@ -2382,7 +2416,7 @@ html += `
                     const label = val == '5' ? '5 dormitorios o más' : val;
                     return `
                         <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
-                            <input type="checkbox" value="${val}" ${piesas.includes(val) ? 'checked' : ''} 
+                            <input type="checkbox" value="${val}" ${piesas.includes(val) ? 'checked' : ''}
                                    onchange="window.filterVue.toggleFilter('piesas', '${val}', this.checked);">
                             ${label}
                         </label>
@@ -2391,7 +2425,7 @@ html += `
             </div>
         </div>
     `;
-    
+
     // ============================================
     // 6. BAÑOS
     // ============================================
@@ -2404,7 +2438,7 @@ html += `
                     const label = val == '5' ? '5 Baños o más' : val;
                     return `
                         <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
-                            <input type="checkbox" value="${val}" ${numerosBanos.includes(val) ? 'checked' : ''} 
+                            <input type="checkbox" value="${val}" ${numerosBanos.includes(val) ? 'checked' : ''}
                                    onchange="window.filterVue.toggleFilter('numerosBanos', '${val}', this.checked);">
                             ${label}
                         </label>
@@ -2413,7 +2447,7 @@ html += `
             </div>
         </div>
     `;
-    
+
     // ============================================
     // 7. ESTADO DEL INMUEBLE
     // ============================================
@@ -2424,7 +2458,7 @@ html += `
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 ${['Obra nueva','Reformado a estrenar','A reformar','En buen estado','Recién reformado'].map(type => `
                     <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
-                        <input type="checkbox" value="${type}" ${estadoInmueble.includes(type) ? 'checked' : ''} 
+                        <input type="checkbox" value="${type}" ${estadoInmueble.includes(type) ? 'checked' : ''}
                                onchange="window.filterVue.toggleFilter('estadoInmueble', '${type}', this.checked);">
                         ${type}
                     </label>
@@ -2432,54 +2466,50 @@ html += `
             </div>
         </div>
     `;
-    
-// ============================================
-// 8. ¡MUY IMPORTANTE PARA MÍ!
-// ============================================
-const access = this.form.access || [];
-//const accessItems = ['Ascensor','Rampas de minusválidos en el portal','Ascensor que entra un carrito de bebé',
-//                     'Exterior','Interior','Terraza','Balcón','Patio','Aire acondicionado'];
-const accessItems = ['Ascensor','Exterior','Interior','Terraza','Balcón','Patio','Aire acondicionado'];
-html += `
-    <div class="filter-group" style="margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 16px;">
-        <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">¡Muy importante para mí!</h6>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            ${accessItems.map(type => `
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
-                    <input type="checkbox" value="${type}" ${access.includes(type) ? 'checked' : ''} 
-                           onchange="window.filterVue.toggleFilter('access', '${type}', this.checked);">
-                    ${type}
-                </label>
-            `).join('')}
-        </div>
-    </div>
-`;
-    
 
-// ============================================
-// 11. DATOS DEL EDIFICIO
-// ============================================
-const building = this.form.building || [];
-const buildingItems = ['Jardín','Piscina','Gym','Sauna','Zona deportiva','Zona infantil',
-                      'Garaje incluido en el precio','Trastero incluido'];
-html += `
-    <div class="filter-group" style="margin-bottom: 24px;">
-        <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Datos del edificio</h6>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            ${buildingItems.map(type => `
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
-                    <input type="checkbox" value="${type}" ${building.includes(type) ? 'checked' : ''} 
-                           onchange="window.filterVue.toggleFilter('building', '${type}', this.checked);">
-                    ${type}
-                </label>
-            `).join('')}
+    // ============================================
+    // 8. ¡MUY IMPORTANTE PARA MÍ!
+    // ============================================
+    const access = this.form.access || [];
+    const accessItems = ['Ascensor','Exterior','Interior','Terraza','Balcón','Patio','Aire acondicionado'];
+    html += `
+        <div class="filter-group" style="margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 16px;">
+            <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">¡Muy importante para mí!</h6>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                ${accessItems.map(type => `
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
+                        <input type="checkbox" value="${type}" ${access.includes(type) ? 'checked' : ''}
+                               onchange="window.filterVue.toggleFilter('access', '${type}', this.checked);">
+                        ${type}
+                    </label>
+                `).join('')}
+            </div>
         </div>
-    </div>
-`;
-    
+    `;
+
+    // ============================================
+    // 11. DATOS DEL EDIFICIO
+    // ============================================
+    const building = this.form.building || [];
+    const buildingItems = ['Jardín','Piscina','Gym','Sauna','Zona deportiva','Zona infantil',
+                           'Garaje incluido en el precio','Trastero incluido'];
+    html += `
+        <div class="filter-group" style="margin-bottom: 24px;">
+            <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Datos del edificio</h6>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                ${buildingItems.map(type => `
+                    <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; color: #1a1a1a; font-size: 14px;">
+                        <input type="checkbox" value="${type}" ${building.includes(type) ? 'checked' : ''}
+                               onchange="window.filterVue.toggleFilter('building', '${type}', this.checked);">
+                        ${type}
+                    </label>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
     document.getElementById('mobile-filters-content').innerHTML = html;
 },
-        
 updateMobileResults() {
     const count = this.dataFilter ? this.dataFilter.length : 0;
     this.mobileResultsCount = count;
