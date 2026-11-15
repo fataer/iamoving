@@ -70,7 +70,42 @@ class BuscarController extends Controller
                     $informes->where('tipo_inmueble','Local/Oficina');       
                 }				
         }		
+// ============================================
+// TIPO DE VIVIENDA (furnished_types)
+// Estudio, Loft, Apartamento, Piso, Chalet, Casa, Atico, Bajo, Dúplex
+// ============================================
+if ($request->has('furnished_types') && count((array)$request->furnished_types) > 0) {
 
+    // Mapa: etiqueta del checkbox -> nombre de la columna en BD
+    $mapTipoVivienda = [
+        'Estudio'     => 'estudio',
+        'Loft'        => 'loft',
+        'Apartamento' => 'apartamento',
+        'Piso'        => 'piso',
+        'Chalet'      => 'chalet',
+        'Casa'        => 'casa',
+        'Atico'       => 'atico',
+        'Ático'       => 'atico',   // por si algún día llega con tilde
+        'Bajo'        => 'bajo',
+        'Dúplex'      => 'duplex',
+        'Duplex'      => 'duplex',  // por si llega sin tilde
+    ];
+
+    $columnas = [];
+    foreach ((array)$request->furnished_types as $tipo) {
+        if (isset($mapTipoVivienda[$tipo])) {
+            $columnas[] = $mapTipoVivienda[$tipo];
+        }
+    }
+
+    if (!empty($columnas)) {
+        $informes->where(function ($q) use ($columnas) {
+            foreach ($columnas as $col) {
+                $q->orWhere($col, 1);
+            }
+        });
+    }
+}
         if($request->has('price') && trim($request->price)!=''){
             //$precio = floatval($request->price);
 	        $precio = str_replace("€","",str_replace(".", "", $request->price));
@@ -182,7 +217,7 @@ if ($request->has('numerosBanos') && count((array)$request->numerosBanos) > 0) {
     }
 }
 // Busca el bloque donde se procesan los tipos de vivienda y reemplázalo con:
-
+/*
 if($request->has('numerosBanos') && count($request->numerosBanos)> 0){
     if($request->tipoinmueble == 'Pisos y casas' || $request->tipoinmueble == 'Habitaciones') {
         $banos = $request->numerosBanos;
@@ -210,6 +245,7 @@ if($request->has('numerosBanos') && count($request->numerosBanos)> 0){
         });
     }
 }		
+*/
 
 		//Esto sustituye lo de arriba. Lo de arriba si cogía más de uno descartaba los dos
         if($request->has('qualities') && count($request->qualities)> 0){
