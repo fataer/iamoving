@@ -2260,14 +2260,10 @@ $('#order-select-mobile').on('change', function() {
             $('#mobileFiltersModal').modal('show');
         },
 generateMobileFilters() {
-    // Obtener las opciones de precio y tamaño
     const priceOptions = this.getPriceOptions();
     const sizeOptions  = this.getSizeOptions();
 
-    // ============================================
-    // Normalizador: acepta "300000", "300.000", "300.000 €", 300000 …
-    // devuelve siempre "300000" (o "" si vacío)
-    // ============================================
+    // Normalizador: "300000" / "300.000" / "300.000 €" → "300000"
     const normNum = (v) => {
         if (v === null || v === undefined) return '';
         return String(v).replace(/\./g, '').replace(/[^\d]/g, '');
@@ -2278,8 +2274,14 @@ generateMobileFilters() {
     const curMinSize  = normNum(this.form.propiedad_tamano);
     const curMaxSize  = normNum(this.form.tamano);
 
+    // Clases 'select-active' si hay valor
+    const clsMinPrice = curMinPrice !== '' ? ' select-active' : '';
+    const clsMaxPrice = curMaxPrice !== '' ? ' select-active' : '';
+    const clsMinSize  = curMinSize  !== '' ? ' select-active' : '';
+    const clsMaxSize  = curMaxSize  !== '' ? ' select-active' : '';
+
     // ============================================
-    // Opciones MÍNIMO precio
+    // Opciones PRECIO mínimo
     // ============================================
     let priceOptionsMinHtml = '<option value="">Mín</option>';
     priceOptions.forEach(opt => {
@@ -2287,27 +2289,21 @@ generateMobileFilters() {
         priceOptionsMinHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
     });
 
-    // ============================================
-    // Opciones MÁXIMO precio (parte de cero, sin 'selected' heredado)
-    // ============================================
+    // Opciones PRECIO máximo
     let priceOptionsMaxHtml = '<option value="">Máx</option>';
     priceOptions.forEach(opt => {
         const selected = (curMaxPrice !== '' && curMaxPrice === String(opt.value)) ? 'selected' : '';
         priceOptionsMaxHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
     });
 
-    // ============================================
-    // Opciones MÍNIMO tamaño
-    // ============================================
+    // Opciones TAMAÑO mínimo
     let sizeOptionsMinHtml = '<option value="">Mín</option>';
     sizeOptions.forEach(opt => {
         const selected = (curMinSize !== '' && curMinSize === String(opt.value)) ? 'selected' : '';
         sizeOptionsMinHtml += `<option value="${opt.value}" ${selected}>${opt.label}</option>`;
     });
 
-    // ============================================
-    // Opciones MÁXIMO tamaño
-    // ============================================
+    // Opciones TAMAÑO máximo
     let sizeOptionsMaxHtml = '<option value="">Máx</option>';
     sizeOptions.forEach(opt => {
         const selected = (curMaxSize !== '' && curMaxSize === String(opt.value)) ? 'selected' : '';
@@ -2347,14 +2343,16 @@ generateMobileFilters() {
             <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Precio</h6>
             <div style="display: flex; gap: 10px;">
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
-                            onchange="window.filterVue.form.propiedad_price = this.value; window.filterVue.reseteo();">
+                    <select class="form-control${clsMinPrice}"
+                            style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
+                            onchange="window.filterVue.form.propiedad_price = this.value; this.classList.toggle('select-active', this.value !== ''); window.filterVue.reseteo();">
                         ${priceOptionsMinHtml}
                     </select>
                 </div>
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
-                            onchange="window.filterVue.form.price = this.value; window.filterVue.reseteo();">
+                    <select class="form-control${clsMaxPrice}"
+                            style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
+                            onchange="window.filterVue.form.price = this.value; this.classList.toggle('select-active', this.value !== ''); window.filterVue.reseteo();">
                         ${priceOptionsMaxHtml}
                     </select>
                 </div>
@@ -2370,14 +2368,16 @@ generateMobileFilters() {
             <h6 style="font-weight: 600; margin-bottom: 12px; color: #1a1a1a; font-size: 15px;">Tamaño</h6>
             <div style="display: flex; gap: 10px;">
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
-                            onchange="window.filterVue.form.propiedad_tamano = this.value; window.filterVue.reseteo();">
+                    <select class="form-control${clsMinSize}"
+                            style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
+                            onchange="window.filterVue.form.propiedad_tamano = this.value; this.classList.toggle('select-active', this.value !== ''); window.filterVue.reseteo();">
                         ${sizeOptionsMinHtml}
                     </select>
                 </div>
                 <div style="flex: 1;">
-                    <select class="form-control" style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
-                            onchange="window.filterVue.form.tamano = this.value; window.filterVue.reseteo();">
+                    <select class="form-control${clsMaxSize}"
+                            style="border-radius: 8px; font-size: 14px; border-color: #d1d5db; height: 40px; appearance: auto; -webkit-appearance: auto; background: #fff;"
+                            onchange="window.filterVue.form.tamano = this.value; this.classList.toggle('select-active', this.value !== ''); window.filterVue.reseteo();">
                         ${sizeOptionsMaxHtml}
                     </select>
                 </div>

@@ -449,7 +449,15 @@ gmp-place-autocomplete input:focus {
     cursor: pointer !important;
 }
 
-#mobile-filters-content select.form-control:focus {
+/* DESPUÉS */
+#mobile-filters-content select.form-control:focus-visible {
+    border-color: #1a73e8 !important;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2) !important;
+    outline: none !important;
+}
+
+/* Azul alrededor del select cuando tiene un valor activo (distinto de Mín/Máx) */
+#mobileFiltersModal select.form-control.select-active {
     border-color: #1a73e8 !important;
     box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2) !important;
     outline: none !important;
