@@ -639,7 +639,7 @@
 				
 				$('.carousel').carousel();
 			
-				$('.owl-carousel').owlCarousel({
+				/*$('.owl-carousel').owlCarousel({
 					margin:10,			
 					responsive:{
 						0:{
@@ -654,7 +654,34 @@
 					},
 					nav: true,
 					navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
-				});
+				});*/
+$('.owl-carousel').owlCarousel({
+    margin: 10,
+    responsive: {
+        0: {
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 8000,   // 8 segundos
+            autoplayHoverPause: true, // se pausa si el usuario toca/pasa el dedo por encima
+            loop: true,
+            smartSpeed: 600
+        },
+        600: {
+            items: 2,
+            autoplay: true,
+            autoplayTimeout: 8000,
+            autoplayHoverPause: true,
+            loop: true,
+            smartSpeed: 600
+        },
+        1000: {
+            items: 3
+            // en escritorio no hace falta autoplay (ya se ven las 3)
+        }
+    },
+    nav: true,
+    navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
+});				
 				if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 					$("#modalVideo").css('max-width,','95wv');
 				}
